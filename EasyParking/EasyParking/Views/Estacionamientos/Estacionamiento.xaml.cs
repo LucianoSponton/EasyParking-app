@@ -1,6 +1,7 @@
 ﻿using EasyParking.DTO;
 using EasyParking.Views.Estacionamientos.MisEstacionamientos;
 using EasyParking.Views.PerfilDeNegocio.Tarifas.Tarifa;
+using Model;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
@@ -19,7 +20,7 @@ namespace EasyParking.Views.Estacionamientos
     {
         List<byte[]> BytesLista = new List<byte[]>();
         byte[] ImagenArray = null;
-        Modelo.Estacionamiento estacionamiento = new Modelo.Estacionamiento();
+        Model.Estacionamiento estacionamiento = new Model.Estacionamiento();
 
         Stream STREAM;
         List<ImageSource> ImageSourceLista = new List<ImageSource>();
@@ -312,7 +313,7 @@ namespace EasyParking.Views.Estacionamientos
         {
             ImageButton btn = (ImageButton)sender;
             var Dia = btn.ClassId;
-            Enum.Dia dia = (Enum.Dia)System.Enum.Parse(typeof(Enum.Dia), Dia);
+            Model.Enums.Dia dia = (Model.Enums.Dia)System.Enum.Parse(typeof(Model.Enums.Dia), Dia);
 
             var p = new PopupRangoHorario();
             await PopupNavigation.Instance.PushAsync(p);
@@ -325,37 +326,37 @@ namespace EasyParking.Views.Estacionamientos
                 {
                     switch (dia)
                     {
-                        case Enum.Dia.LUNES:
+                        case Model.Enums.Dia.LUNES:
                             estacionamiento.DiasConHorarios[0].Horarios = ListaDeHorarios;
                             estacionamiento.DiasConHorarios[0].DiaDeLaSemana = dia;
                             lwHorariosLunes.ItemsSource = respuesta;
                             break;
-                        case Enum.Dia.MARTES:
+                        case Model.Enums.Dia.MARTES:
                             estacionamiento.DiasConHorarios[1].Horarios = ListaDeHorarios;
                             estacionamiento.DiasConHorarios[1].DiaDeLaSemana = dia;
                             lwHorariosMartes.ItemsSource = respuesta;
                             break;
-                        case Enum.Dia.MIERCOLES:
+                        case Model.Enums.Dia.MIERCOLES:
                             estacionamiento.DiasConHorarios[2].Horarios = ListaDeHorarios;
                             estacionamiento.DiasConHorarios[2].DiaDeLaSemana = dia;
                             lwHorariosMiercoles.ItemsSource = respuesta;
                             break;
-                        case Enum.Dia.JUEVES:
+                        case Model.Enums.Dia.JUEVES:
                             estacionamiento.DiasConHorarios[3].Horarios = ListaDeHorarios;
                             estacionamiento.DiasConHorarios[3].DiaDeLaSemana = dia;
                             lwHorariosJueves.ItemsSource = respuesta;
                             break;
-                        case Enum.Dia.VIERNES:
+                        case Model.Enums.Dia.VIERNES:
                             estacionamiento.DiasConHorarios[4].Horarios = ListaDeHorarios;
                             estacionamiento.DiasConHorarios[4].DiaDeLaSemana = dia;
                             lwHorariosViernes.ItemsSource = respuesta;
                             break;
-                        case Enum.Dia.SABADO:
+                        case Model.Enums.Dia.SABADO:
                             estacionamiento.DiasConHorarios[5].Horarios = ListaDeHorarios;
                             estacionamiento.DiasConHorarios[5].DiaDeLaSemana = dia;
                             lwHorariosSabado.ItemsSource = respuesta;
                             break;
-                        case Enum.Dia.DOMINGO:
+                        case Model.Enums.Dia.DOMINGO:
                             estacionamiento.DiasConHorarios[6].Horarios = ListaDeHorarios;
                             estacionamiento.DiasConHorarios[6].DiaDeLaSemana = dia;
                             lwHorariosDomingo.ItemsSource = respuesta;
@@ -387,7 +388,7 @@ namespace EasyParking.Views.Estacionamientos
 
             if ((bool)checkBoxAuto.IsChecked && Convert.ToInt32(entryCantidadAuto.Value) != 0)  // AUTO DESDE ACA
             {
-                Modelo.DataVehiculoAlojado dataVehiculo = new Modelo.DataVehiculoAlojado();
+                Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
                 dataVehiculo.TipoDeVehiculo = "Auto";
                 dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadAuto.Value);
                 dataVehiculo.Tarifa_Hora = Convert.ToInt32(entryAuto_TarifaHora.Text);
@@ -395,13 +396,13 @@ namespace EasyParking.Views.Estacionamientos
                 dataVehiculo.Tarifa_Semana = Convert.ToInt32(entryAuto_TarifaSemana.Text);
                 dataVehiculo.Tarifa_Mes = Convert.ToInt32(entryAuto_TarifaMes.Text);
 
-                estacionamiento.Vehiculos.Add(dataVehiculo); // HASTA ACA
+                estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
             }
 
 
             if ((bool)checkBoxCamioneta.IsChecked && Convert.ToInt32(entryCantidadCamioneta.Value) != 0)  // CAMIONETA DESDE ACA
             {
-                Modelo.DataVehiculoAlojado dataVehiculo = new Modelo.DataVehiculoAlojado();
+                Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
                 dataVehiculo.TipoDeVehiculo = "Camioneta";
                 dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadCamioneta.Value);
                 dataVehiculo.Tarifa_Hora = Convert.ToInt32(entryCamioneta_TarifaHora.Text);
@@ -409,13 +410,13 @@ namespace EasyParking.Views.Estacionamientos
                 dataVehiculo.Tarifa_Semana = Convert.ToInt32(entryCamioneta_TarifaSemana.Text);
                 dataVehiculo.Tarifa_Mes = Convert.ToInt32(entryCamioneta_TarifaMes.Text);
 
-                estacionamiento.Vehiculos.Add(dataVehiculo); // HASTA ACA
+                estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
             }
 
 
             if ((bool)checkBoxMoto.IsChecked && Convert.ToInt32(entryCantidadMoto.Value) != 0) // MOTO DESDE ACA
             {
-                Modelo.DataVehiculoAlojado dataVehiculo = new Modelo.DataVehiculoAlojado();
+                Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
                 dataVehiculo.TipoDeVehiculo = "Moto";
                 dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadMoto.Value);
                 dataVehiculo.Tarifa_Hora = Convert.ToInt32(entryMoto_TarifaHora.Text);
@@ -423,7 +424,7 @@ namespace EasyParking.Views.Estacionamientos
                 dataVehiculo.Tarifa_Semana = Convert.ToInt32(entryMoto_TarifaSemana.Text);
                 dataVehiculo.Tarifa_Mes = Convert.ToInt32(entryMoto_TarifaMes.Text);
 
-                estacionamiento.Vehiculos.Add(dataVehiculo); // HASTA ACA
+                estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
             }
 
             //********************//

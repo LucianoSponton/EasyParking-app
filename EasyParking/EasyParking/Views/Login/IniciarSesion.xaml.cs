@@ -24,10 +24,12 @@ namespace EasyParking.Views.Login
         {
             try
             {
+                var p = new PopCargando();
+                await PopupNavigation.Instance.PushAsync(p);
+
                 if (!string.IsNullOrEmpty(entryEmail.Text) & !string.IsNullOrEmpty(entryContraseña.Text))
                 {
-                    var p = new PopCargando();
-                    await PopupNavigation.Instance.PushAsync(p);
+
 
                     username = entryEmail.Text.Trim();
                     password = entryContraseña.Text.Trim();

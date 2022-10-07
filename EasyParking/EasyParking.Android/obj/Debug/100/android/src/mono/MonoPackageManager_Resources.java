@@ -3,8 +3,8 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "EasyParking.Android.dll" comes first in this list. */
 		"EasyParking.Android.dll",
-		"ServiceWebApi.dll",
 		"Model.dll",
+		"ServiceWebApi.dll",
 		"EasyParking.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",

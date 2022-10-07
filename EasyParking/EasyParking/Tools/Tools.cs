@@ -1,5 +1,4 @@
 ﻿using EasyParking.Interfaces;
-using EasyParking.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -30,11 +29,11 @@ namespace EasyParking.Tools
 
 
 
-        public static List<Estacionamiento> GetEstacionamientosMock()
+        public static List<Model.Estacionamiento> GetEstacionamientosMock()
         {
-            App.Estacionamientos = new List<Estacionamiento>();
+            App.Estacionamientos = new List<Model.Estacionamiento>();
 
-            Estacionamiento estacionamiento = new Estacionamiento();
+            Model.Estacionamiento estacionamiento = new Model.Estacionamiento();
             estacionamiento.Imagen = GetBytesFromUrl("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/drivers-loft-1-1643441566.jpg?resize=480:*");// // IMAGEN DEL LUGAR
             estacionamiento.Nombre = "Villa Auto";// // NOMBRE DEL LUGAR
             estacionamiento.Direccion = "Ayacucho 500";// // DIRECCION DEL LUGAR
@@ -43,7 +42,7 @@ namespace EasyParking.Tools
 
             //********** TEMA VEHICULOS ACEPTADOS Y SUS TARIFAS **********//
 
-            DataVehiculoAlojado dataVehiculo = new DataVehiculoAlojado();
+            Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
             dataVehiculo.TipoDeVehiculo = "Auto";
             dataVehiculo.CapacidadDeAlojamiento = 6;
             dataVehiculo.Tarifa_Hora = 100;
@@ -51,9 +50,9 @@ namespace EasyParking.Tools
             dataVehiculo.Tarifa_Semana = 3000;
             dataVehiculo.Tarifa_Mes = 10000;
 
-            estacionamiento.Vehiculos.Add(dataVehiculo); // HASTA ACA
+            estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
 
-            DataVehiculoAlojado dataVehiculo1 = new DataVehiculoAlojado();
+            Model.DataVehiculoAlojado dataVehiculo1 = new Model.DataVehiculoAlojado();
             dataVehiculo1.TipoDeVehiculo = "Moto";
             dataVehiculo1.CapacidadDeAlojamiento = 10;
             dataVehiculo1.Tarifa_Hora = 25;
@@ -61,9 +60,9 @@ namespace EasyParking.Tools
             dataVehiculo1.Tarifa_Semana = 300;
             dataVehiculo1.Tarifa_Mes = 1200;
 
-            estacionamiento.Vehiculos.Add(dataVehiculo1); // HASTA ACA
+            estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo1); // HASTA ACA
 
-            DataVehiculoAlojado dataVehiculo2 = new DataVehiculoAlojado();
+            Model.DataVehiculoAlojado dataVehiculo2 = new Model.DataVehiculoAlojado();
             dataVehiculo2.TipoDeVehiculo = "Camioneta";
             dataVehiculo2.CapacidadDeAlojamiento = 0;
             dataVehiculo2.Tarifa_Hora = 0;
@@ -71,23 +70,23 @@ namespace EasyParking.Tools
             dataVehiculo2.Tarifa_Semana = 0;
             dataVehiculo2.Tarifa_Mes = 0;
 
-            estacionamiento.Vehiculos.Add(dataVehiculo2); // HASTA ACA
+            estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo2); // HASTA ACA
 
             estacionamiento.MontoReserva = 115; // MONTO DE LA RESERVA
 
             App.Estacionamientos.Add(estacionamiento);
 
             //###################################################################################
-            Estacionamiento estacionamiento2 = new Estacionamiento();
+            Model.Estacionamiento estacionamiento2 = new Model.Estacionamiento();
             estacionamiento2.Imagen = GetBytesFromUrl("https://i.ytimg.com/vi/K7aG4ARfaAE/maxresdefault.jpg");// // IMAGEN DEL LUGAR
             estacionamiento2.Nombre = "Aparcadero";// // NOMBRE DEL LUGAR
             estacionamiento2.Direccion = "Vicente López y Planes 150";// // DIRECCION DEL LUGAR
             estacionamiento2.TipoDeLugar = "Casa";// // TIPO DEL LUGAR
-            // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
+                                                  // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
 
             //********** TEMA VEHICULOS ACEPTADOS Y SUS TARIFAS **********//
 
-            DataVehiculoAlojado dataVehiculo3 = new DataVehiculoAlojado();
+            Model.DataVehiculoAlojado dataVehiculo3 = new Model.DataVehiculoAlojado();
             dataVehiculo3.TipoDeVehiculo = "Auto";
             dataVehiculo3.CapacidadDeAlojamiento = 1;
             dataVehiculo3.Tarifa_Hora = 100;
@@ -95,22 +94,22 @@ namespace EasyParking.Tools
             dataVehiculo3.Tarifa_Semana = 3000;
             dataVehiculo3.Tarifa_Mes = 10000;
 
-            estacionamiento2.Vehiculos.Add(dataVehiculo3); // HASTA ACA
+            estacionamiento2.TiposDeVehiculosAdmitidos.Add(dataVehiculo3); // HASTA ACA
 
             estacionamiento2.MontoReserva = 150; // MONTO DE LA RESERVA
 
             App.Estacionamientos.Add(estacionamiento2);
             //###################################################################################
-            Estacionamiento estacionamiento3 = new Estacionamiento();
+            Model.Estacionamiento estacionamiento3 = new Model.Estacionamiento();
             estacionamiento3.Imagen = GetBytesFromUrl("https://i.pinimg.com/originals/99/fa/fe/99fafecc92b16ec064d7fbe5fa729e8e.jpg");// // IMAGEN DEL LUGAR
             estacionamiento3.Nombre = "Cuna Auto";// // NOMBRE DEL LUGAR
             estacionamiento3.Direccion = "C. French 1550";// // DIRECCION DEL LUGAR
             estacionamiento3.TipoDeLugar = "Terreno al aire libre";// // TIPO DEL LUGAR
-            // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
+                                                                   // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
 
             //********** TEMA VEHICULOS ACEPTADOS Y SUS TARIFAS **********//
 
-            DataVehiculoAlojado dataVehiculo4 = new DataVehiculoAlojado();
+            Model.DataVehiculoAlojado dataVehiculo4 = new Model.DataVehiculoAlojado();
             dataVehiculo4.TipoDeVehiculo = "Auto";
             dataVehiculo4.CapacidadDeAlojamiento = 10;
             dataVehiculo4.Tarifa_Hora = 100;
@@ -118,9 +117,9 @@ namespace EasyParking.Tools
             dataVehiculo4.Tarifa_Semana = 3000;
             dataVehiculo4.Tarifa_Mes = 10000;
 
-            estacionamiento3.Vehiculos.Add(dataVehiculo4); // HASTA ACA
+            estacionamiento3.TiposDeVehiculosAdmitidos.Add(dataVehiculo4); // HASTA ACA
 
-            DataVehiculoAlojado dataVehiculo5 = new DataVehiculoAlojado();
+            Model.DataVehiculoAlojado dataVehiculo5 = new Model.DataVehiculoAlojado();
             dataVehiculo5.TipoDeVehiculo = "Camioneta";
             dataVehiculo5.CapacidadDeAlojamiento = 10;
             dataVehiculo5.Tarifa_Hora = 200;
@@ -128,9 +127,9 @@ namespace EasyParking.Tools
             dataVehiculo5.Tarifa_Semana = 5000;
             dataVehiculo5.Tarifa_Mes = 20000;
 
-            estacionamiento3.Vehiculos.Add(dataVehiculo5); // HASTA ACA
+            estacionamiento3.TiposDeVehiculosAdmitidos.Add(dataVehiculo5); // HASTA ACA
 
-            DataVehiculoAlojado dataVehiculo6 = new DataVehiculoAlojado();
+            Model.DataVehiculoAlojado dataVehiculo6 = new Model.DataVehiculoAlojado();
             dataVehiculo6.TipoDeVehiculo = "Moto";
             dataVehiculo6.CapacidadDeAlojamiento = 20;
             dataVehiculo6.Tarifa_Hora = 50;
@@ -138,7 +137,7 @@ namespace EasyParking.Tools
             dataVehiculo6.Tarifa_Semana = 1000;
             dataVehiculo6.Tarifa_Mes = 5000;
 
-            estacionamiento3.Vehiculos.Add(dataVehiculo6); // HASTA ACA
+            estacionamiento3.TiposDeVehiculosAdmitidos.Add(dataVehiculo6); // HASTA ACA
 
             estacionamiento3.MontoReserva = 0; // MONTO DE LA RESERVA
 
