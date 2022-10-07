@@ -22,9 +22,6 @@ jobs:
         version-code: ${{ github.run_number }}
         print-file: true
         
-    - name: Main
-      run: |
-        - ls
     
     - name: Restore NuGet packages
       run: nuget restore
