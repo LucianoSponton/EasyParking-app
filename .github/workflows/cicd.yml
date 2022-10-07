@@ -21,7 +21,10 @@ jobs:
         version-name: ${{ secrets.APP_VERSION }}
         version-code: ${{ github.run_number }}
         print-file: true
-      
+        
+    - name: Files
+      run: ls - la
+    
     - name: Restore NuGet packages
       run: nuget restore
       
