@@ -1,0 +1,35 @@
+name: Build & Publish Release APK
+
+on: push
+
+jobs:
+  build-Android:
+    runs-on: macos-latest    
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v1
+
+    - name: Setup Android signin
+      run: |
+        echo "${{ secrets.KEYSTORE }}" > testcicd.keystore.asc
+        gpg -d --passphrase "${{ secrets.GPG_PASSWORD }}" --batch testcicd.keystore.asc > ./EasyParking/EasyParking.Android/testcicd.keystore
+    
+    - name: Set Android Version
+      uses: damienaicheh/update-android-version-manifest-action@v1.0.0
+      with:
+        android-manifest-path: './EasyParking/EasyParking.Android/Properties/AndroidManifest.xml'
+        version-name: ${{ secrets.APP_VERSION }}
+        version-code: ${{ github.run_number }}
+        print-file: true
+      
+    - name: Restore NuGet packages
+      run: nuget restore
+      
+    - name: Build Android
+      run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias=TestCICD /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyStore=testcicd.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} ./EasyParking/EasyParking.Android/EasyParking.Android.csproj
+      
+    - name: Obtain Android APK file
+      uses: actions/upload-artifact@v2
+      with:
+        name: EasyParking.apk
+        path: EasyParking/EasyParking.Android/bin/Release/*-Signed.apk
