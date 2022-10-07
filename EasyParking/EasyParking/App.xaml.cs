@@ -13,7 +13,7 @@ namespace EasyParking
     {
         public static MensajesViewControllers mensajesView { get; set; } = new MensajesViewControllers();
 
-        public static List<Model.Estacionamiento> Estacionamientos { get; set; } = new List<Model.Estacionamiento>();
+        public static List<ServiceWebApi.DTO.EstacionamientoDTO> Estacionamientos { get; set; } = new List<ServiceWebApi.DTO.EstacionamientoDTO>();
         public static CloudData cloudData { get; set; } = new CloudData();
         public static WebApiAccess WebApiAccess { get; set; }
 

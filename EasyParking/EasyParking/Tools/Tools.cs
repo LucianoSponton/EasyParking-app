@@ -1,4 +1,5 @@
 ﻿using EasyParking.Interfaces;
+using ServiceWebApi.DTO;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -29,11 +30,11 @@ namespace EasyParking.Tools
 
 
 
-        public static List<Model.Estacionamiento> GetEstacionamientosMock()
+        public static List<EstacionamientoDTO> GetEstacionamientosMock()
         {
-            App.Estacionamientos = new List<Model.Estacionamiento>();
+            App.Estacionamientos = new List<ServiceWebApi.DTO.EstacionamientoDTO>();
 
-            Model.Estacionamiento estacionamiento = new Model.Estacionamiento();
+            ServiceWebApi.DTO.EstacionamientoDTO estacionamiento = new ServiceWebApi.DTO.EstacionamientoDTO();
             estacionamiento.Imagen = GetBytesFromUrl("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/drivers-loft-1-1643441566.jpg?resize=480:*");// // IMAGEN DEL LUGAR
             estacionamiento.Nombre = "Villa Auto";// // NOMBRE DEL LUGAR
             estacionamiento.Direccion = "Ayacucho 500";// // DIRECCION DEL LUGAR
@@ -77,7 +78,7 @@ namespace EasyParking.Tools
             App.Estacionamientos.Add(estacionamiento);
 
             //###################################################################################
-            Model.Estacionamiento estacionamiento2 = new Model.Estacionamiento();
+            ServiceWebApi.DTO.EstacionamientoDTO estacionamiento2 = new ServiceWebApi.DTO.EstacionamientoDTO();
             estacionamiento2.Imagen = GetBytesFromUrl("https://i.ytimg.com/vi/K7aG4ARfaAE/maxresdefault.jpg");// // IMAGEN DEL LUGAR
             estacionamiento2.Nombre = "Aparcadero";// // NOMBRE DEL LUGAR
             estacionamiento2.Direccion = "Vicente López y Planes 150";// // DIRECCION DEL LUGAR
@@ -100,7 +101,7 @@ namespace EasyParking.Tools
 
             App.Estacionamientos.Add(estacionamiento2);
             //###################################################################################
-            Model.Estacionamiento estacionamiento3 = new Model.Estacionamiento();
+            ServiceWebApi.DTO.EstacionamientoDTO estacionamiento3 = new ServiceWebApi.DTO.EstacionamientoDTO();
             estacionamiento3.Imagen = GetBytesFromUrl("https://i.pinimg.com/originals/99/fa/fe/99fafecc92b16ec064d7fbe5fa729e8e.jpg");// // IMAGEN DEL LUGAR
             estacionamiento3.Nombre = "Cuna Auto";// // NOMBRE DEL LUGAR
             estacionamiento3.Direccion = "C. French 1550";// // DIRECCION DEL LUGAR

@@ -1741,6 +1741,7 @@
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Rg.Plugins.Popup": "2.1.0",
+          "ServiceWebApi": "1.0.0",
           "Syncfusion.Xamarin.Buttons": "20.1.0.55",
           "Syncfusion.Xamarin.SfComboBox": "20.1.0.55",
           "Syncfusion.Xamarin.SfListView": "20.1.0.55",
@@ -1757,6 +1758,30 @@
         },
         "runtime": {
           "bin/placeholder/EasyParking.dll": {}
+        }
+      },
+      "Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Model.dll": {}
+        }
+      },
+      "ServiceWebApi/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "Model": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "bin/placeholder/ServiceWebApi.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ServiceWebApi.dll": {}
         }
       }
     }
@@ -3817,6 +3842,16 @@
       "type": "project",
       "path": "../EasyParking/EasyParking.csproj",
       "msbuildProject": "../EasyParking/EasyParking.csproj"
+    },
+    "Model/1.0.0": {
+      "type": "project",
+      "path": "../../Model/Model.csproj",
+      "msbuildProject": "../../Model/Model.csproj"
+    },
+    "ServiceWebApi/1.0.0": {
+      "type": "project",
+      "path": "../../ServiceWebApi/ServiceWebApi.csproj",
+      "msbuildProject": "../../ServiceWebApi/ServiceWebApi.csproj"
     }
   },
   "projectFileDependencyGroups": {

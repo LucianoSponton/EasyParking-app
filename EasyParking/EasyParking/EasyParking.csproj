@@ -157,11 +157,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Model">
-      <HintPath>..\..\..\EasyParkingAPI\Model\bin\Release\netstandard2.1\Model.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceWebApi">
-      <HintPath>..\..\..\EasyParkingAPI\ServiceWebApi\bin\Release\netstandard2.1\ServiceWebApi.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\ServiceWebApi\ServiceWebApi.csproj" />
   </ItemGroup>
 </Project>

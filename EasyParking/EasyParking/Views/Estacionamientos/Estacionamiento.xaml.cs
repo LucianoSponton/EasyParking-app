@@ -1,5 +1,4 @@
-﻿using EasyParking.DTO;
-using EasyParking.Views.Estacionamientos.MisEstacionamientos;
+﻿using EasyParking.Views.Estacionamientos.MisEstacionamientos;
 using EasyParking.Views.PerfilDeNegocio.Tarifas.Tarifa;
 using Model;
 using Plugin.Media;
@@ -20,7 +19,8 @@ namespace EasyParking.Views.Estacionamientos
     {
         List<byte[]> BytesLista = new List<byte[]>();
         byte[] ImagenArray = null;
-        Model.Estacionamiento estacionamiento = new Model.Estacionamiento();
+
+        ServiceWebApi.DTO.EstacionamientoDTO estacionamiento = new ServiceWebApi.DTO.EstacionamientoDTO();
 
         Stream STREAM;
         List<ImageSource> ImageSourceLista = new List<ImageSource>();
@@ -117,8 +117,8 @@ namespace EasyParking.Views.Estacionamientos
                 {                                                    // Convierte de array de bytes a source imagen
                     return new MemoryStream(imageArray);             //
                 });                                                  // 
-                                                                  
-                imageArray2 = imageArray;                          
+
+                imageArray2 = imageArray;
 
                 // FotosLista.Add(imageArray2);
             }

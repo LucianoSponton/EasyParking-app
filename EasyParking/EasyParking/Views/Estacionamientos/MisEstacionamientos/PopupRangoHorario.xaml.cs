@@ -1,5 +1,4 @@
-﻿using EasyParking.DTO;
-using Model;
+﻿using Model;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;

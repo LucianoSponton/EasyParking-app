@@ -1,11 +1,3 @@
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\EasyParking.deps.json
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\EasyParking.dll
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\ref\EasyParking.dll
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\EasyParking.pdb
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\Model.dll
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\ServiceWebApi.dll
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\Model.pdb
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\ServiceWebApi.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\EasyParking.csproj.AssemblyReference.cache
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\EasyParking.GeneratedMSBuildEditorConfig.editorconfig
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\App.xaml.g.cs
@@ -54,6 +46,14 @@ C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstanda
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\EasyParking.AssemblyInfoInputs.cache
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\EasyParking.AssemblyInfo.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\EasyParking.csproj.CoreCompileInputs.cache
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\EasyParking.deps.json
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\EasyParking.dll
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\ref\EasyParking.dll
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\EasyParking.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\Model.dll
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\ServiceWebApi.dll
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\ServiceWebApi.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\Model.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\XamlC.stamp
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\EasyParking.csproj.CopyComplete
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\EasyParking.dll

@@ -1,4 +1,7 @@
 ﻿
+using EasyParking.DTO;
+using Model;
+using ServiceWebApi.DTO;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +16,7 @@ namespace EasyParking.Views.Favoritos
             InitializeComponent();
 
             lwlisado.ItemsSource = null;
-            List<Model.Estacionamiento> lista;
+            List<EstacionamientoDTO> lista;
 
             lista = Tools.Tools.GetEstacionamientosMock();
             lista[0].Favorito = true;

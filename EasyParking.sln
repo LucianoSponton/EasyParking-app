@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyParking.Android", "EasyParking\EasyParking.Android\EasyParking.Android.csproj", "{B5FE2B4B-495E-47B7-833B-66D829D02B72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyParking", "EasyParking\EasyParking\EasyParking.csproj", "{DC336C8B-1D25-456E-A033-F589291DE11E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyParking", "EasyParking\EasyParking\EasyParking.csproj", "{DC336C8B-1D25-456E-A033-F589291DE11E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceWebApi", "ServiceWebApi\ServiceWebApi.csproj", "{2F7769D7-E887-4E38-9991-F58EB1FFDE84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{4CBA6171-717F-466F-AD26-C315F983184A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,14 @@ Global
 		{DC336C8B-1D25-456E-A033-F589291DE11E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC336C8B-1D25-456E-A033-F589291DE11E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC336C8B-1D25-456E-A033-F589291DE11E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2F7769D7-E887-4E38-9991-F58EB1FFDE84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F7769D7-E887-4E38-9991-F58EB1FFDE84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F7769D7-E887-4E38-9991-F58EB1FFDE84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F7769D7-E887-4E38-9991-F58EB1FFDE84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CBA6171-717F-466F-AD26-C315F983184A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CBA6171-717F-466F-AD26-C315F983184A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CBA6171-717F-466F-AD26-C315F983184A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CBA6171-717F-466F-AD26-C315F983184A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

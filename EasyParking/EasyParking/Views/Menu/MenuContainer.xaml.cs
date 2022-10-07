@@ -28,7 +28,7 @@ namespace EasyParking.Views.Menu
         {
             InitializeComponent();
 
-           
+
 
             if (App.UserInfo != null)
             {
