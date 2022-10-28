@@ -20,19 +20,10 @@ namespace EasyParking.Views.Estacionamientos.MisEstacionamientos {
         private global::EasyParking.Components.NavBar navBar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Syncfusion.XForms.Buttons.SfButton btnVerReseñas;
+        private global::Xamarin.Forms.ActivityIndicator activityIndicator;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Image btnCamionetaTarifa;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Image btnMotoTarifa;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Syncfusion.XForms.Buttons.SfButton btnEliminar;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Syncfusion.XForms.Buttons.SfButton btnPausar;
+        private global::Syncfusion.ListView.XForms.SfListView lwlisado;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.ImageButton btnAgregar;
@@ -41,11 +32,8 @@ namespace EasyParking.Views.Estacionamientos.MisEstacionamientos {
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MisEstacionamientos));
             navBar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Components.NavBar>(this, "navBar");
-            btnVerReseñas = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnVerReseñas");
-            btnCamionetaTarifa = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Image>(this, "btnCamionetaTarifa");
-            btnMotoTarifa = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Image>(this, "btnMotoTarifa");
-            btnEliminar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnEliminar");
-            btnPausar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnPausar");
+            activityIndicator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "activityIndicator");
+            lwlisado = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.ListView.XForms.SfListView>(this, "lwlisado");
             btnAgregar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "btnAgregar");
         }
     }

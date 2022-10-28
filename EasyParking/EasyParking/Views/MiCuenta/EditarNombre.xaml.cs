@@ -11,7 +11,7 @@ namespace EasyParking.Views.MiCuenta
     public partial class EditarNombre : ContentPage
     {
         private UserInfo _userInfo;
-        ServiceWebApi.AccountServiceWebApi02 accountServiceWebApi = new AccountServiceWebApi02(App.WebApiAccess);
+        AccountServiceWebApi accountServiceWebApi = new AccountServiceWebApi(App.WebApiAccess);
 
         public EditarNombre(UserInfo userInfo)
         {

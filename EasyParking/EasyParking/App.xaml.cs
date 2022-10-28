@@ -27,7 +27,7 @@ namespace EasyParking
 
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjcyODEwQDMyMzAyZTMyMmUzMG5CS0JZb1FVSWgxeXR4cml5S1VQb3dJdGJ3YlgvbUl1V3ppNE1VL25ReFk9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzQ2MjAwQDMyMzAyZTMzMmUzMENDYkdjb0RCQ2JReEEzaXBPeU52VHdkVnFnbWlGQlJyb2lEdm9TUzJYbkk9");
 
             InitializeComponent();
 

@@ -64,6 +64,44 @@ namespace EasyParking.Views.Login
             {
                 await PopupNavigation.Instance.PushAsync(new PopCargando());
 
+                if (string.IsNullOrEmpty(entryNombre.Text))
+                {
+                    await DisplayAlert("Aviso", "Debe ingresar su nombre", "Entendido");
+                    return;
+                }
+                if (string.IsNullOrEmpty(entryApellido.Text))
+                {
+                    await DisplayAlert("Aviso", "Debe ingresar su apellido", "Entendido");
+                    return;
+                }
+                if (string.IsNullOrEmpty(entryEmail.Text))
+                {
+                    await DisplayAlert("Aviso", "Debe ingresar su email", "Entendido");
+                    return;
+                }
+                if (string.IsNullOrEmpty(entryContraseña.Text))
+                {
+                    await DisplayAlert("Aviso", "Debe ingresar una contraseña", "Entendido");
+                    return;
+                }
+                if (string.IsNullOrEmpty(entryConfirmarContraseña.Text))
+                {
+                    await DisplayAlert("Aviso", "Debe confirmar su contraseña", "Entendido");
+                    return;
+                }
+                if (entryContraseña.Text != entryConfirmarContraseña.Text)
+                {
+                    await DisplayAlert("Aviso", "Las contraseñas no coinciden", "Entendido");
+                    return;
+                }
+                if (string.IsNullOrEmpty(entryDNI.Text))
+                {
+                    await DisplayAlert("Aviso", "Debe ingresar su documento", "Entendido");
+                    return;
+                }
+
+
+
                 UserInfo userInfo = new UserInfo();
                 userInfo.Nombre = entryNombre.Text.ToLower();
                 userInfo.Apellido = entryApellido.Text.ToLower();
@@ -74,7 +112,8 @@ namespace EasyParking.Views.Login
                 userInfo.Telefono = entryTelefono.Text;
                 userInfo.Password = entryContraseña.Text;
                 userInfo.FechaDeNacimiento = new DateTime(datePickerFechaDeNacimiento.Date.Year, datePickerFechaDeNacimiento.Date.Month, datePickerFechaDeNacimiento.Date.Day);
-                ServiceWebApi.AccountServiceWebApi02 accountServiceWebApi = new AccountServiceWebApi02(App.WebApiAccess);
+             
+                AccountServiceWebApi accountServiceWebApi = new AccountServiceWebApi(App.WebApiAccess);
 
                 await WebApiAccess.CreateUserAsync(App.cloudData.URLDeAPI, userInfo);
                 await PopupNavigation.Instance.PopAsync();

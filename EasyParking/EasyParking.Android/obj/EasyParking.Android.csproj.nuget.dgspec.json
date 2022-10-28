@@ -125,6 +125,10 @@
               "target": "Package",
               "version": "[20.1.0.55, )"
             },
+            "Syncfusion.Xamarin.SfImageEditor": {
+              "target": "Package",
+              "version": "[20.3.0.50, )"
+            },
             "Syncfusion.Xamarin.SfListView": {
               "target": "Package",
               "version": "[20.1.0.55, )"
@@ -173,7 +177,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.109\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.110\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -235,7 +239,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.109\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.110\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -307,7 +311,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.109\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.110\\RuntimeIdentifierGraph.json"
         }
       }
     }

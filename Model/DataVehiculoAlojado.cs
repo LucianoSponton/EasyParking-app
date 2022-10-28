@@ -3,6 +3,8 @@
     public class DataVehiculoAlojado
     {
         public int Id { get; set; }
+        public Estacionamiento Estacionamiento { get; set; }
+
         public string TipoDeVehiculo { get; set; } // auto, moto, camioneta
         public int CapacidadDeAlojamiento { get; set; } // cuantos de ese tiempo se aceptan
         public decimal Tarifa_Hora { get; set; }

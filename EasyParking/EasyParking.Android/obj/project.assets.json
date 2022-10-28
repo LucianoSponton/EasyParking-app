@@ -26,7 +26,7 @@
           "lib/monoandroid10.0/Rg.Plugins.Popup.dll": {}
         }
       },
-      "Syncfusion.Licensing/20.2.0.36": {
+      "Syncfusion.Licensing/20.3.0.50": {
         "type": "package",
         "compile": {
           "lib/MonoAndroid10.0/Syncfusion.Licensing.dll": {}
@@ -50,10 +50,10 @@
           "lib/MonoAndroid10.0/Syncfusion.Buttons.XForms.dll": {}
         }
       },
-      "Syncfusion.Xamarin.Core/20.2.0.36": {
+      "Syncfusion.Xamarin.Core/20.3.0.50": {
         "type": "package",
         "dependencies": {
-          "Syncfusion.Licensing": "20.2.0.36",
+          "Syncfusion.Licensing": "20.3.0.50",
           "Xamarin.Forms": "5.0.0.2012"
         },
         "compile": {
@@ -96,6 +96,21 @@
         "runtime": {
           "lib/MonoAndroid10.0/Syncfusion.SfComboBox.XForms.Android.dll": {},
           "lib/MonoAndroid10.0/Syncfusion.SfComboBox.XForms.dll": {}
+        }
+      },
+      "Syncfusion.Xamarin.SfImageEditor/20.3.0.50": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Xamarin.Forms": "5.0.0.2012"
+        },
+        "compile": {
+          "lib/MonoAndroid10.0/Syncfusion.SfImageEditor.XForms.Android.dll": {},
+          "lib/MonoAndroid10.0/Syncfusion.SfImageEditor.XForms.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid10.0/Syncfusion.SfImageEditor.XForms.Android.dll": {},
+          "lib/MonoAndroid10.0/Syncfusion.SfImageEditor.XForms.dll": {}
         }
       },
       "Syncfusion.Xamarin.SfListView/20.1.0.55": {
@@ -1744,6 +1759,7 @@
           "ServiceWebApi": "1.0.0",
           "Syncfusion.Xamarin.Buttons": "20.1.0.55",
           "Syncfusion.Xamarin.SfComboBox": "20.1.0.55",
+          "Syncfusion.Xamarin.SfImageEditor": "20.3.0.50",
           "Syncfusion.Xamarin.SfListView": "20.1.0.55",
           "Syncfusion.Xamarin.SfNavigationDrawer": "20.1.0.55",
           "Syncfusion.Xamarin.SfNumericUpDown": "20.1.0.55",
@@ -1859,10 +1875,10 @@
         "rg.plugins.popup.nuspec"
       ]
     },
-    "Syncfusion.Licensing/20.2.0.36": {
-      "sha512": "+tqb0Bl9Ip1/hu1tDOUbJx524q3G3nY46vSXbUBQpJKE7nuWSkTDHLycvnK4/aw32Amn8FP4yPS59iXXZKIBew==",
+    "Syncfusion.Licensing/20.3.0.50": {
+      "sha512": "KxTr1PgtR8lyLPTEvcNAEkacGfoysT0ZVQetVsqAHUiRKCRiKGy8ymwYDVX/Ug/WzTWW+NvICSIGDe5yaWMhnw==",
       "type": "package",
-      "path": "syncfusion.licensing/20.2.0.36",
+      "path": "syncfusion.licensing/20.3.0.50",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1886,7 +1902,7 @@
         "lib/netstandard2.0/Syncfusion.Licensing.dll",
         "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.Licensing.dll",
         "lib/uap10.0/Syncfusion.Licensing.dll",
-        "syncfusion.licensing.20.2.0.36.nupkg.sha512",
+        "syncfusion.licensing.20.3.0.50.nupkg.sha512",
         "syncfusion.licensing.nuspec",
         "syncfusion_logo.png"
       ]
@@ -1925,10 +1941,10 @@
         "syncfusion_logo.png"
       ]
     },
-    "Syncfusion.Xamarin.Core/20.2.0.36": {
-      "sha512": "QJUrVSLEB+DrBzkMH8uqpMiLYckRAuMVoED2By6575ysSQruN5OwivVmwEKuQjP7dsglXDHaZIb775oUx0dbWg==",
+    "Syncfusion.Xamarin.Core/20.3.0.50": {
+      "sha512": "GI80Wc5RzcB7bXYs4kWoOC0wd9pA65+BsVJ2ZVGX45qRRCKzgV3msX+AI9VxxlTtJ4sabthWepIiSko9Tac5fQ==",
       "type": "package",
-      "path": "syncfusion.xamarin.core/20.2.0.36",
+      "path": "syncfusion.xamarin.core/20.3.0.50",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1955,7 +1971,7 @@
         "lib/uap10.0/Syncfusion.Core.XForms.UWP/TILRenderer/ToggleIcons/ToggleVisibleIcon.xaml",
         "lib/uap10.0/Syncfusion.Core.XForms.dll",
         "lib/uap10.0/Syncfusion.Core.XForms.xml",
-        "syncfusion.xamarin.core.20.2.0.36.nupkg.sha512",
+        "syncfusion.xamarin.core.20.3.0.50.nupkg.sha512",
         "syncfusion.xamarin.core.nuspec",
         "syncfusion_logo.png"
       ]
@@ -2041,6 +2057,34 @@
         "lib/uap10.0/Syncfusion.SfComboBox.XForms.dll",
         "syncfusion.xamarin.sfcombobox.20.1.0.55.nupkg.sha512",
         "syncfusion.xamarin.sfcombobox.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Xamarin.SfImageEditor/20.3.0.50": {
+      "sha512": "4lybVwHcHYuZk5P1cIviDkXvjI87UoeQ0Nr00Jdkp7XPu7t1LoN8r3CnRLJqb3WYu0f6QB3ASTp2KBgBXFiUbQ==",
+      "type": "package",
+      "path": "syncfusion.xamarin.sfimageeditor/20.3.0.50",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/MonoAndroid10.0/Syncfusion.SfImageEditor.XForms.Android.dll",
+        "lib/MonoAndroid10.0/Syncfusion.SfImageEditor.XForms.dll",
+        "lib/MonoAndroid10.0/Syncfusion.SfImageEditor.XForms.xml",
+        "lib/Xamarin.iOS10/Syncfusion.SfImageEditor.XForms.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfImageEditor.XForms.iOS.dll",
+        "lib/Xamarin.iOS10/Syncfusion.SfImageEditor.XForms.xml",
+        "lib/netstandard2.0/Syncfusion.SfImageEditor.XForms.dll",
+        "lib/netstandard2.0/Syncfusion.SfImageEditor.XForms.xml",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfImageEditor.XForms.dll",
+        "lib/portable-win+net45+wp80+win81+wpa81/Syncfusion.SfImageEditor.XForms.xml",
+        "lib/uap10.0/Syncfusion.SfImageEditor.XForms.UWP.XML",
+        "lib/uap10.0/Syncfusion.SfImageEditor.XForms.UWP.dll",
+        "lib/uap10.0/Syncfusion.SfImageEditor.XForms.dll",
+        "lib/uap10.0/Syncfusion.SfImageEditor.XForms.xml",
+        "syncfusion.xamarin.sfimageeditor.20.3.0.50.nupkg.sha512",
+        "syncfusion.xamarin.sfimageeditor.nuspec",
         "syncfusion_logo.png"
       ]
     },

@@ -4,8 +4,8 @@ C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Release\netstan
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Release\netstandard2.1\EasyParking.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Release\netstandard2.1\Model.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Release\netstandard2.1\ServiceWebApi.dll
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Release\netstandard2.1\Model.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Release\netstandard2.1\ServiceWebApi.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Release\netstandard2.1\Model.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Release\netstandard2.1\EasyParking.csproj.AssemblyReference.cache
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Release\netstandard2.1\EasyParking.GeneratedMSBuildEditorConfig.editorconfig
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Release\netstandard2.1\App.xaml.g.cs

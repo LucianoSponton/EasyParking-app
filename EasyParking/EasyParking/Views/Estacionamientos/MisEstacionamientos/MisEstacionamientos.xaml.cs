@@ -1,5 +1,6 @@
 ﻿using EasyParking.Views.Generales;
 using Rg.Plugins.Popup.Services;
+using ServiceWebApi;
 using System;
 
 using Xamarin.Forms;
@@ -10,9 +11,30 @@ namespace EasyParking.Views.Estacionamientos.MisEstacionamientos
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MisEstacionamientos : ContentPage
     {
+        EstacionamientoServiceWebApi estacionamientoServiceWebApi;
         public MisEstacionamientos()
         {
             InitializeComponent();
+            estacionamientoServiceWebApi = new EstacionamientoServiceWebApi(App.WebApiAccess);
+
+
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                activityIndicator.IsVisible = true;
+                lwlisado.ItemsSource = null;
+                lwlisado.ItemsSource = await estacionamientoServiceWebApi.GetMisEstacionamientos();
+                activityIndicator.IsVisible = false;
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
+            }
+
         }
 
         private async void btnAgregar_Clicked(object sender, EventArgs e)
@@ -28,7 +50,20 @@ namespace EasyParking.Views.Estacionamientos.MisEstacionamientos
 
             if (result)
             {
-                Tools.Tools.Messages("Estacionamiento eliminado");
+                try
+                {
+                    var detalle = Tools.Tools.DarFormaAObjeto(sender);
+                    await estacionamientoServiceWebApi.SetInactivo(detalle.Id);
+                    Tools.Tools.Messages("Estacionamiento eliminado");
+                    activityIndicator.IsVisible = true;
+                    lwlisado.ItemsSource = null;
+                    lwlisado.ItemsSource = await estacionamientoServiceWebApi.GetMisEstacionamientos();
+                    activityIndicator.IsVisible = false;
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
+                }
             }
         }
 
@@ -39,8 +74,27 @@ namespace EasyParking.Views.Estacionamientos.MisEstacionamientos
 
             if (result)
             {
-                Tools.Tools.Messages("Publicación pausada");
+                try
+                {
+                    var detalle = Tools.Tools.DarFormaAObjeto(sender);
+                    await estacionamientoServiceWebApi.SetInactivo(detalle.Id);
+                    Tools.Tools.Messages("Estacionamiento eliminado");
+                    activityIndicator.IsVisible = true;
+                    lwlisado.ItemsSource = null;
+                    lwlisado.ItemsSource = await estacionamientoServiceWebApi.GetMisEstacionamientos();
+                    activityIndicator.IsVisible = false;
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
+                }
             }
+
+        }
+
+        private void imagenCard_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

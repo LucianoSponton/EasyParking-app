@@ -80,9 +80,7 @@ namespace EasyParking.Views.PerfilDeNegocio.PdN_Inicio
             switch (myselecteditem.Id)
             {
                 case 1:
-                    await PopupNavigation.Instance.PushAsync(new PopCargando());
                     await Navigation.PushAsync(new MisEstacionamientos());
-                    await PopupNavigation.Instance.PopAsync();
                     break;
                 case 2:
                     await PopupNavigation.Instance.PushAsync(new PopCargando());

@@ -98,7 +98,7 @@ namespace EasyParking.Account
         {
             try
             {
-                ServiceWebApi.AccountServiceWebApi02 accountServiceWebApi = new AccountServiceWebApi02(App.WebApiAccess);
+                AccountServiceWebApi accountServiceWebApi = new AccountServiceWebApi(App.WebApiAccess);
 
                 return await accountServiceWebApi.GetUserInfo(username);
             }

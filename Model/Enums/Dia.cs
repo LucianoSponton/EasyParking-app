@@ -2,12 +2,13 @@
 {
     public enum Dia
     {
-        LUNES = 0,
-        MARTES = 1,
-        MIERCOLES = 2,
-        JUEVES = 3,
-        VIERNES = 4,
-        SABADO = 5,
-        DOMINGO = 6
+        NONE = 0,
+        LUNES = 1,
+        MARTES = 2,
+        MIERCOLES = 3,
+        JUEVES = 4,
+        VIERNES = 5,
+        SABADO = 6,
+        DOMINGO = 7
     }
 }

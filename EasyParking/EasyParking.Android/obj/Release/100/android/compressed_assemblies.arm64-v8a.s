@@ -17,7 +17,7 @@
 
 	/* 1: EasyParking.dll */
 	/* uncompressed_file_size */
-	.word	460288
+	.word	454144
 	/* loaded */
 	.byte	0
 	/* data */
@@ -53,7 +53,7 @@
 
 	/* 5: Model.dll */
 	/* uncompressed_file_size */
-	.word	10240
+	.word	10752
 	/* loaded */
 	.byte	0
 	/* data */
@@ -107,7 +107,7 @@
 
 	/* 11: ServiceWebApi.dll */
 	/* uncompressed_file_size */
-	.word	22528
+	.word	24064
 	/* loaded */
 	.byte	0
 	/* data */
@@ -584,7 +584,7 @@
 
 	/* 64: Xamarin.Essentials.dll */
 	/* uncompressed_file_size */
-	.word	50176
+	.word	47616
 	/* loaded */
 	.byte	0
 	/* data */

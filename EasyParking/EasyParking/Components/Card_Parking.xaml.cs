@@ -22,25 +22,28 @@ namespace EasyParking.Components
         public delegate void OnClicked_VerMapaDelegate();
         public event EventHandler OnClicked_VerMapa;
 
-        private async void btnReserva_Clicked(object sender, EventArgs e)
+        public delegate void OnClicked_VeImagenDelegate();
+        public event EventHandler OnClicked_VeImagen;
+
+        private void btnReserva_Clicked(object sender, EventArgs e)
         {
             OnClicked_Reserva?.Invoke(this, EventArgs.Empty);
-
         }
 
-        private async void btnVerMas_Clicked(object sender, EventArgs e)
+        private void btnVerMas_Clicked(object sender, EventArgs e)
         {
             OnClicked_VerMas?.Invoke(this, EventArgs.Empty);
         }
 
-        private async void btnVerMapa_Clicked(object sender, EventArgs e)
+        private void btnVerMapa_Clicked(object sender, EventArgs e)
         {
             OnClicked_VerMapa?.Invoke(this, EventArgs.Empty);
         }
 
-        private void imagenCard_Clicked(object sender, EventArgs e)
-        {
 
+        private void bntVerImagen_Clicked(object sender, EventArgs e)
+        {
+            OnClicked_VeImagen?.Invoke(this, EventArgs.Empty);
         }
     }
 }

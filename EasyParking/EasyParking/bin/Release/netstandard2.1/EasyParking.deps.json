@@ -11,6 +11,7 @@
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
           "Rg.Plugins.Popup": "2.1.0",
+          "ServiceWebApi": "1.0.0",
           "Syncfusion.Xamarin.Buttons": "20.1.0.55",
           "Syncfusion.Xamarin.SfComboBox": "20.1.0.55",
           "Syncfusion.Xamarin.SfListView": "20.1.0.55",
@@ -20,9 +21,7 @@
           "Syncfusion.Xamarin.SfRating": "20.1.0.55",
           "Xam.Plugin.Media": "5.0.1",
           "Xamarin.Essentials": "1.7.3",
-          "Xamarin.Forms": "5.0.0.2515",
-          "Model": "1.0.0.0",
-          "ServiceWebApi": "1.0.0.0"
+          "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
           "EasyParking.dll": {}
@@ -215,20 +214,18 @@
           }
         }
       },
-      "Model/1.0.0.0": {
+      "Model/1.0.0": {
         "runtime": {
-          "Model.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "Model.dll": {}
         }
       },
-      "ServiceWebApi/1.0.0.0": {
+      "ServiceWebApi/1.0.0": {
+        "dependencies": {
+          "Model": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
         "runtime": {
-          "ServiceWebApi.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "ServiceWebApi.dll": {}
         }
       }
     }
@@ -358,13 +355,13 @@
       "path": "xamarin.forms/5.0.0.2515",
       "hashPath": "xamarin.forms.5.0.0.2515.nupkg.sha512"
     },
-    "Model/1.0.0.0": {
-      "type": "reference",
+    "Model/1.0.0": {
+      "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "ServiceWebApi/1.0.0.0": {
-      "type": "reference",
+    "ServiceWebApi/1.0.0": {
+      "type": "project",
       "serviceable": false,
       "sha512": ""
     }

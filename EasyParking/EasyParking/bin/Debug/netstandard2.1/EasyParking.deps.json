@@ -14,6 +14,7 @@
           "ServiceWebApi": "1.0.0",
           "Syncfusion.Xamarin.Buttons": "20.1.0.55",
           "Syncfusion.Xamarin.SfComboBox": "20.1.0.55",
+          "Syncfusion.Xamarin.SfImageEditor": "20.3.0.50",
           "Syncfusion.Xamarin.SfListView": "20.1.0.55",
           "Syncfusion.Xamarin.SfNavigationDrawer": "20.1.0.55",
           "Syncfusion.Xamarin.SfNumericUpDown": "20.1.0.55",
@@ -46,17 +47,17 @@
           }
         }
       },
-      "Syncfusion.Licensing/20.2.0.36": {
+      "Syncfusion.Licensing/20.3.0.50": {
         "runtime": {
           "lib/netstandard2.0/Syncfusion.Licensing.dll": {
-            "assemblyVersion": "20.2.0.36",
-            "fileVersion": "20.2.0.36"
+            "assemblyVersion": "20.3.0.50",
+            "fileVersion": "20.3.0.50"
           }
         }
       },
       "Syncfusion.Xamarin.Buttons/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.2.0.36",
+          "Syncfusion.Xamarin.Core": "20.3.0.50",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -66,15 +67,15 @@
           }
         }
       },
-      "Syncfusion.Xamarin.Core/20.2.0.36": {
+      "Syncfusion.Xamarin.Core/20.3.0.50": {
         "dependencies": {
-          "Syncfusion.Licensing": "20.2.0.36",
+          "Syncfusion.Licensing": "20.3.0.50",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
           "lib/netstandard2.0/Syncfusion.Core.XForms.dll": {
-            "assemblyVersion": "20.2451.0.36",
-            "fileVersion": "20.2451.0.36"
+            "assemblyVersion": "20.3451.0.50",
+            "fileVersion": "20.3451.0.50"
           }
         }
       },
@@ -96,7 +97,7 @@
       },
       "Syncfusion.Xamarin.SfComboBox/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.2.0.36",
+          "Syncfusion.Xamarin.Core": "20.3.0.50",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -106,9 +107,21 @@
           }
         }
       },
+      "Syncfusion.Xamarin.SfImageEditor/20.3.0.50": {
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Xamarin.Forms": "5.0.0.2515"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.SfImageEditor.XForms.dll": {
+            "assemblyVersion": "20.3451.0.50",
+            "fileVersion": "20.3451.0.50"
+          }
+        }
+      },
       "Syncfusion.Xamarin.SfListView/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.2.0.36",
+          "Syncfusion.Xamarin.Core": "20.3.0.50",
           "Syncfusion.Xamarin.DataSource": "20.1.0.55",
           "Syncfusion.Xamarin.GridCommon": "20.1.0.55",
           "Xamarin.Forms": "5.0.0.2515"
@@ -122,7 +135,7 @@
       },
       "Syncfusion.Xamarin.SfNavigationDrawer/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.2.0.36",
+          "Syncfusion.Xamarin.Core": "20.3.0.50",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -134,7 +147,7 @@
       },
       "Syncfusion.Xamarin.SfNumericUpDown/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.2.0.36",
+          "Syncfusion.Xamarin.Core": "20.3.0.50",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -146,7 +159,7 @@
       },
       "Syncfusion.Xamarin.SfRangeSlider/20.2.0.36": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.2.0.36",
+          "Syncfusion.Xamarin.Core": "20.3.0.50",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -158,7 +171,7 @@
       },
       "Syncfusion.Xamarin.SfRating/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.2.0.36",
+          "Syncfusion.Xamarin.Core": "20.3.0.50",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -250,12 +263,12 @@
       "path": "rg.plugins.popup/2.1.0",
       "hashPath": "rg.plugins.popup.2.1.0.nupkg.sha512"
     },
-    "Syncfusion.Licensing/20.2.0.36": {
+    "Syncfusion.Licensing/20.3.0.50": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-+tqb0Bl9Ip1/hu1tDOUbJx524q3G3nY46vSXbUBQpJKE7nuWSkTDHLycvnK4/aw32Amn8FP4yPS59iXXZKIBew==",
-      "path": "syncfusion.licensing/20.2.0.36",
-      "hashPath": "syncfusion.licensing.20.2.0.36.nupkg.sha512"
+      "sha512": "sha512-KxTr1PgtR8lyLPTEvcNAEkacGfoysT0ZVQetVsqAHUiRKCRiKGy8ymwYDVX/Ug/WzTWW+NvICSIGDe5yaWMhnw==",
+      "path": "syncfusion.licensing/20.3.0.50",
+      "hashPath": "syncfusion.licensing.20.3.0.50.nupkg.sha512"
     },
     "Syncfusion.Xamarin.Buttons/20.1.0.55": {
       "type": "package",
@@ -264,12 +277,12 @@
       "path": "syncfusion.xamarin.buttons/20.1.0.55",
       "hashPath": "syncfusion.xamarin.buttons.20.1.0.55.nupkg.sha512"
     },
-    "Syncfusion.Xamarin.Core/20.2.0.36": {
+    "Syncfusion.Xamarin.Core/20.3.0.50": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QJUrVSLEB+DrBzkMH8uqpMiLYckRAuMVoED2By6575ysSQruN5OwivVmwEKuQjP7dsglXDHaZIb775oUx0dbWg==",
-      "path": "syncfusion.xamarin.core/20.2.0.36",
-      "hashPath": "syncfusion.xamarin.core.20.2.0.36.nupkg.sha512"
+      "sha512": "sha512-GI80Wc5RzcB7bXYs4kWoOC0wd9pA65+BsVJ2ZVGX45qRRCKzgV3msX+AI9VxxlTtJ4sabthWepIiSko9Tac5fQ==",
+      "path": "syncfusion.xamarin.core/20.3.0.50",
+      "hashPath": "syncfusion.xamarin.core.20.3.0.50.nupkg.sha512"
     },
     "Syncfusion.Xamarin.DataSource/20.1.0.55": {
       "type": "package",
@@ -291,6 +304,13 @@
       "sha512": "sha512-TPyrfqM+dImxN2slp2/kuDc3CookHtIsl2Tza41nska5YpUD/2fTPpKcJ7JV+wbbZbVSLX4Gg5npxycUsJukYw==",
       "path": "syncfusion.xamarin.sfcombobox/20.1.0.55",
       "hashPath": "syncfusion.xamarin.sfcombobox.20.1.0.55.nupkg.sha512"
+    },
+    "Syncfusion.Xamarin.SfImageEditor/20.3.0.50": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4lybVwHcHYuZk5P1cIviDkXvjI87UoeQ0Nr00Jdkp7XPu7t1LoN8r3CnRLJqb3WYu0f6QB3ASTp2KBgBXFiUbQ==",
+      "path": "syncfusion.xamarin.sfimageeditor/20.3.0.50",
+      "hashPath": "syncfusion.xamarin.sfimageeditor.20.3.0.50.nupkg.sha512"
     },
     "Syncfusion.Xamarin.SfListView/20.1.0.55": {
       "type": "package",

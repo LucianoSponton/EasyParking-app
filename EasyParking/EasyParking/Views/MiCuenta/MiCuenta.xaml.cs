@@ -84,7 +84,7 @@ namespace EasyParking.Views.MiCuenta
                 {
                     await PopupNavigation.Instance.PushAsync(new PopCargando());
 
-                    ServiceWebApi.AccountServiceWebApi02 accountServiceWebApi = new AccountServiceWebApi02(App.WebApiAccess);
+                    AccountServiceWebApi accountServiceWebApi = new AccountServiceWebApi(App.WebApiAccess);
 
                     await accountServiceWebApi.UserLock(App.cloudData.UsuarioDeAPI);
                     BorrarCredenciales();
@@ -224,7 +224,7 @@ namespace EasyParking.Views.MiCuenta
                 App.UserInfo.FotoDePerfil = await ConvertSourceToBytes(result, IM);
                 if (App.UserInfo.FotoDePerfil != null)
                 {
-                    ServiceWebApi.AccountServiceWebApi02 accountServiceWebApi = new AccountServiceWebApi02(App.WebApiAccess);
+                    AccountServiceWebApi accountServiceWebApi = new AccountServiceWebApi(App.WebApiAccess);
                     await accountServiceWebApi.Update(App.UserInfo);
                     Tools.Tools.Messages("Se guardaron los cambios");
                 }
@@ -265,7 +265,7 @@ namespace EasyParking.Views.MiCuenta
             App.UserInfo.FotoDePerfil = await ConvertSourceToBytes(file, imagenDePerfil.Source);
             if (App.UserInfo.FotoDePerfil != null)
             {
-                ServiceWebApi.AccountServiceWebApi02 accountServiceWebApi = new AccountServiceWebApi02(App.WebApiAccess);
+                AccountServiceWebApi accountServiceWebApi = new AccountServiceWebApi(App.WebApiAccess);
                 await accountServiceWebApi.Update(App.UserInfo);
                 Tools.Tools.Messages("Se guardaron los cambios");
             }

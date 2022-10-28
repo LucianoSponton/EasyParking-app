@@ -13,6 +13,7 @@ public class GestureListener
 			"n_onDown:(Landroid/view/MotionEvent;)Z:GetOnDown_Landroid_view_MotionEvent_Handler\n" +
 			"n_onLongPress:(Landroid/view/MotionEvent;)V:GetOnLongPress_Landroid_view_MotionEvent_Handler\n" +
 			"n_onDoubleTap:(Landroid/view/MotionEvent;)Z:GetOnDoubleTap_Landroid_view_MotionEvent_Handler\n" +
+			"n_onDoubleTapEvent:(Landroid/view/MotionEvent;)Z:GetOnDoubleTapEvent_Landroid_view_MotionEvent_Handler\n" +
 			"n_onSingleTapUp:(Landroid/view/MotionEvent;)Z:GetOnSingleTapUp_Landroid_view_MotionEvent_Handler\n" +
 			"";
 		mono.android.Runtime.register ("Syncfusion.XForms.Android.EffectsView.GestureListener, Syncfusion.Core.XForms.Android", GestureListener.class, __md_methods);
@@ -56,6 +57,14 @@ public class GestureListener
 	}
 
 	private native boolean n_onDoubleTap (android.view.MotionEvent p0);
+
+
+	public boolean onDoubleTapEvent (android.view.MotionEvent p0)
+	{
+		return n_onDoubleTapEvent (p0);
+	}
+
+	private native boolean n_onDoubleTapEvent (android.view.MotionEvent p0);
 
 
 	public boolean onSingleTapUp (android.view.MotionEvent p0)

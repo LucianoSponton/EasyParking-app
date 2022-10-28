@@ -59,3 +59,4 @@ C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstanda
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\EasyParking.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\ref\EasyParking.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\EasyParking.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Generales\PopupItemImage.xaml.g.cs

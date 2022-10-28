@@ -19,6 +19,8 @@ public class MonoPackageManager_Resources {
 		"Syncfusion.Licensing.dll",
 		"Syncfusion.SfComboBox.XForms.Android.dll",
 		"Syncfusion.SfComboBox.XForms.dll",
+		"Syncfusion.SfImageEditor.XForms.Android.dll",
+		"Syncfusion.SfImageEditor.XForms.dll",
 		"Syncfusion.SfListView.XForms.Android.dll",
 		"Syncfusion.SfListView.XForms.dll",
 		"Syncfusion.SfNavigationDrawer.Android.dll",

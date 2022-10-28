@@ -1,6 +1,7 @@
 ﻿using EasyParking.Views.Generales;
 using Model;
 using Rg.Plugins.Popup.Services;
+using ServiceWebApi;
 using System;
 
 using Xamarin.Forms;
@@ -43,7 +44,7 @@ namespace EasyParking.Views.MiCuenta
                 {
                     try
                     {
-                        ServiceWebApi.AccountServiceWebApi02 accountServiceWebApi = new ServiceWebApi.AccountServiceWebApi02(App.WebApiAccess);
+                        AccountServiceWebApi accountServiceWebApi = new AccountServiceWebApi(App.WebApiAccess);
 
 
                         App.UserInfo.Telefono = respuesta; // asigno el nuevo telefono

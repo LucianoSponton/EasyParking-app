@@ -9,152 +9,30 @@
         <views:NavBar x:Name="navBar"    IsVisibleTituloDePagina="False" IsVisibleFavoritos="False" Margin="0,0,10,0" SearchBar_Focused="navBar_SearchBar_Focused"  />
     </NavigationPage.TitleView>
     
-    <ContentPage.Content>
-        <!--<StackLayout Spacing="10">
-            <views:Card_Parking x:Name="Card_Parking" OnClicked_VerMapa="Card_Parking_OnClicked_VerMapa" OnClicked_VerMas="Card_Parking_OnClicked_VerMas"  Margin="10,10,10,0" OnClicked_Reserva="Card_Parking_OnClicked_Reserva"/>
-            <views:Card_Parking  Margin="10,0,10,0"/>
-            <views:Card_Parking  Margin="10,0,10,0"/>
-        </StackLayout>-->
-
-        <!--<StackLayout Spacing="0">
-
-                <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
-
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="5">
-
-                        <AbsoluteLayout>
-
-                            <ImageButton    WidthRequest="100"  BackgroundColor="Transparent"  >
-                                <ImageButton.Source>
-                                    <UriImageSource Uri="https://imgar.zonapropcdn.com/avisos/1/00/27/31/65/31/720x532/1615800904.jpg" 
-                                                                    CacheValidity="14"  
-                                                                    CachingEnabled="true"/>
-                                </ImageButton.Source>
-                            </ImageButton>
-
-                        </AbsoluteLayout>
-
-                        <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Spacing="0">
-
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
-                                <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
-
-                                    <custom:CustomLabel Text="Estacionamiento Ibañes" FontSize="16" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Image Source="ubicacion.png" HeightRequest="15" WidthRequest="15"/>
-                                        <custom:CustomLabel Text="Av 9 de Julio al 987" FontSize="14" VerticalOptions="Center" TextColor="Gray" />
-                                    </StackLayout>
-
-
-                                </StackLayout>
-
-                                <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End"  Padding="5" Margin="0,0,0,0" 
-                                                                      WidthRequest="30" HeightRequest="30"
-                                                                   Source="heart.png" 
-                                                                      VerticalOptions="StartAndExpand">
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup x:Name="CommonStates">
-                                            <VisualState x:Name="Normal">
-                                                <VisualState.Setters>
-                                                    <Setter Property="Scale" Value="1"/>
-                                                </VisualState.Setters>
-                                            </VisualState>
-
-                                            <VisualState x:Name="Pressed">
-                                                <VisualState.Setters>
-                                                    <Setter Property="Scale" Value="1.3"/>
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-
-                                </ImageButton>
-
-
-                            </StackLayout>
-
-
-                            <StackLayout Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10"  VerticalOptions="Center">
-                                    <Image Source="auto.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                    <custom:CustomLabel  Text="2" FontSize="15" VerticalOptions="Center" TextColor="Gray" />
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10"  VerticalOptions="Center" >
-                                    <Image Source="camioneta.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                    <custom:CustomLabel  Text="8" FontSize="15" VerticalOptions="Center"  TextColor="Gray"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10"  VerticalOptions="Center">
-                                    <Image Source="moto.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                    <custom:CustomLabel  Text="18" FontSize="15" VerticalOptions="Center"  TextColor="Gray"/>
-                                </StackLayout>
-                            </StackLayout>
-
-                            <custom:CustomLabel Text="Terreno parcialmente cubierto" Margin="0"  TextColor="Gray"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-                           
-                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Spacing="10">
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="2"  VerticalOptions="Center">
-                                    <Image Source="estrella.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                    <custom:CustomLabel  Text="3.3" FontSize="15" VerticalOptions="Center" TextColor="Black" />
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0"  VerticalOptions="Center">
-                                    
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
         
-                                    <custom:CustomLabel  Text="Reserva: " FontSize="15" VerticalOptions="Center" TextColor="Black" />
-                                    --><!--<Image Source="peso.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>--><!--
-                                <Frame BackgroundColor="#1A5276"   Margin="0" CornerRadius="4" Padding="0" HorizontalOptions="Start">
-                                    <custom:CustomLabel  Text="{Binding MontoReserva}" FontSize="15" Margin="4,0,4,0" FontAttributes="Bold" VerticalOptions="Center" TextColor="White" />
-                                </Frame>
-                                </StackLayout>
-
-                                <custom:CustomLabel HorizontalOptions="EndAndExpand"  Text="a 1.5 km" Margin="0,0,10,0" FontSize="15" VerticalOptions="Center" TextColor="Black" />
-
-                            </StackLayout>
+        <ActivityIndicator x:Name="activityIndicator"  AbsoluteLayout.LayoutBounds="0.5,0.20" AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                       IsRunning="True"  
+                       IsEnabled="True"  
+                       IsVisible="False"  
+                       Color="#17202A"  
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       BackgroundColor="Transparent"/>
 
 
-                        </StackLayout>
-
-
-
-
-
-
-
-
-                    </StackLayout>
-
-
-
-
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal" Spacing="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand">
-                    <buttons:SfButton x:Name="btnReserva" Text="Reservar"    HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" Padding="0"  CornerRadius="0"
-                                                              BackgroundColor="#2968C8"   Margin="0"   FontAttributes="Bold"  VerticalOptions="EndAndExpand" />
-
-                    <buttons:SfButton Text="Ver más"  Padding="0" FontSize="14" TextColor="#0366D6" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Start"   Margin="0,0,0,0"
-                                                               BackgroundColor="Transparent" x:Name="btnVerMas"   />
-
-                    <buttons:SfButton Text="Ver mapa"  Padding="0" FontSize="14" TextColor="#2968C8" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Start"   Margin="0,0,0,0"
-                                                               ShowIcon="True" ImageAlignment="Right" ImageSource="map.png" x:Name="btnVerMapa"   />
-
-
-                </StackLayout>
-            </StackLayout>-->
-
-
-        <syncfusion:SfListView  x:Name="lwlisado"   AutoFitMode="DynamicHeight"
+        <syncfusion:SfListView  x:Name="lwlisado"   AutoFitMode="DynamicHeight" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
                                 VerticalOptions="Center" SelectionBackgroundColor="Transparent"
                                                     HorizontalOptions="EndAndExpand" >
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <views:Card_Parking x:Name="Card_Parking" OnClicked_VerMapa="Card_Parking_OnClicked_VerMapa" OnClicked_VerMas="Card_Parking_OnClicked_VerMas"  Margin="10,10,10,0" OnClicked_Reserva="Card_Parking_OnClicked_Reserva"/>
+                        <views:Card_Parking x:Name="Card_Parking" OnClicked_VerMapa="Card_Parking_OnClicked_VerMapa" OnClicked_VerMas="Card_Parking_OnClicked_VerMas" 
+                                            Margin="10,10,10,0" OnClicked_Reserva="Card_Parking_OnClicked_Reserva" OnClicked_VeImagen="Card_Parking_OnClicked_VeImagen"/>
                     </ViewCell>
                 </DataTemplate>
             </syncfusion:SfListView.ItemTemplate>
         </syncfusion:SfListView>
 
-    </ContentPage.Content>
+    </AbsoluteLayout>
 </ContentPage>

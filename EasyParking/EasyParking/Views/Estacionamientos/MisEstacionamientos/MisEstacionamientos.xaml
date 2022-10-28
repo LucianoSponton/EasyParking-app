@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:EasyParking.Components" xmlns:custom="clr-namespace:EasyParking.Custom" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:EasyParking.Components" xmlns:custom="clr-namespace:EasyParking.Custom" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:local="clr-namespace:EasyParking.Converter"
              x:Class="EasyParking.Views.Estacionamientos.MisEstacionamientos.MisEstacionamientos">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ByteArrayToImageSource  x:Key="ByteArrayToImageSource" />
+            <local:TipoDeVehiculoToImage   x:Key="TipoDeVehiculoToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
 
     <NavigationPage.TitleView>
         <views:NavBar x:Name="navBar" Title="Mis Estacionamientos"   IsVisibleBoxSearch="False" IsVisibleFavoritos="False" Margin="0,0,10,0"  />
@@ -9,224 +18,202 @@
 
 
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="0" Spacing="0">
-
-            <!--<buttons:SfButton x:Name="btnVerCategorias" Text="Tarifas"   HorizontalOptions="FillAndExpand"  CornerRadius="0,0,30,30" VerticalTextAlignment="Center" 
-                          AbsoluteLayout.LayoutBounds="0,0,1,40" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
-                                                              TextColor="#0366D6" BackgroundColor="Transparent" FontSize="16" BorderColor="Black"  BorderWidth="1"/>-->
 
 
-            <Frame  CornerRadius="3" Padding="0" HasShadow="True" Margin="10,20,10,10"  BackgroundColor="White">
-                <StackLayout Spacing="0">
+        <ActivityIndicator x:Name="activityIndicator"  AbsoluteLayout.LayoutBounds="0.5,0.20" AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                       IsRunning="True"  
+                       IsEnabled="True"  
+                       IsVisible="False"  
+                       Color="#17202A"  
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       BackgroundColor="Transparent"/>
+        
+        <syncfusion:SfListView  x:Name="lwlisado"   AutoFitMode="DynamicHeight"  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                                VerticalOptions="Center" SelectionBackgroundColor="Transparent"
+                                                    HorizontalOptions="EndAndExpand" >
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Frame  CornerRadius="3" Padding="0" HasShadow="True" Margin="10,20,10,0"  BackgroundColor="White">
+                                <StackLayout Spacing="0">
 
-                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" Spacing="0">
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" Spacing="0">
 
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="5">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="5">
+                                            <AbsoluteLayout>
 
-                            <AbsoluteLayout>
-
-                                <ImageButton    WidthRequest="100"  BackgroundColor="Transparent"  >
-                                    <ImageButton.Source>
-                                        <UriImageSource Uri="https://imgar.zonapropcdn.com/avisos/1/00/27/31/65/31/720x532/1615800904.jpg" 
-                                                                    CacheValidity="14"  
-                                                                    CachingEnabled="true"/>
-                                    </ImageButton.Source>
-                                </ImageButton>
-
-                            </AbsoluteLayout>
-
-                            <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Spacing="0">
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
-                                    <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
-
-                                        <custom:CustomLabel Text="Estacionamiento Ibañes" FontSize="16" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Image Source="ubicacion.png" HeightRequest="15" WidthRequest="15"/>
-                                            <custom:CustomLabel Text="Av 9 de Julio al 987" FontSize="14" VerticalOptions="Center" TextColor="Gray" />
-                                        </StackLayout>
+                                                <ImageButton Source="{Binding Imagen, Converter={StaticResource ByteArrayToImageSource}}" Aspect="AspectFill" BackgroundColor="WhiteSmoke"
+                                                     x:Name="imagenCard" Clicked="imagenCard_Clicked"   WidthRequest="130" HeightRequest="130"  
+                                                     VerticalOptions="Start"/>
 
 
-                                    </StackLayout>
+                                                <ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5" x:Name="activity" BindingContext="{x:Reference imagenCard}" IsRunning="{Binding IsLoading}"
+                                                   Color="Gray"  
+                                                   HeightRequest="40"
+                                                   WidthRequest="40"
+                                                   BackgroundColor="Transparent"/>
 
-                                    <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End"  Padding="5" Margin="0,0,0,0" 
+                                            </AbsoluteLayout>
+
+                                            <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Spacing="0">
+
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
+                                                    <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
+
+                                                        <custom:CustomLabel Text="{Binding Nombre}" FontSize="16" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Image Source="ubicacion.png" HeightRequest="15" WidthRequest="15"/>
+                                                            <custom:CustomLabel Text="{Binding Direccion}" FontSize="14" VerticalOptions="Center" TextColor="Gray" />
+                                                        </StackLayout>
+
+
+                                                    </StackLayout>
+
+                                                    <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End"  Padding="5" Margin="0,0,0,0" 
                                                                       WidthRequest="30" HeightRequest="30"
                                                                    Source="editar01.png" 
                                                                       VerticalOptions="StartAndExpand">
-                                        <VisualStateManager.VisualStateGroups>
-                                            <VisualStateGroup x:Name="CommonStates">
-                                                <VisualState x:Name="Normal">
-                                                    <VisualState.Setters>
-                                                        <Setter Property="Scale" Value="1"/>
-                                                    </VisualState.Setters>
-                                                </VisualState>
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup x:Name="CommonStates">
+                                                                <VisualState x:Name="Normal">
+                                                                    <VisualState.Setters>
+                                                                        <Setter Property="Scale" Value="1"/>
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
 
-                                                <VisualState x:Name="Pressed">
-                                                    <VisualState.Setters>
-                                                        <Setter Property="Scale" Value="1.3"/>
-                                                    </VisualState.Setters>
-                                                </VisualState>
-                                            </VisualStateGroup>
-                                        </VisualStateManager.VisualStateGroups>
+                                                                <VisualState x:Name="Pressed">
+                                                                    <VisualState.Setters>
+                                                                        <Setter Property="Scale" Value="1.3"/>
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
 
-                                    </ImageButton>
+                                                    </ImageButton>
+
+
+                                                </StackLayout>
+
+
+                                                <Frame BackgroundColor="#FAFAFA"   Margin="0" CornerRadius="4" Padding="0" HorizontalOptions="Start">
+                                                    <custom:CustomLabel Text="{Binding TipoDeLugar}" Margin="5,10,5,0"  TextColor="Gray"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                                                </Frame>
+
+                                                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="0,0,0,5" Spacing="10">
+
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="2"  VerticalOptions="Center">
+                                                        <Image Source="estrella.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
+                                                        <custom:CustomLabel  Text="3.3" FontSize="15" VerticalOptions="Center" TextColor="Black" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0"  VerticalOptions="Center">
+                                                        <!--<Image Source="peso.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>-->
+                                                        <custom:CustomLabel  Text="Reserva:" FontSize="15" VerticalOptions="Center" TextColor="Black" />
+                                                        <Image Source="peso.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
+                                                        <custom:CustomLabel  Text="{Binding MontoReserva,  StringFormat='{0:N0}'}" FontSize="15" VerticalOptions="Center" TextColor="Black" />
+                                                    </StackLayout>
+                                                </StackLayout>
+
+
+
+                                            </StackLayout>
+
+
+
+
+
+
+
+
+                                        </StackLayout>
+
+
+
+
+                                    </StackLayout>
 
 
                                 </StackLayout>
 
 
-                                <!--<StackLayout Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10"  VerticalOptions="Center">
-                                        <Image Source="auto.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                        <custom:CustomLabel  Text="2" FontSize="15" VerticalOptions="Center" TextColor="Gray" />
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10"  VerticalOptions="Center" >
-                                        <Image Source="camioneta.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                        <custom:CustomLabel  Text="8" FontSize="15" VerticalOptions="Center"  TextColor="Gray"/>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10"  VerticalOptions="Center">
-                                        <Image Source="moto.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                        <custom:CustomLabel  Text="18" FontSize="15" VerticalOptions="Center"  TextColor="Gray"/>
-                                    </StackLayout>
-                                </StackLayout>-->
+                            </Frame>
 
-                                <custom:CustomLabel Text="Terreno parcialmente cubierto" Margin="0,10,0,0"   TextColor="Gray"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-
-                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Spacing="10">
-
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="2"  VerticalOptions="Center">
-                                        <Image Source="estrella.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                        <custom:CustomLabel  Text="3.3" FontSize="15" VerticalOptions="Center" TextColor="Black" />
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0"  VerticalOptions="Center">
-                                        <!--<Image Source="peso.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>-->
-                                        <custom:CustomLabel  Text="Reserva:" FontSize="15" VerticalOptions="Center" TextColor="Black" />
-                                        <Image Source="peso.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                        <custom:CustomLabel  Text="120" FontSize="15" VerticalOptions="Center" TextColor="Black" />
-                                    </StackLayout>
-                                </StackLayout>
-
+                            <Frame  CornerRadius="3" Padding="0" HasShadow="True" Margin="10,0,10,0"  BackgroundColor="White">
                                 <buttons:SfButton Text="Ver reseñas del lugar" HeightRequest="40"  Padding="0" FontSize="14" TextColor="#2968C8" 
                                                   BackgroundColor="White"  HorizontalOptions="Start" VerticalTextAlignment="Center"
-                               CornerRadius="3" x:Name="btnVerReseñas"  
-                              ShowIcon="True" ImageAlignment="Right" ImageSource="comment.png"     />
+                                                         CornerRadius="3" x:Name="btnVerReseñas"  
+                                                                ShowIcon="True" ImageAlignment="Right" ImageSource="comment.png"     />
 
 
+                            </Frame>
 
-                            </StackLayout>
+                            <Frame  CornerRadius="3" Padding="0" HasShadow="True" Margin="10,0,10,10"  BackgroundColor="White">
 
+                                <StackLayout>
 
+                                    <StackLayout HorizontalOptions="FillAndExpand">
 
-
-
-
-
-
-                        </StackLayout>
+                                        <custom:CustomLabel  Text="Actualizar lugares disponibles" FontSize="16" MaxLines="2" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" />
 
 
+                                        <syncfusion:SfListView  ItemsSource="{Binding TiposDeVehiculosAdmitidos}" ItemSpacing="10" AllowSwiping="True" BackgroundColor="Transparent"
+                                                FlowDirection="RightToLeft" Orientation="Horizontal" HeightRequest="100"  Padding="0" ItemSize="130" SelectionMode="None">
+                                            <syncfusion:SfListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
 
-
-                    </StackLayout>
-
-
-                    <border:SfBorder BackgroundColor="#FAFAFA" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BorderWidth="0.2">
-
-                    </border:SfBorder>
-
-                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0,10,0,0" Padding="5">
-                        
-                        <custom:CustomLabel  Text="Actualizar lugares disponibles" FontSize="18" MaxLines="2" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" />
-
-                        <Grid ColumnSpacing="10" RowSpacing="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <border:SfBorder  Grid.Column="0"  Grid.Row="0" BackgroundColor="Transparent" BorderColor="Gray" HorizontalOptions="FillAndExpand" BorderWidth="0.2" CornerRadius="5">
-                                <StackLayout  HorizontalOptions="Center" Spacing="0">
-                                    <!--<custom:CustomLabel  Text="2" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" />-->
-
-                                    <Image   HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="25"  BackgroundColor="Transparent"
-                                             Margin="0,5,0,10" Source="auto.png"
-                                 />
-                                    <numeric:SfNumericUpDown   HeightRequest="40"  Value="2" HorizontalOptions="FillAndExpand"   
+                                                        <border:SfBorder BackgroundColor="Transparent" BorderColor="Gray" HorizontalOptions="FillAndExpand" BorderWidth="0.2" CornerRadius="5">
+                                                            <StackLayout  HorizontalOptions="Center" Spacing="0">
+                                                                <Image   HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="25"  BackgroundColor="Transparent"
+                                                                        Margin="0,5,0,10" Source="{Binding TipoDeVehiculo, Converter={StaticResource TipoDeVehiculoToImage}}"/>
+                                                                <numeric:SfNumericUpDown   HeightRequest="40"  Value="{Binding CapacidadDeAlojamiento}" HorizontalOptions="FillAndExpand"   
                                                                       EnableGroupSeparator="True" SelectAllOnFocus="True"   SpinButtonAlignment="Both" TextAlignment="Center" 
                                                                       BackgroundColor="Transparent" FontSize="14" ParsingMode="Decimal" MaximumDecimalDigits="0" >
-                                    </numeric:SfNumericUpDown>
-                                </StackLayout>
-                            </border:SfBorder>
-
-
-                            <border:SfBorder  Grid.Column="1"  Grid.Row="0" BackgroundColor="Transparent" BorderColor="Gray" HorizontalOptions="FillAndExpand" BorderWidth="0.2" CornerRadius="5">
-                                <StackLayout  HorizontalOptions="Center" Spacing="0">
-                                    <!--<custom:CustomLabel  Text="8" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" />-->
-
-                                    <Image x:Name="btnCamionetaTarifa"  HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="25"  BackgroundColor="Transparent"
-                                             Margin="0,5,0,10" Source="camioneta.png"
-                                 />
-
-                                    <numeric:SfNumericUpDown  HeightRequest="40"  Value="8" HorizontalOptions="FillAndExpand"   
-                                                                      EnableGroupSeparator="True" SelectAllOnFocus="True"   SpinButtonAlignment="Both" TextAlignment="Center" 
-                                                                      BackgroundColor="Transparent" FontSize="14" ParsingMode="Decimal" MaximumDecimalDigits="0" >
-                                    </numeric:SfNumericUpDown>
-                                </StackLayout>
-                            </border:SfBorder>
-
-
-                            <border:SfBorder Grid.Column="2"  Grid.Row="0" BackgroundColor="Transparent" BorderColor="Gray" HorizontalOptions="FillAndExpand" BorderWidth="0.2" CornerRadius="5">
-                                <StackLayout  HorizontalOptions="Center" Spacing="0">
-                                    <!--<custom:CustomLabel  Text="18" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" />-->
-
-                                    <Image x:Name="btnMotoTarifa" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="25"   BackgroundColor="Transparent"
-                                             Margin="0,5,0,10" Source="moto.png"
-                                 />
-
-                                    <numeric:SfNumericUpDown  HeightRequest="40" Value="18" HorizontalOptions="FillAndExpand"    
-                                                                      SelectAllOnFocus="True"   SpinButtonAlignment="Both" TextAlignment="Center" 
-                                                                      BackgroundColor="Transparent" FontSize="14" ParsingMode="Decimal" MaximumDecimalDigits="0" >
-                                    </numeric:SfNumericUpDown>
-                                </StackLayout>
-                            </border:SfBorder>
-
-
-                        </Grid>
+                                                                </numeric:SfNumericUpDown>
+                                                            </StackLayout>
+                                                        </border:SfBorder>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </syncfusion:SfListView.ItemTemplate>
+                                        </syncfusion:SfListView>
 
 
 
-                    </StackLayout>
+                                    </StackLayout>
 
-                    <border:SfBorder BackgroundColor="#FAFAFA" HorizontalOptions="FillAndExpand" Margin="0,20,0,0" BorderWidth="0.2">
+                                    <border:SfBorder BackgroundColor="#FAFAFA" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" BorderWidth="0.2">
 
-                    </border:SfBorder>
+                                    </border:SfBorder>
 
-                    <StackLayout Orientation="Horizontal" Spacing="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand">
-                        <buttons:SfButton   Text="Eliminar estacionamiento"    HorizontalOptions="FillAndExpand" CornerRadius="3"
+                                    <StackLayout Orientation="Horizontal" Spacing="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand">
+                                        <buttons:SfButton   Text="Eliminar estacionamiento"    HorizontalOptions="FillAndExpand" CornerRadius="3"
                                           HorizontalTextAlignment="Center" BorderWidth="1" TextColor="#E74C3C" Padding="0" 
                                           BackgroundColor="Transparent"   Margin="0"   
                                           VerticalOptions="EndAndExpand" x:Name="btnEliminar" Clicked="btnEliminar_Clicked"/>
 
 
-                        <buttons:SfButton Text="Pausar publicación"  Padding="0" FontSize="14" CornerRadius="3"
+                                        <buttons:SfButton Text="Pausar publicación"  Padding="0" FontSize="14" CornerRadius="3"
                                           BorderWidth="1" TextColor="Gray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
                                           VerticalTextAlignment="Start"   Margin="0,0,0,0"
                                                               x:Name="btnPausar" Clicked="btnPausar_Clicked"/>
 
 
-                    </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
 
-                </StackLayout>
 
 
-            </Frame>
+                            </Frame>
+                        </StackLayout>
 
-        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+
+
         <ImageButton Source="agregar01.png"   x:Name="btnAgregar" Clicked="btnAgregar_Clicked"
                      AbsoluteLayout.LayoutBounds="0.95,0.95" WidthRequest="50" HeightRequest="50" BackgroundColor="Transparent"  AbsoluteLayout.LayoutFlags="PositionProportional">
             <VisualStateManager.VisualStateGroups>
