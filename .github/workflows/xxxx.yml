@@ -43,6 +43,6 @@ jobs:
         dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
       
     - name: Push
-      run: dotnet nuget push LucianoSponton/EasyParking-app/Model/bin/Release/*.nupkg --source https://nuget.pkg.github.com/${{env.OWNER_REPOSITORY}}/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push */Model/bin/Release/*.nupkg --source https://nuget.pkg.github.com/${{env.OWNER_REPOSITORY}}/index.json --api-key ${{ secrets.NUGET_API_KEY }}
       env:
         GITHUB_TOKEN: ${{ secrets.NUGET_API_KEY }}
