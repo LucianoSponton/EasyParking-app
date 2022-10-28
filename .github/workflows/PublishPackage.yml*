@@ -1,4 +1,4 @@
-name: CI
+name: CI - PublishPackage
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
 
-    - name: Restore dependencies
+    - name: Restore dependencies Model
       run: nuget restore Model/Model.csproj
 
     - name: Setup .NET
