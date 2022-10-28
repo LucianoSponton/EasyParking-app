@@ -34,5 +34,3 @@ jobs:
     - name: Build
       run: dotnet build Model/Model.csproj --configuration $BUILD_CONFIG --no-restore
 
-    - name: Run tests
-      run: dotnet test /p:Configuration=$env:BUILD_CONFIG --no-restore --no-build --verbosity normal
