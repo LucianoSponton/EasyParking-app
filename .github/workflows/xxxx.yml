@@ -1,57 +1,46 @@
-name: publish to nuget 
+name: CI
+
 on:
+  create:
+    branches: 
+      - dev
   push:
     branches:
-      - dev # Default release branch, may also be named 'master' or 'develop'
+    - dev
+
+    
 jobs:
-  publish:
-    name: build, pack & publish
+  build:
+
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: 'EasyParking.sln'
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    
 
-      # - name: Setup dotnet
-      #   uses: actions/setup-dotnet@v1
-      #   with:
-      #     dotnet-version: 3.1.200
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=${1.0.0}" >> $GITHUB_ENV
+    
 
-      # Publish
-      - name: publish on version change
-        id: publish_nuget
-        uses: brandedoutcast/publish-nuget@v2
-        with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: Core/Core.csproj
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
 
-          # Configuration to build and package
-          # BUILD_CONFIGURATION: Release
+    - name: Restore dependencies
+      run: nuget restore $SOLUTION
 
-          # Platform target to compile (default is empty/AnyCPU)
-          # BUILD_PLATFORM: x64
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
 
-          # NuGet package id, used for version detection & defaults to project name
-          # PACKAGE_NAME: Core
-
-          # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
-          # VERSION_FILE_PATH: Directory.Build.props
-
-          # Regex pattern to extract version info in a capturing group
-          # VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-
-          # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
-          # VERSION_STATIC: 1.0.0
-
-          # Flag to toggle git tagging, enabled by default
-          # TAG_COMMIT: true
-
-          # Format of the git tag, [*] gets replaced with actual version
-          # TAG_FORMAT: v*
-
-          # API key to authenticate with NuGet server
-          # NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-
-          # NuGet server uri hosting the packages, defaults to https://api.nuget.org
-          # NUGET_SOURCE: https://api.nuget.org
-
-          # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          # INCLUDE_SYMBOLS: false
+    - name: Build
+      run: | 
+        dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
+      
+    - name: Publish
+      if: startsWith(github.ref, 'refs/heads/release')
+      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
