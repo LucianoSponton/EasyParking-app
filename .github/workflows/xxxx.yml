@@ -15,7 +15,8 @@ jobs:
     env:
       BUILD_CONFIG: 'Release'
       PROJECT: 'Model/Model.csproj'
-      OWNER_REPOSITORY: EasyParking-app
+      OWNER_REPOSITORY: LucianoSponton
+
     runs-on: ubuntu-latest
 
     steps:
