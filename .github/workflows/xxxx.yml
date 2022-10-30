@@ -28,11 +28,11 @@ jobs:
     #- name: Set VERSION variable from tag
     #  run: echo "VERSION=1.0.0" >> $GITHUB_ENV
       
-    #- name: Set VERSION variable from tag
-    #  run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
-      
-    - name: Set VERSION variable from tag 3
+    - name: Set VERSION variable from tag 4
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+      
+   # - name: Set VERSION variable from tag 2
+   #   run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
     
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
