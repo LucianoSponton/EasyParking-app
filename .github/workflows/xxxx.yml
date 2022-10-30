@@ -46,7 +46,7 @@ jobs:
       run: dotnet nuget add source --username LucianoSponton --password ${{ secrets.TOKEN_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/LucianoSponton/index.json"
     
     - name: Pack
-      run: dotnet pack --configuration Release
+      run: dotnet pack Model/Model.csproj --configuration Release
       
     - name: Publish
       run:  dotnet nuget push "bin/Release/Model.1.0.0.nupkg"  --api-key ${{ secrets.TOKEN_GITHUB }} --source "github"
