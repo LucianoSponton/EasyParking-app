@@ -41,6 +41,10 @@ jobs:
     - name: Build
       run: | 
         dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
+        
+    - name: Auth
+      run: dotnet nuget add source --username LucianoSponton --password ${{ secrets.TOKEN_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/LucianoSponton/index.json"
+
   
     - name: Publish
       run: |
