@@ -1,12 +1,7 @@
 name: CI
 
 on: 
-  create:
-    branches: 
-      - dev
   push:
-    branches:
-    - dev
     tags:
     - "v[0-9]+.[0-9]+.[0-9]+"
 
