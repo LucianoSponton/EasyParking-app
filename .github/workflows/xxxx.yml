@@ -43,9 +43,7 @@ jobs:
         dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
   
     - name: Publish
-      run: | # | character makes the "run" property multi-line, so we can put multiple commands in the same step
-          mkdir __out
+      run: |
+        dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_API_KEY}}
           
-          dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_API_KEY}}
-          rm -rf __out
 
