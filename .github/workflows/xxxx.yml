@@ -56,7 +56,8 @@ jobs:
       with:
         filename: '*.nupkg'
         api-key: ${{ secrets.TOKEN_GITHUB }}
-     
+        repo-url: 'https://nuget.pkg.github.com/${{env.OWNER_REPOSITORY}}/index.json'
+
 
 
 
