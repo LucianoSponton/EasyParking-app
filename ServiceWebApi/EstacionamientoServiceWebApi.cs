@@ -165,12 +165,12 @@ namespace ServiceWebApi
             }
         }
 
-        public async Task SetPublicacionActiva(int estacionamientoId)
+        public async Task SetReanudarPublicacion(int estacionamientoId)
         {
             try
             {
                 WebApiPost<int> webApiPost = new WebApiPost<int>(_webApiAccess);
-                await webApiPost.PostAsync($"/api/Estacionamiento/SetPublicacionActiva", estacionamientoId);
+                await webApiPost.PostAsync($"/api/Estacionamiento/SetReanudarPublicacion", estacionamientoId);
                 return;
             }
             catch (Exception ex)
@@ -178,6 +178,8 @@ namespace ServiceWebApi
                 throw ex;
             }
         }
+
+      
         public async Task Add(Estacionamiento estacionamiento)
         {
             try

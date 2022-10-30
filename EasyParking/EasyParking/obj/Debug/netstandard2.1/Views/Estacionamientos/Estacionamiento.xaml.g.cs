@@ -137,7 +137,7 @@ namespace EasyParking.Views.Estacionamientos {
         private global::EasyParking.Custom.CustomEntry entryMontoReserva;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::EasyParking.Custom.CustomButton btnAgregar;
+        private global::EasyParking.Custom.CustomButton btnAgregarOguardar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
@@ -182,7 +182,7 @@ namespace EasyParking.Views.Estacionamientos {
             entryMoto_TarifaSemana = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomEntry>(this, "entryMoto_TarifaSemana");
             entryMoto_TarifaMes = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomEntry>(this, "entryMoto_TarifaMes");
             entryMontoReserva = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomEntry>(this, "entryMontoReserva");
-            btnAgregar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomButton>(this, "btnAgregar");
+            btnAgregarOguardar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomButton>(this, "btnAgregarOguardar");
         }
     }
 }

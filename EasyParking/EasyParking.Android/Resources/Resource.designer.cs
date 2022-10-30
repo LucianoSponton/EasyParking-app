@@ -24889,106 +24889,109 @@ namespace EasyParking.Droid
 			public const int peso = 2131165399;
 			
 			// aapt resource value: 0x7F0700D8
-			public const int preference_list_divider_material = 2131165400;
+			public const int play = 2131165400;
 			
 			// aapt resource value: 0x7F0700D9
-			public const int refresh = 2131165401;
+			public const int preference_list_divider_material = 2131165401;
 			
 			// aapt resource value: 0x7F0700DA
-			public const int remove = 2131165402;
+			public const int refresh = 2131165402;
 			
 			// aapt resource value: 0x7F0700DB
-			public const int Reserva = 2131165403;
+			public const int remove = 2131165403;
 			
 			// aapt resource value: 0x7F0700DC
-			public const int roundCornerButton = 2131165404;
+			public const int Reserva = 2131165404;
 			
 			// aapt resource value: 0x7F0700DD
-			public const int savebutton = 2131165405;
+			public const int roundCornerButton = 2131165405;
 			
 			// aapt resource value: 0x7F0700DE
-			public const int Separator = 2131165406;
+			public const int savebutton = 2131165406;
 			
 			// aapt resource value: 0x7F0700DF
-			public const int settings01 = 2131165407;
+			public const int Separator = 2131165407;
 			
 			// aapt resource value: 0x7F0700E0
-			public const int sfcheckbox_animation = 2131165408;
+			public const int settings01 = 2131165408;
 			
 			// aapt resource value: 0x7F0700E1
-			public const int sfcheckbox_checked = 2131165409;
+			public const int sfcheckbox_animation = 2131165409;
 			
 			// aapt resource value: 0x7F0700E2
-			public const int sfcheckbox_checked_indeterminate = 2131165410;
+			public const int sfcheckbox_checked = 2131165410;
 			
 			// aapt resource value: 0x7F0700E3
-			public const int sfcheckbox_checked_unchecked = 2131165411;
+			public const int sfcheckbox_checked_indeterminate = 2131165411;
 			
 			// aapt resource value: 0x7F0700E4
-			public const int sfcheckbox_indeterminate = 2131165412;
+			public const int sfcheckbox_checked_unchecked = 2131165412;
 			
 			// aapt resource value: 0x7F0700E5
-			public const int sfcheckbox_indeterminate_checked = 2131165413;
+			public const int sfcheckbox_indeterminate = 2131165413;
 			
 			// aapt resource value: 0x7F0700E6
-			public const int sfcheckbox_indeterminate_unchecked = 2131165414;
+			public const int sfcheckbox_indeterminate_checked = 2131165414;
 			
 			// aapt resource value: 0x7F0700E7
-			public const int sfcheckbox_unchecked = 2131165415;
+			public const int sfcheckbox_indeterminate_unchecked = 2131165415;
 			
 			// aapt resource value: 0x7F0700E8
-			public const int sfcheckbox_unchecked_checked = 2131165416;
+			public const int sfcheckbox_unchecked = 2131165416;
 			
 			// aapt resource value: 0x7F0700E9
-			public const int sfcheckbox_unchecked_indeterminate = 2131165417;
+			public const int sfcheckbox_unchecked_checked = 2131165417;
 			
 			// aapt resource value: 0x7F0700EA
-			public const int SignalParking = 2131165418;
+			public const int sfcheckbox_unchecked_indeterminate = 2131165418;
 			
 			// aapt resource value: 0x7F0700EB
-			public const int splash_screen = 2131165419;
+			public const int SignalParking = 2131165419;
 			
 			// aapt resource value: 0x7F0700EC
-			public const int tarifas = 2131165420;
+			public const int splash_screen = 2131165420;
 			
 			// aapt resource value: 0x7F0700ED
-			public const int test_custom_background = 2131165421;
+			public const int tarifas = 2131165421;
 			
 			// aapt resource value: 0x7F0700EE
-			public const int text_color_button = 2131165422;
+			public const int test_custom_background = 2131165422;
 			
 			// aapt resource value: 0x7F0700EF
-			public const int toolbaritem_background = 2131165423;
+			public const int text_color_button = 2131165423;
 			
 			// aapt resource value: 0x7F0700F0
-			public const int toolbaritem_pressed = 2131165424;
+			public const int toolbaritem_background = 2131165424;
 			
 			// aapt resource value: 0x7F0700F1
-			public const int tooltip_frame_dark = 2131165425;
+			public const int toolbaritem_pressed = 2131165425;
 			
 			// aapt resource value: 0x7F0700F2
-			public const int tooltip_frame_light = 2131165426;
+			public const int tooltip_frame_dark = 2131165426;
 			
 			// aapt resource value: 0x7F0700F3
-			public const int ubicacion = 2131165427;
-			
-			// aapt resource value: 0x7F0700F5
-			public const int undoButton = 2131165429;
+			public const int tooltip_frame_light = 2131165427;
 			
 			// aapt resource value: 0x7F0700F4
-			public const int undo_redo_background = 2131165428;
+			public const int ubicacion = 2131165428;
 			
 			// aapt resource value: 0x7F0700F6
-			public const int UpButton = 2131165430;
+			public const int undoButton = 2131165430;
+			
+			// aapt resource value: 0x7F0700F5
+			public const int undo_redo_background = 2131165429;
 			
 			// aapt resource value: 0x7F0700F7
-			public const int upload = 2131165431;
+			public const int UpButton = 2131165431;
 			
 			// aapt resource value: 0x7F0700F8
-			public const int usuario = 2131165432;
+			public const int upload = 2131165432;
 			
 			// aapt resource value: 0x7F0700F9
-			public const int warning = 2131165433;
+			public const int usuario = 2131165433;
+			
+			// aapt resource value: 0x7F0700FA
+			public const int warning = 2131165434;
 			
 			static Drawable()
 			{

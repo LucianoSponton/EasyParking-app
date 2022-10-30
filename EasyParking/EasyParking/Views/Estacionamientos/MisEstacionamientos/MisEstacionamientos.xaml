@@ -6,8 +6,12 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:ByteArrayToImageSource  x:Key="ByteArrayToImageSource" />
-            <local:TipoDeVehiculoToImage   x:Key="TipoDeVehiculoToImage" />
+            <local:ByteArrayToImageSource               x:Key="ByteArrayToImageSource" />
+            <local:TipoDeVehiculoToImage                x:Key="TipoDeVehiculoToImage" />
+            <local:EstadoDePublicacionToStringoColor    x:Key="EstadoDePublicacionToStringoColor" />
+            <local:EstadoDePublicacionToText            x:Key="EstadoDePublicacionToText" />
+
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -28,8 +32,8 @@
                        HeightRequest="50"
                        WidthRequest="50"
                        BackgroundColor="Transparent"/>
-        
-        <syncfusion:SfListView  x:Name="lwlisado"   AutoFitMode="DynamicHeight"  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+
+        <syncfusion:SfListView  x:Name="lwlisado" ItemsSource="{Binding .}"  AutoFitMode="DynamicHeight"  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
                                 VerticalOptions="Center" SelectionBackgroundColor="Transparent"
                                                     HorizontalOptions="EndAndExpand" >
             <syncfusion:SfListView.ItemTemplate>
@@ -38,6 +42,15 @@
                         <StackLayout>
                             <Frame  CornerRadius="3" Padding="0" HasShadow="True" Margin="10,20,10,0"  BackgroundColor="White">
                                 <StackLayout Spacing="0">
+
+                                    <border:SfBorder BackgroundColor="#EAEDED" IsVisible="{Binding PublicacionPausada}" CornerRadius="3,3,0,0" Padding="3,5,3,5" HorizontalOptions="FillAndExpand" BorderColor="Transparent" BorderWidth="0">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="2"  VerticalOptions="Center">
+                                            <custom:CustomLabel  Text="Publicación pausada" Margin="5,0,0,0" FontSize="18" 
+                                                 VerticalOptions="Center" TextColor="Black" 
+                                                 FontFamily="Lobster"/>
+                                            <Image Source="play.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </border:SfBorder>
 
                                     <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" Spacing="0">
 
@@ -72,7 +85,7 @@
                                                     </StackLayout>
 
                                                     <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End"  Padding="5" Margin="0,0,0,0" 
-                                                                      WidthRequest="30" HeightRequest="30"
+                                                                      WidthRequest="30" HeightRequest="30" x:Name="btnEditar" Clicked="btnEditar_Clicked"
                                                                    Source="editar01.png" 
                                                                       VerticalOptions="StartAndExpand">
                                                         <VisualStateManager.VisualStateGroups>
@@ -112,7 +125,7 @@
                                                         <!--<Image Source="peso.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>-->
                                                         <custom:CustomLabel  Text="Reserva:" FontSize="15" VerticalOptions="Center" TextColor="Black" />
                                                         <Image Source="peso.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                                        <custom:CustomLabel  Text="{Binding MontoReserva,  StringFormat='{0:N0}'}" FontSize="15" VerticalOptions="Center" TextColor="Black" />
+                                                        <custom:CustomLabel  Text="{Binding MontoReserva,  StringFormat='{0:N0}'}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" TextColor="Black" />
                                                     </StackLayout>
                                                 </StackLayout>
 
@@ -194,10 +207,10 @@
                                           VerticalOptions="EndAndExpand" x:Name="btnEliminar" Clicked="btnEliminar_Clicked"/>
 
 
-                                        <buttons:SfButton Text="Pausar publicación"  Padding="0" FontSize="14" CornerRadius="3"
-                                          BorderWidth="1" TextColor="Gray" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
+                                        <buttons:SfButton Text="{Binding PublicacionPausada, Converter={StaticResource EstadoDePublicacionToText}, Mode=OneWay}"  Padding="0" FontSize="14" CornerRadius="3"
+                                          BorderWidth="1" TextColor="{Binding PublicacionPausada, Converter={StaticResource EstadoDePublicacionToStringoColor}, Mode=OneWay}" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand"
                                           VerticalTextAlignment="Start"   Margin="0,0,0,0"
-                                                              x:Name="btnPausar" Clicked="btnPausar_Clicked"/>
+                                                              x:Name="btnPausarReanudarPublicacion" Clicked="btnPausarReanudarPublicacion_Clicked"/>
 
 
                                     </StackLayout>

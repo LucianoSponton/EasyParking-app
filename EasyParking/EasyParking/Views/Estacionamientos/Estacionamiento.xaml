@@ -55,7 +55,7 @@
 
                 <combobox:SfComboBox Margin="5,0,5,0" TextSize="16" Watermark="Ciudad" VerticalOptions="Center" EnableAutoSize="True"  
                                              HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30"
-                                             MaximumDropDownHeight="1000" IsEditableMode="false" x:Name="comboboxCiudad" SelectionChanged="comboboxCiudad_SelectionChanged">
+                                             MaximumDropDownHeight="400" IsEditableMode="false" x:Name="comboboxCiudad" >
                     <combobox:SfComboBox.ComboBoxSource>
                         <ListCollection:List x:TypeArguments="x:String">
                             <x:String>La Plata</x:String>
@@ -303,7 +303,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
-                            <syncfusion:SfCheckBox Grid.Column="0" Grid.Row="0" x:Name="checkBoxAuto" PropertyChanged="checkBoxAuto_PropertyChanged" Text="Autos"  Margin="0,0,0,0" VerticalOptions="Center" FontSize="16"/>
+                            <syncfusion:SfCheckBox Grid.Column="0" Grid.Row="0" x:Name="checkBoxAuto"  PropertyChanged="checkBoxAuto_PropertyChanged" Text="Autos"  Margin="0,0,0,0" VerticalOptions="Center" FontSize="16"/>
 
                             <numeric:SfNumericUpDown x:Name="entryCantidadAuto" Grid.Column="1" Grid.Row="0"   HeightRequest="40"  Value="0" HorizontalOptions="FillAndExpand"   
                                                                       EnableGroupSeparator="True" SelectAllOnFocus="True" Minimum="0"   SpinButtonAlignment="Both" TextAlignment="Center" 
@@ -509,8 +509,9 @@
 
 
 
-                <custom:CustomButton x:Name="btnAgregar" Clicked="btnAgregar_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="40" CornerRadius="3"  Margin="0,10,0,20" Text="Agregar estacionamiento" FontSize="16"
-                                 BackgroundColor="#2968C8" BorderWidth="1.5" TextColor="White"/>
+                <custom:CustomButton x:Name="btnAgregarOguardar" Clicked="btnAgregarOguardar_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
+                                     HeightRequest="40" CornerRadius="3"  Margin="0,10,0,20"  FontSize="16"
+                                     BorderWidth="1.5" TextColor="White"/>
                 
                 
 

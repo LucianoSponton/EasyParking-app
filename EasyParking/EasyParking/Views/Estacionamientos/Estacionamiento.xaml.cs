@@ -4,6 +4,7 @@ using Model;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
+using ServiceWebApi.DTO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,57 +27,82 @@ namespace EasyParking.Views.Estacionamientos
         List<ImageSource> ImageSourceLista = new List<ImageSource>();
 
         public ImageSource EstacionamientoImagen { get; set; }
-        public Estacionamiento()
+        public Estacionamiento(EstacionamientoDTO estacionamientoDTO = null)
         {
             InitializeComponent();
             frameTarifaAuto.IsVisible = frameTarifaCamioneta.IsVisible = frameTarifaMoto.IsVisible = false;
             entryCantidadAuto.IsEnabled = entryCantidadCamioneta.IsEnabled = entryCantidadMoto.IsEnabled = false;
 
-
-            List<Horario> PeriodosLunes = new List<Horario>();
-
-            Horario h = new Horario
+            if (estacionamientoDTO == null) // es para agregar un nuevo estacionamient
             {
-                Periodo = "8:00 - 12:30"
-            };
-            Horario h2 = new Horario
+                btnAgregarOguardar.Text = "Agregar estacionamiento";
+                btnAgregarOguardar.BackgroundColor = Color.FromHex("#2968C8");
+            }
+            else
             {
-                Periodo = "14:00 - 12:30"
-            };
-            Horario h3 = new Horario
+                navBar.Title = "Editar Estacionamiento";
+                CargarDatosParaEditar(estacionamientoDTO);
+                btnAgregarOguardar.Text = "Guardar cambios";
+                btnAgregarOguardar.BackgroundColor = Color.FromHex("#17202A");
+            }
+
+        }
+
+
+        void CargarDatosParaEditar(EstacionamientoDTO estacionamientoDTO)
+        {
+            Imagen.Source = ImageSource.FromStream(() =>                //
+            {                                                                   // Convierte de array de bytes a source imagen
+                return new MemoryStream(estacionamientoDTO.Imagen);             //
+            });
+
+            comboboxCiudad.Text = estacionamientoDTO.Ciudad; // CIUDAD DEL LUGAR
+
+            entryNombre.Text = estacionamientoDTO.Nombre; // NOMBRE DEL LUGAR
+
+            entryDireccion.Text = estacionamientoDTO.Direccion; // DIRECCION DEL LUGAR
+
+            comboBoxTipoDeLugar.Text = estacionamientoDTO.TipoDeLugar; // TIPO DEL LUGAR
+
+            // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
+
+            //********** TEMA VEHICULOS ACEPTADOS Y SUS TARIFAS **********//
+
+            foreach (var item in estacionamientoDTO.TiposDeVehiculosAdmitidos)
             {
-                Periodo = "9:00 - 12:30"
-            };
-            PeriodosLunes.Add(h);
-            PeriodosLunes.Add(h2);
-            PeriodosLunes.Add(h3);
+                if (item.TipoDeVehiculo.ToLower() == "auto")
+                {
+                    checkBoxAuto.IsChecked = true;
+                    frameTarifaAuto.IsVisible = true;
+                    entryCantidadAuto.Value = item.CapacidadDeAlojamiento;
+                    entryAuto_TarifaHora.Text = item.Tarifa_Hora.ToString();
+                    entryAuto_TarifaDia.Text = item.Tarifa_Dia.ToString();
+                    entryAuto_TarifaSemana.Text = item.Tarifa_Semana.ToString();
+                    entryAuto_TarifaMes.Text = item.Tarifa_Mes.ToString();
+                }
+                if (item.TipoDeVehiculo.ToLower() == "moto")
+                {
+                    checkBoxMoto.IsChecked = true;
+                    frameTarifaMoto.IsVisible = true; 
+                    entryCantidadMoto.Value = item.CapacidadDeAlojamiento;
+                    entryMoto_TarifaHora.Text = item.Tarifa_Hora.ToString();
+                    entryMoto_TarifaDia.Text = item.Tarifa_Dia.ToString();
+                    entryMoto_TarifaSemana.Text = item.Tarifa_Semana.ToString();
+                    entryMoto_TarifaMes.Text = item.Tarifa_Mes.ToString();
+                }
+                if (item.TipoDeVehiculo.ToLower() == "camioneta")
+                {
+                    checkBoxCamioneta.IsChecked = true;
+                    frameTarifaCamioneta.IsVisible = true;
+                    entryCantidadCamioneta.Value = item.CapacidadDeAlojamiento;
+                    entryCamioneta_TarifaHora.Text = item.Tarifa_Hora.ToString();
+                    entryCamioneta_TarifaDia.Text = item.Tarifa_Dia.ToString();
+                    entryCamioneta_TarifaSemana.Text = item.Tarifa_Semana.ToString();
+                    entryCamioneta_TarifaMes.Text = item.Tarifa_Mes.ToString();
+                }
+            }
 
-            //lwHorariosLunes.ItemsSource = new string[]
-            //                                {
-            //                                  h.Periodo,
-            //                                  h2.Periodo,
-            //                                    h2.Periodo,
-            //                                  h3.Periodo
-            //                                };
-
-            //lwHorariosMartes.ItemsSource = new string[]
-            //                               {
-            //                                  h3.Periodo
-            //                               };
-
-            //lwHorariosMiercoles.ItemsSource = new string[]
-            //                               {
-            //                                  h.Periodo,
-            //                                  h3.Periodo
-            //                               };
-
-            //lwHorariosSabado.ItemsSource = new string[]
-            //                               {
-            //                                  h.Periodo,
-            //                                  h3.Periodo
-            //                               };
-
-
+            entryMontoReserva.Text = estacionamientoDTO.MontoReserva.ToString(); // MONTO DE LA RESERVA
         }
 
         public class Horario
@@ -367,11 +393,8 @@ namespace EasyParking.Views.Estacionamientos
             };
         }
 
-
-
-        private void btnAgregar_Clicked(object sender, EventArgs e)
+        private async void btnAgregarOguardar_Clicked(object sender, EventArgs e)
         {
-
             estacionamiento.Imagen = ImagenArray; // IMAGEN DEL LUGAR
 
             estacionamiento.Ciudad = comboboxCiudad.Text; // CIUDAD DEL LUGAR
@@ -396,7 +419,7 @@ namespace EasyParking.Views.Estacionamientos
                 dataVehiculo.Tarifa_Semana = Convert.ToInt32(entryAuto_TarifaSemana.Text);
                 dataVehiculo.Tarifa_Mes = Convert.ToInt32(entryAuto_TarifaMes.Text);
 
-               // estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
+                // estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
             }
 
 
@@ -435,12 +458,6 @@ namespace EasyParking.Views.Estacionamientos
             var xxx = estacionamiento;
 
             App.Estacionamientos.Add(estacionamiento);
-
-        }
-
-        private void comboboxCiudad_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

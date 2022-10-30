@@ -10,13 +10,14 @@ namespace EasyParking.Converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var PublicacionPausada = (bool)value;
+
             if (PublicacionPausada)
             {
-                return "heartFill.png";
+                return "Black";
             }
             else
             {
-                return "heart.png";
+                return "Gray";
             }
         }
 

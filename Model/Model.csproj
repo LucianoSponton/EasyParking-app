@@ -5,4 +5,10 @@
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
+	<PropertyGroup>
+		<PackageId>EasyParkingPackages</PackageId>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/LucianoSponton/EasyParking-app</RepositoryUrl>
+	</PropertyGroup>
+
 </Project>

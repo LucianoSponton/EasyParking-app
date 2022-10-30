@@ -863,3 +863,4 @@ C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\1
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\src\crc6476e0f2ad156b083d\Shape.java
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\src\crc6476e0f2ad156b083d\ZoomLayout.java
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\src\crc6476e0f2ad156b083d\ZoomLayout_ScaleListener.java
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\res\drawable\play.png
