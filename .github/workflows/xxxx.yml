@@ -49,7 +49,7 @@ jobs:
       run: dotnet pack Model/Model.csproj --configuration Release
       
     - name: Publish
-      run:  dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg  --api-key ${{ secrets.TOKEN_GITHUB }} --source https://nuget.pkg.github.com/${{env.OWNER_REPOSITORY}}/index.json 
+      run:  dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg  --api-key ${{ secrets.TOKEN_GITHUB }} --source "github"
 
      
 
