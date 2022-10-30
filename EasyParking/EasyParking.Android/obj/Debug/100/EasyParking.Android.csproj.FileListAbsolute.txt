@@ -38,10 +38,8 @@ C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\c
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\com.grupo2.easyparking-Signed.apk.idsig
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\EasyParking.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\ServiceWebApi.dll
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\Model.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\EasyParking.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\ServiceWebApi.pdb
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\Model.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\EasyParking.Android.csproj.CopyComplete
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\EasyParking.Android.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\EasyParking.Android.pdb
@@ -132,7 +130,6 @@ C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\1
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\assets\Microsoft.CSharp.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\assets\Microsoft.CSharp.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\assets\Model.dll
-C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\assets\Model.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\assets\Mono.Android.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\assets\Mono.Android.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\assets\Mono.Security.dll
@@ -864,3 +861,7 @@ C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\1
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\src\crc6476e0f2ad156b083d\ZoomLayout.java
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\src\crc6476e0f2ad156b083d\ZoomLayout_ScaleListener.java
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\res\drawable\play.png
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\Model.dll
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\bin\Debug\Model.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\assets\Model.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking.Android\obj\Debug\100\android\bin\classes2.dex

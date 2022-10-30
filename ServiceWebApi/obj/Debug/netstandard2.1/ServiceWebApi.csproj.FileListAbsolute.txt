@@ -5,9 +5,9 @@ C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\obj\Debug\netstandard2.1\Serv
 C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\bin\Debug\netstandard2.1\ServiceWebApi.deps.json
 C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\bin\Debug\netstandard2.1\ServiceWebApi.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\bin\Debug\netstandard2.1\ServiceWebApi.pdb
-C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\bin\Debug\netstandard2.1\Model.dll
-C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\bin\Debug\netstandard2.1\Model.pdb
-C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\obj\Debug\netstandard2.1\ServiceWebApi.csproj.AssemblyReference.cache
-C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\obj\Debug\netstandard2.1\ServiceWebApi.csproj.CopyComplete
 C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\obj\Debug\netstandard2.1\ServiceWebApi.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\obj\Debug\netstandard2.1\ServiceWebApi.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\obj\Debug\netstandard2.1\ServiceWebApi.csproj.AssemblyReference.cache
+C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\bin\Debug\netstandard2.1\Model.dll
+C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\bin\Debug\netstandard2.1\Model.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\ServiceWebApi\obj\Debug\netstandard2.1\ServiceWebApi.csproj.CopyComplete

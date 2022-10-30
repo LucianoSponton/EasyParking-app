@@ -11,14 +11,14 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "EasyParkingPackages/1.0.0": {
+      "Model/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "compile": {
-          "bin/placeholder/EasyParkingPackages.dll": {}
+          "bin/placeholder/Model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EasyParkingPackages.dll": {}
+          "bin/placeholder/Model.dll": {}
         }
       }
     }
@@ -51,15 +51,15 @@
         "packageIcon.png"
       ]
     },
-    "EasyParkingPackages/1.0.0": {
+    "Model/1.0.2": {
       "type": "project",
-      "path": "../Model/Model.csproj",
-      "msbuildProject": "../Model/Model.csproj"
+      "path": "../../EasyParkingAPI/Model/Model.csproj",
+      "msbuildProject": "../../EasyParkingAPI/Model/Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "EasyParkingPackages >= 1.0.0",
+      "Model >= 1.0.2",
       "Newtonsoft.Json >= 13.0.1"
     ]
   },
@@ -100,8 +100,8 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "C:\\ProyectosGitHubUTN\\EasyParkingApp\\Model\\Model.csproj": {
-              "projectPath": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\Model\\Model.csproj"
+            "C:\\ProyectosGitHubUTN\\EasyParkingAPI\\Model\\Model.csproj": {
+              "projectPath": "C:\\ProyectosGitHubUTN\\EasyParkingAPI\\Model\\Model.csproj"
             }
           }
         }

@@ -219,21 +219,21 @@
           "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
-      "EasyParkingPackages/1.0.0": {
+      "Model/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "compile": {
-          "bin/placeholder/EasyParkingPackages.dll": {}
+          "bin/placeholder/Model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/EasyParkingPackages.dll": {}
+          "bin/placeholder/Model.dll": {}
         }
       },
       "ServiceWebApi/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "EasyParkingPackages": "1.0.0",
+          "Model": "1.0.2",
           "Newtonsoft.Json": "13.0.1"
         },
         "compile": {
@@ -1029,10 +1029,10 @@
         "xamarin.forms.nuspec"
       ]
     },
-    "EasyParkingPackages/1.0.0": {
+    "Model/1.0.2": {
       "type": "project",
-      "path": "../../Model/Model.csproj",
-      "msbuildProject": "../../Model/Model.csproj"
+      "path": "../../../EasyParkingAPI/Model/Model.csproj",
+      "msbuildProject": "../../../EasyParkingAPI/Model/Model.csproj"
     },
     "ServiceWebApi/1.0.0": {
       "type": "project",
@@ -1089,7 +1089,7 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "http://20.85.241.82:12525/nuget": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://nuget.pkg.github.com/LucianoSponton/index.json": {}
       },
       "frameworks": {
         "netstandard2.1": {

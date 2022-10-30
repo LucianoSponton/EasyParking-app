@@ -227,14 +227,14 @@
           }
         }
       },
-      "Model/1.0.0": {
+      "Model/1.0.2": {
         "runtime": {
           "Model.dll": {}
         }
       },
       "ServiceWebApi/1.0.0": {
         "dependencies": {
-          "Model": "1.0.0",
+          "Model": "1.0.2",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
@@ -375,7 +375,7 @@
       "path": "xamarin.forms/5.0.0.2515",
       "hashPath": "xamarin.forms.5.0.0.2515.nupkg.sha512"
     },
-    "Model/1.0.0": {
+    "Model/1.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

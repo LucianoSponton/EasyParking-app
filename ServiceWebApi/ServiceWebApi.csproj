@@ -9,9 +9,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
-
-	<ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\EasyParkingAPI\Model\Model.csproj" />
   </ItemGroup>
 
 </Project>

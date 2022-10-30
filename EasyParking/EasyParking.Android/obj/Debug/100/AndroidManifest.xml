@@ -6,7 +6,7 @@
     the contents are regenerated.
     -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.grupo2.easyparking" android:installLocation="internalOnly">
-  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
+  <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="29" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-feature android:name="android.hardware.camera" android:required="false" />
   <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />

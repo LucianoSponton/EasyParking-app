@@ -18,7 +18,7 @@ namespace ServiceWebApi
         {
             try
             {
-                WebApiGet<List<Estacionamiento>> webApiGet = new WebApiGet<List<Estacionamiento>>(_webApiAccess);
+                WebApiGet<List<Model.Estacionamiento>> webApiGet = new WebApiGet<List<Model.Estacionamiento>>(_webApiAccess);
                 List<Estacionamiento> lista = await webApiGet.GetAsync($"api/Estacionamiento/GetAll");
                 return lista;
             }
