@@ -43,5 +43,5 @@ jobs:
         dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
       
     - name: Push
-      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.TOKEN_GITHUB}}
 
