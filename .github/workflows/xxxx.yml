@@ -2,6 +2,8 @@ name: CD
 
 on: 
   push:
+    branches:
+    - dev
     tags:
     - "v[0-9]+.[0-9]+.[0-9]+"
 
