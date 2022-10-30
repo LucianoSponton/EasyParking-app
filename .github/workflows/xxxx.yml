@@ -44,11 +44,15 @@ jobs:
         
     - name: Auth
       run: dotnet nuget add source --username LucianoSponton --password ${{ secrets.TOKEN_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/LucianoSponton/index.json"
-
-  
+    
+    - name: Pack
+      run: dotnet pack --configuration Release
+      
     - name: Publish
-      run: |
-        dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_API_KEY}} --source "github"  
+      run:  dotnet nuget push "bin/Release/Model.1.0.0.nupkg"  --api-key ${{ secrets.TOKEN_GITHUB }} --source "github"
+     
+
+
 
           
 
