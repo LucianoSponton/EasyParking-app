@@ -42,7 +42,10 @@ jobs:
       run: | 
         dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
   
-    - name: Push
-      run: dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg  --api-key ${{ secrets.TOKEN_GITHUB }} --source https://nuget.pkg.github.com/${{env.OWNER_REPOSITORY}}/index.json
-
+    - name: Publish
+      run: | # | character makes the "run" property multi-line, so we can put multiple commands in the same step
+          mkdir __out
+          dotnet pack -c Release -o __out --no-restore
+          dotnet nuget push "./__out/*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_API_KEY}}
+          rm -rf __out
 
