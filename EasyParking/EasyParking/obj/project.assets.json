@@ -219,21 +219,21 @@
           "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
-      "Model/1.0.0": {
+      "EasyParkingPackages/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "compile": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParkingPackages.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParkingPackages.dll": {}
         }
       },
       "ServiceWebApi/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Model": "1.0.0",
+          "EasyParkingPackages": "1.0.0",
           "Newtonsoft.Json": "13.0.1"
         },
         "compile": {
@@ -1029,7 +1029,7 @@
         "xamarin.forms.nuspec"
       ]
     },
-    "Model/1.0.0": {
+    "EasyParkingPackages/1.0.0": {
       "type": "project",
       "path": "../../Model/Model.csproj",
       "msbuildProject": "../../Model/Model.csproj"

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
 	<PropertyGroup>
-		<PackageId>EasyParkingPackages</PackageId>
+		<PackageId>EasyParking.Model</PackageId>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/LucianoSponton/EasyParking-app</RepositoryUrl>
 	</PropertyGroup>

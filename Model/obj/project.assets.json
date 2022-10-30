@@ -16,7 +16,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\Model\\Model.csproj",
-      "projectName": "Model",
+      "projectName": "EasyParkingPackages",
       "projectPath": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\Model\\Model.csproj",
       "packagesPath": "C:\\Users\\LUCIANO\\.nuget\\packages\\",
       "outputPath": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\Model\\obj\\",

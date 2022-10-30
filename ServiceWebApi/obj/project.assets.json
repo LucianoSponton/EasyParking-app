@@ -11,14 +11,14 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Model/1.0.0": {
+      "EasyParkingPackages/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "compile": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParkingPackages.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParkingPackages.dll": {}
         }
       }
     }
@@ -51,7 +51,7 @@
         "packageIcon.png"
       ]
     },
-    "Model/1.0.0": {
+    "EasyParkingPackages/1.0.0": {
       "type": "project",
       "path": "../Model/Model.csproj",
       "msbuildProject": "../Model/Model.csproj"
@@ -59,7 +59,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "Model >= 1.0.0",
+      "EasyParkingPackages >= 1.0.0",
       "Newtonsoft.Json >= 13.0.1"
     ]
   },
