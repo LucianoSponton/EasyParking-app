@@ -32,13 +32,9 @@ jobs:
    #   run: echo "VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
    
    
-    - uses: wemogy/next-release-version-action@1.0.1
-      id: release-version
-      with:
-        token: ${{ secrets.TOKEN_GITHUB }}
-        branch: 'release/v1.1'
-
-    - run: echo "VERSION=${{ steps.release-version.outputs.next-version-name }}" >> $GITHUB_ENV # Output: v1.1.2
+    - name: get-npm-version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@main
     
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
