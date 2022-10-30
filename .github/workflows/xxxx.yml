@@ -44,6 +44,7 @@ jobs:
   
     - name: Publish
       run: |
-        dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_API_KEY}}
+        dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_API_KEY}} --source https://nuget.pkg.github.com/${{env.OWNER_REPOSITORY}}/index.json  
+
           
 
