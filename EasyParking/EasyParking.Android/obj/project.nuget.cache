@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aqoW7Ko7KZveLE/HqHnlJZKDToyU+HQPRAlF9Q93R7ZDLNzPks0pjqURsL/Wcvhv3Ibi5/4WbwMislGU5M/ngA==",
+  "dgSpecHash": "ALkJriiaJdXNvNT5TX9TRIYfHJHD8KaHzInsEOgZsfSs6IvNsVu/f6HrdJ4lRtmpr/yEighpvnX/0cBhHjcgQw==",
   "success": true,
   "projectFilePath": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\EasyParking\\EasyParking.Android\\EasyParking.Android.csproj",
   "expectedPackageFiles": [
@@ -76,7 +76,8 @@
     "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.essentials\\1.7.3\\xamarin.essentials.1.7.3.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.forms\\5.0.0.2515\\xamarin.forms.5.0.0.2515.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.google.android.material\\1.4.0.2\\xamarin.google.android.material.1.4.0.2.nupkg.sha512",
-    "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512"
+    "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512",
+    "C:\\Users\\LUCIANO\\.nuget\\packages\\easyparking.model\\1.0.0\\easyparking.model.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

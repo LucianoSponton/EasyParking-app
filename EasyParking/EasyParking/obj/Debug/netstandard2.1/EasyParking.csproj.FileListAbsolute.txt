@@ -60,3 +60,7 @@ C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstanda
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Generales\PopupItemImage.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\Model.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\Model.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Estacionamientos\EditarEstacionamiento.xaml.g.cs
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\Mono.Android.dll
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\Mono.Android.pdb
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\bin\Debug\netstandard2.1\Mono.Android.xml

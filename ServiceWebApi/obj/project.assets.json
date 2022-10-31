@@ -11,14 +11,14 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Model/1.0.2": {
+      "EasyParking.Model/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "compile": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParking.Model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParking.Model.dll": {}
         }
       }
     }
@@ -51,15 +51,15 @@
         "packageIcon.png"
       ]
     },
-    "Model/1.0.2": {
+    "EasyParking.Model/1.0.0": {
       "type": "project",
-      "path": "../../EasyParkingAPI/Model/Model.csproj",
-      "msbuildProject": "../../EasyParkingAPI/Model/Model.csproj"
+      "path": "../Model/Model.csproj",
+      "msbuildProject": "../Model/Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
-      "Model >= 1.0.2",
+      "EasyParking.Model >= 1.0.0",
       "Newtonsoft.Json >= 13.0.1"
     ]
   },
@@ -94,14 +94,14 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "http://20.85.241.82:12525/nuget": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://nuget.pkg.github.com/LucianoSponton/index.json": {}
       },
       "frameworks": {
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "C:\\ProyectosGitHubUTN\\EasyParkingAPI\\Model\\Model.csproj": {
-              "projectPath": "C:\\ProyectosGitHubUTN\\EasyParkingAPI\\Model\\Model.csproj"
+            "C:\\ProyectosGitHubUTN\\EasyParkingApp\\Model\\Model.csproj": {
+              "projectPath": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\Model\\Model.csproj"
             }
           }
         }

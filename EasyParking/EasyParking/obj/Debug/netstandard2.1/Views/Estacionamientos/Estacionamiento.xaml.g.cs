@@ -20,7 +20,7 @@ namespace EasyParking.Views.Estacionamientos {
         private global::EasyParking.Components.NavBar navBar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.ImageButton Imagen;
+        private global::Xamarin.Forms.Image Imagen;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Image imagenEmpty;
@@ -137,13 +137,16 @@ namespace EasyParking.Views.Estacionamientos {
         private global::EasyParking.Custom.CustomEntry entryMontoReserva;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::EasyParking.Custom.CustomButton btnAgregarOguardar;
+        private global::Syncfusion.XForms.Buttons.SfButton btnAgregar;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.ActivityIndicator activityIndicadorBtnAgregar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(Estacionamiento));
             navBar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Components.NavBar>(this, "navBar");
-            Imagen = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "Imagen");
+            Imagen = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Image>(this, "Imagen");
             imagenEmpty = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Image>(this, "imagenEmpty");
             labelimagenEmpty = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomLabel>(this, "labelimagenEmpty");
             btnTomarFoto = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnTomarFoto");
@@ -182,7 +185,8 @@ namespace EasyParking.Views.Estacionamientos {
             entryMoto_TarifaSemana = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomEntry>(this, "entryMoto_TarifaSemana");
             entryMoto_TarifaMes = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomEntry>(this, "entryMoto_TarifaMes");
             entryMontoReserva = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomEntry>(this, "entryMontoReserva");
-            btnAgregarOguardar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomButton>(this, "btnAgregarOguardar");
+            btnAgregar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnAgregar");
+            activityIndicadorBtnAgregar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "activityIndicadorBtnAgregar");
         }
     }
 }

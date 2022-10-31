@@ -1,0 +1,610 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard" 
+             xmlns:custom="clr-namespace:EasyParking.Custom" 
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:views="clr-namespace:EasyParking.Components"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
+             xmlns:syncfusion1="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:local="clr-namespace:EasyParking.Converter"        
+             x:Class="EasyParking.Views.Estacionamientos.EditarEstacionamiento">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ZeroToDoubleZero   x:Key="ZeroToDoubleZero" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <views:NavBar x:Name="navBar" Title="Editar Estacionamiento"   IsVisibleBoxSearch="False" IsVisibleFavoritos="False" Margin="0,0,0,0"  />
+    </NavigationPage.TitleView>
+
+    <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+        <ScrollView  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout Padding="10,10,10,10" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <StackLayout Margin="0,0,0,20">
+                    <AbsoluteLayout WidthRequest="250"  HeightRequest="250">
+                        <Image x:Name="Imagen" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFit" BackgroundColor="Transparent"/>
+
+                        <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional">
+                            <Image x:Name="imagenEmpty" Source="EmptyImage.png" HeightRequest="50" WidthRequest="50"/>
+                            <custom:CustomLabel x:Name="labelimagenEmpty"  Text="Imagen del lugar" FontSize="16" TextColor="Gray"/>
+                        </StackLayout>
+
+                    </AbsoluteLayout>
+
+
+
+                    <Grid ColumnSpacing="10" RowSpacing="10" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <syncfusion:SfButton Grid.Column="0" Grid.Row="0" x:Name="btnTomarFoto" Clicked="btnTomarFoto_Clicked" Text="Tomar foto" HorizontalOptions="FillAndExpand" HeightRequest="40"  
+                                         Padding="0" FontSize="14"
+                                         BorderColor="Gray" BorderWidth="1.5" TextColor="#17202A" BackgroundColor="Transparent" 
+                                         VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                                         CornerRadius="3" ShowIcon="True" ImageAlignment="Right" ImageSource="camera.png"   />
+
+
+                        <syncfusion:SfButton Grid.Column="1" Grid.Row="0" x:Name="btnSeleccionarFoto" Clicked="btnSeleccionarFoto_Clicked" Text="Seleccionar foto" HorizontalOptions="FillAndExpand" HeightRequest="40" 
+                                         Padding="0"
+                                         FontSize="14" BorderColor="Gray" BorderWidth="1.5" TextColor="#17202A" BackgroundColor="Transparent"  
+                                         VerticalTextAlignment="Center"  HorizontalTextAlignment="Center"
+                                         CornerRadius="3" ShowIcon="True" ImageAlignment="Right" ImageSource="upload.png"   />
+
+
+                    </Grid>
+                </StackLayout>
+               
+
+                <inputLayout:SfTextInputLayout  FocusedColor="#2968C8"  ContainerType="Outlined" Hint="Seleccionela ciudad" BackgroundColor="Transparent"
+                                                ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
+                    <combobox:SfComboBox Margin="5,0,5,10" TextSize="16" Watermark="Ciudad" VerticalOptions="Center" EnableAutoSize="True"  
+                                             HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30"
+                                             MaximumDropDownHeight="400" IsEditableMode="false" x:Name="comboboxCiudad" >
+                        <combobox:SfComboBox.ComboBoxSource>
+                            <ListCollection:List x:TypeArguments="x:String">
+                                <x:String>La Plata</x:String>
+                                <x:String>San Fernando del Valle de Catamarca</x:String>
+                                <x:String>Resistencia</x:String>
+                                <x:String>Rawson</x:String>
+                                <x:String>Córdoba</x:String>
+                                <x:String>Corrientes</x:String>
+                                <x:String>Paraná</x:String>
+                                <x:String>Formosa</x:String>
+                                <x:String>San Salvador de Jujuy</x:String>
+                                <x:String>Santa Rosa</x:String>
+                                <x:String>La Rioja</x:String>
+                                <x:String>Mendoza</x:String>
+                                <x:String>Posadas</x:String>
+                                <x:String>Neuquén</x:String>
+                                <x:String>Viedma</x:String>
+                                <x:String>Salta</x:String>
+                                <x:String>San Juan</x:String>
+                                <x:String>San Luis</x:String>
+                                <x:String>Río Gallegos</x:String>
+                                <x:String>Santa Fe</x:String>
+                                <x:String>Santiago del Estero</x:String>
+                                <x:String>Ushuaia</x:String>
+                                <x:String>San Miguel de Tucumán</x:String>
+                            </ListCollection:List>
+                        </combobox:SfComboBox.ComboBoxSource>
+                    </combobox:SfComboBox>
+                </inputLayout:SfTextInputLayout>
+
+
+
+                <inputLayout:SfTextInputLayout FocusedColor="#2968C8"  Margin="0,5,0,0"  ContainerType="Outlined" Hint="Nombre del lugar" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
+                    <custom:CustomEntry  x:Name="entryNombre"  Keyboard="Default" Placeholder="Ingrese el nombre" ClearButtonVisibility="WhileEditing" HorizontalOptions="FillAndExpand"/>
+                </inputLayout:SfTextInputLayout>
+
+
+                <inputLayout:SfTextInputLayout  FocusedColor="#2968C8"  ContainerType="Outlined" Hint="Dirección del lugar" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
+                    <custom:CustomEntry  x:Name="entryDireccion" Keyboard="Default" Placeholder="Ingrese la dirección" ClearButtonVisibility="WhileEditing" HorizontalOptions="FillAndExpand"/>
+                </inputLayout:SfTextInputLayout>
+
+                <Frame  CornerRadius="3" Padding="10,10,10,10" HasShadow="True"  BackgroundColor="White">
+                    <StackLayout Spacing="10">
+                        <custom:CustomLabel Text="Horarios de atención:"  FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+
+                        <Grid ColumnSpacing="0" RowSpacing="10" Padding="0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <custom:CustomLabel Grid.Column="0"  Grid.Row="0" Text="Lunes" VerticalOptions="Center"     FontSize="16" TextColor="Gray"/>
+
+                            <StackLayout Grid.Column="1"  Grid.Row="0" Orientation="Horizontal"  >
+
+                                <syncfusion1:SfListView x:Name="lwHorariosLunes" AutoFitMode="DynamicHeight" VerticalOptions="Center"
+                                                    IsScrollingEnabled="False" ItemSize="30"  SelectionMode="None" WidthRequest="120"
+                                                    HorizontalOptions="EndAndExpand" >
+                                    <syncfusion1:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </syncfusion1:SfListView.ItemTemplate>
+                                </syncfusion1:SfListView>
+
+
+                                <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center" Padding="5" Margin="10,0,0,0" ClassId="LUNES"
+                                          WidthRequest="30" HeightRequest="30" Source="editar01.png" x:Name="btnEditarHorario" Clicked="btnEditarHorario_Clicked"  />
+                            </StackLayout>
+
+                            <custom:CustomLabel Grid.Column="0"  Grid.Row="1" Text="Martes" VerticalOptions="Center"     FontSize="16" TextColor="Gray"/>
+
+                            <StackLayout Grid.Column="1"  Grid.Row="1" Orientation="Horizontal" >
+
+                                <syncfusion1:SfListView  x:Name="lwHorariosMartes" AutoFitMode="DynamicHeight" VerticalOptions="Center"
+                                                    IsScrollingEnabled="False" ItemSize="30"  SelectionMode="None" WidthRequest="120"
+                                                    HorizontalOptions="EndAndExpand" >
+                                    <syncfusion1:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </syncfusion1:SfListView.ItemTemplate>
+                                </syncfusion1:SfListView>
+
+
+                                <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center" Padding="5" Margin="10,0,0,0" ClassId="MARTES"
+                                          WidthRequest="30" HeightRequest="30" Source="editar01.png" Clicked="btnEditarHorario_Clicked"  />
+                            </StackLayout>
+
+                            <custom:CustomLabel Grid.Column="0"  Grid.Row="2" Text="Miercoles" VerticalOptions="Center"     FontSize="16" TextColor="Gray"/>
+
+                            <StackLayout Grid.Column="1"  Grid.Row="2" Orientation="Horizontal"  >
+
+                                <syncfusion1:SfListView   x:Name="lwHorariosMiercoles" AutoFitMode="DynamicHeight" VerticalOptions="Center"
+                                                    IsScrollingEnabled="False" ItemSize="30"  SelectionMode="None" WidthRequest="120"
+                                                    HorizontalOptions="EndAndExpand" >
+                                    <syncfusion1:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </syncfusion1:SfListView.ItemTemplate>
+                                </syncfusion1:SfListView>
+
+
+                                <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center" Padding="5" Margin="10,0,0,0" ClassId="MIERCOLES"
+                                          WidthRequest="30" HeightRequest="30" Source="editar01.png"  Clicked="btnEditarHorario_Clicked"  />
+                            </StackLayout>
+
+                            <custom:CustomLabel Grid.Column="0"  Grid.Row="3" Text="Jueves" VerticalOptions="Center"     FontSize="16" TextColor="Gray"/>
+
+                            <StackLayout Grid.Column="1"  Grid.Row="3" Orientation="Horizontal" >
+
+                                <syncfusion1:SfListView   x:Name="lwHorariosJueves" AutoFitMode="DynamicHeight" VerticalOptions="Center"
+                                                    IsScrollingEnabled="False" ItemSize="30"  SelectionMode="None" WidthRequest="120"
+                                                    HorizontalOptions="EndAndExpand" >
+                                    <syncfusion1:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </syncfusion1:SfListView.ItemTemplate>
+                                </syncfusion1:SfListView>
+
+
+                                <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center" Padding="5" Margin="10,0,0,0" ClassId="JUEVES"
+                                          WidthRequest="30" HeightRequest="30" Source="editar01.png" Clicked="btnEditarHorario_Clicked" />
+                            </StackLayout>
+
+
+                            <custom:CustomLabel Grid.Column="0"  Grid.Row="4" Text="Viernes" VerticalOptions="Center"     FontSize="16" TextColor="Gray"/>
+
+                            <StackLayout Grid.Column="1"  Grid.Row="4" Orientation="Horizontal"  >
+
+                                <syncfusion1:SfListView   x:Name="lwHorariosViernes" AutoFitMode="DynamicHeight" VerticalOptions="Center"
+                                                    IsScrollingEnabled="False" ItemSize="30"  SelectionMode="None" WidthRequest="120"
+                                                    HorizontalOptions="EndAndExpand" >
+                                    <syncfusion1:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </syncfusion1:SfListView.ItemTemplate>
+                                </syncfusion1:SfListView>
+
+
+                                <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center" Padding="5" Margin="10,0,0,0" ClassId="VIERNES"
+                                          WidthRequest="30" HeightRequest="30" Source="editar01.png"   Clicked="btnEditarHorario_Clicked" />
+                            </StackLayout>
+
+                            <custom:CustomLabel Grid.Column="0"  Grid.Row="5" Text="Sabado" VerticalOptions="Center"     FontSize="16" TextColor="Gray"/>
+
+                            <StackLayout Grid.Column="1"  Grid.Row="5" Orientation="Horizontal"  >
+
+                                <syncfusion1:SfListView   x:Name="lwHorariosSabado" AutoFitMode="DynamicHeight" VerticalOptions="Center"
+                                                    IsScrollingEnabled="False" ItemSize="30"  SelectionMode="None" WidthRequest="120"
+                                                    HorizontalOptions="EndAndExpand" >
+                                    <syncfusion1:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </syncfusion1:SfListView.ItemTemplate>
+                                </syncfusion1:SfListView>
+
+
+                                <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center" Padding="5" Margin="10,0,0,0" ClassId="SABADO"
+                                          WidthRequest="30" HeightRequest="30" Source="editar01.png" Clicked="btnEditarHorario_Clicked"   />
+                            </StackLayout>
+
+
+                            <custom:CustomLabel Grid.Column="0"  Grid.Row="6" Text="Domingo" VerticalOptions="Center"     FontSize="16" TextColor="Gray"/>
+
+                            <StackLayout Grid.Column="1"  Grid.Row="6" Orientation="Horizontal"  >
+
+                                <syncfusion1:SfListView   x:Name="lwHorariosDomingo" AutoFitMode="DynamicHeight" VerticalOptions="Center"
+                                                    IsScrollingEnabled="False" ItemSize="30"  SelectionMode="None" WidthRequest="120"
+                                                    HorizontalOptions="EndAndExpand" >
+                                    <syncfusion1:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </syncfusion1:SfListView.ItemTemplate>
+                                </syncfusion1:SfListView>
+
+
+                                <ImageButton  BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center" Padding="5" Margin="10,0,0,0" ClassId="DOMINGO"
+                                          WidthRequest="30" HeightRequest="30" Source="editar01.png" Clicked="btnEditarHorario_Clicked"   />
+                            </StackLayout>
+
+                        </Grid>
+
+
+
+
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame  CornerRadius="3" Padding="10,10,10,10" HasShadow="True"  BackgroundColor="White">
+                    <StackLayout>
+                        <custom:CustomLabel Text="Indique el tipo del lugar:"  FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+
+                        <combobox:SfComboBox Margin="5,0,5,0" TextSize="16" Watermark="Tipo" VerticalOptions="Center" EnableAutoSize="True"  
+                                             HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30" ShowClearButton="False"
+                                             MaximumDropDownHeight="1000" IsEditableMode="false" x:Name="comboBoxTipoDeLugar"  >
+                            <combobox:SfComboBox.ComboBoxSource>
+                                <ListCollection:List x:TypeArguments="x:String">
+                                    <x:String>Terreno al aire libre</x:String>
+                                    <x:String>Terreno parialmente cubierto</x:String>
+                                    <x:String>Galpón abierto</x:String>
+                                    <x:String>Galpón cerrado</x:String>
+                                    <x:String>Lugar bajo edificio</x:String>
+                                    <x:String>Casa</x:String>
+                                </ListCollection:List>
+                            </combobox:SfComboBox.ComboBoxSource>
+                        </combobox:SfComboBox>
+                    </StackLayout>
+                </Frame>
+
+                <Frame  CornerRadius="3" Padding="10" HasShadow="True"  BackgroundColor="White">
+                    <StackLayout Spacing="10">
+
+                        <custom:CustomLabel Text="Seleeccione el tipo de vehículo y la cantidad de ellos que puede guardar allí:" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+
+                        <Grid ColumnSpacing="0" RowSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <syncfusion:SfCheckBox Grid.Column="0" Grid.Row="0" x:Name="checkBoxAuto"  PropertyChanged="checkBoxAuto_PropertyChanged" Text="Autos"  Margin="0,0,0,0" VerticalOptions="Center" FontSize="16"/>
+
+                            <numeric:SfNumericUpDown x:Name="entryCantidadAuto" Grid.Column="1" Grid.Row="0"   HeightRequest="40"  Value="0" HorizontalOptions="FillAndExpand"   
+                                                                      EnableGroupSeparator="True" SelectAllOnFocus="True" Minimum="0"   SpinButtonAlignment="Both" TextAlignment="Center" 
+                                                                      BackgroundColor="Transparent" FontSize="18" MaximumDecimalDigits="0" >
+                            </numeric:SfNumericUpDown>
+
+                            <syncfusion:SfCheckBox Grid.Column="0" Grid.Row="1" x:Name="checkBoxCamioneta" PropertyChanged="checkBoxCamioneta_PropertyChanged" Text="Camionetas"  Margin="0,0,0,0" VerticalOptions="Center" FontSize="16"/>
+
+                            <numeric:SfNumericUpDown x:Name="entryCantidadCamioneta" Grid.Column="1" Grid.Row="1"   HeightRequest="40"  Value="0" HorizontalOptions="FillAndExpand"   
+                                                                      EnableGroupSeparator="True" SelectAllOnFocus="True" Minimum="0"   SpinButtonAlignment="Both" TextAlignment="Center" 
+                                                                      BackgroundColor="Transparent" FontSize="18" MaximumDecimalDigits="0" >
+                            </numeric:SfNumericUpDown>
+
+                            <syncfusion:SfCheckBox Grid.Column="0" Grid.Row="2" x:Name="checkBoxMoto" PropertyChanged="checkBoxMoto_PropertyChanged" Text="Motos"  Margin="0,0,0,0" VerticalOptions="Center" FontSize="16"/>
+
+
+                            <numeric:SfNumericUpDown x:Name="entryCantidadMoto" Grid.Column="1" Grid.Row="2"   HeightRequest="40"  Value="0" HorizontalOptions="FillAndExpand"   
+                                                                      EnableGroupSeparator="True" SelectAllOnFocus="True" Minimum="0"   SpinButtonAlignment="Both" TextAlignment="Center" 
+                                                                      BackgroundColor="Transparent" FontSize="18" MaximumDecimalDigits="0" >
+                            </numeric:SfNumericUpDown>
+
+                        </Grid>
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="frameTarifaAuto"  CornerRadius="3" Padding="10,10,10,10" HasShadow="True"  BackgroundColor="White">
+                    <Grid ColumnSpacing="10" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <custom:CustomLabel  Grid.Column="0" Grid.Row="0" x:Name="labelTipoDeVehiculo" Text="Tarifa: Auto"  FontAttributes="Bold"  Margin="0,0,0,0" VerticalOptions="Center" FontSize="18"/>
+
+
+                        <inputLayout:SfTextInputLayout Grid.Column="0" Grid.Row="1"   ContainerType="Outlined" Hint="$ Hora"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Obligatorio *">
+
+                            <custom:CustomEntry  x:Name="entryAuto_TarifaHora"  Keyboard="Numeric" Placeholder="Ingrese el monto"    HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout  Grid.Column="1" Grid.Row="1"    ContainerType="Outlined" Hint="$ Día "   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Opcional *">
+
+                            <custom:CustomEntry x:Name="entryAuto_TarifaDia"  Keyboard="Numeric"  Placeholder="Ingrese el monto"   HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout Grid.Column="0" Grid.Row="2"   ContainerType="Outlined" Hint="$ Semana"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Obligatorio *">
+
+                            <custom:CustomEntry  x:Name="entryAuto_TarifaSemana" Keyboard="Numeric" Placeholder="Ingrese el monto"    HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout  Grid.Column="1" Grid.Row="2"  ContainerType="Outlined" Hint="$ Mes"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Opcional *">
+
+                            <custom:CustomEntry  x:Name="entryAuto_TarifaMes" Keyboard="Numeric"  Placeholder="Ingrese el monto"   HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                    </Grid>
+
+                </Frame>
+
+                <Frame x:Name="frameTarifaCamioneta"  CornerRadius="3" Padding="10,10,10,10" HasShadow="True"  BackgroundColor="White">
+                    <Grid ColumnSpacing="10" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <custom:CustomLabel  Grid.Column="0" Grid.Row="0" Text="Tarifa: Camioneta"  FontAttributes="Bold"  Margin="0,0,0,0" VerticalOptions="Center" FontSize="18"/>
+
+
+                        <inputLayout:SfTextInputLayout Grid.Column="0" Grid.Row="1"   ContainerType="Outlined" Hint="$ Hora"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Obligatorio *">
+
+                            <custom:CustomEntry x:Name="entryCamioneta_TarifaHora"   Keyboard="Numeric" Placeholder="Ingrese el monto"    HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout  Grid.Column="1" Grid.Row="1"    ContainerType="Outlined" Hint="$ Día "   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Opcional *">
+
+                            <custom:CustomEntry x:Name="entryCamioneta_TarifaDia"    Keyboard="Numeric"  Placeholder="Ingrese el monto"   HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout Grid.Column="0" Grid.Row="2"   ContainerType="Outlined" Hint="$ Semana"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Obligatorio *">
+
+                            <custom:CustomEntry x:Name="entryCamioneta_TarifaSemana"   Keyboard="Numeric" Placeholder="Ingrese el monto"    HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout  Grid.Column="1" Grid.Row="2"  ContainerType="Outlined" Hint="$ Mes"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Opcional *">
+
+                            <custom:CustomEntry x:Name="entryCamioneta_TarifaMes"   Keyboard="Numeric"  Placeholder="Ingrese el monto"   HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                    </Grid>
+
+                </Frame>
+
+                <Frame x:Name="frameTarifaMoto"  CornerRadius="3" Padding="10,10,10,10" HasShadow="True"  BackgroundColor="White">
+                    <Grid ColumnSpacing="10" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <custom:CustomLabel  Grid.Column="0" Grid.Row="0" Text="Tarifa: Moto"  FontAttributes="Bold"  Margin="0,0,0,0" VerticalOptions="Center" FontSize="18"/>
+
+
+                        <inputLayout:SfTextInputLayout Grid.Column="0" Grid.Row="1"   ContainerType="Outlined" Hint="$ Hora"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Obligatorio *">
+
+                            <custom:CustomEntry x:Name="entryMoto_TarifaHora"   Keyboard="Numeric" Placeholder="Ingrese el monto"    HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout  Grid.Column="1" Grid.Row="1"    ContainerType="Outlined" Hint="$ Día "   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Opcional *">
+
+                            <custom:CustomEntry x:Name="entryMoto_TarifaDia"   Keyboard="Numeric"  Placeholder="Ingrese el monto"   HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <inputLayout:SfTextInputLayout Grid.Column="0" Grid.Row="2"   ContainerType="Outlined" Hint="$ Semana"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Obligatorio *">
+
+                            <custom:CustomEntry  x:Name="entryMoto_TarifaSemana"  Keyboard="Numeric" Placeholder="Ingrese el monto"    HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout  Grid.Column="1" Grid.Row="2"  ContainerType="Outlined" Hint="$ Mes"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Opcional *">
+
+                            <custom:CustomEntry x:Name="entryMoto_TarifaMes"   Keyboard="Numeric"  Placeholder="Ingrese el monto"   HorizontalOptions="FillAndExpand"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                    </Grid>
+
+                </Frame>
+
+
+                <!--<Frame  CornerRadius="3" Padding="10,10,10,10" HasShadow="True"  BackgroundColor="White">
+                    <StackLayout>
+                        <custom:CustomLabel Text="Seleccione un vehículo para gestionar sus tarifas:" MaxLines="4" LineBreakMode="TailTruncation" FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <ImageButton x:Name="btnAutoTarifa" Clicked="btnAutoTarifa_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="40" CornerRadius="3" BackgroundColor="Transparent"
+                                             Margin="0,10,0,20" Source="auto.png"
+                                 BorderColor="#2968C8" BorderWidth="1.5"/>
+                            <ImageButton x:Name="btnCamionetaTarifa" Clicked="btnCamionetaTarifa_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="40" CornerRadius="3"  BackgroundColor="Transparent"
+                                             Margin="0,10,0,20" Source="camioneta.png"
+                                 BorderColor="#2968C8" BorderWidth="1.5"/>
+                            <ImageButton x:Name="btnMotoTarifa" Clicked="btnMotoTarifa_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" HeightRequest="40" CornerRadius="3"  BackgroundColor="Transparent"
+                                             Margin="0,10,0,20" Source="moto.png" Padding="5"
+                                 BorderColor="#2968C8" BorderWidth="1.5"/>
+
+                        </StackLayout>
+
+
+
+                    </StackLayout>
+                </Frame>-->
+
+                <Frame  CornerRadius="3" Padding="10,10,10,0" HasShadow="True"  BackgroundColor="White">
+                    <StackLayout>
+                        <custom:CustomLabel Text="Indique el monto de la reserva:"  FontAttributes="Bold" FontSize="16" TextColor="Black"/>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="peso.png" HeightRequest="25" WidthRequest="25" Margin="0,0,0,37" VerticalOptions="Center"/>
+
+
+                            <inputLayout:SfTextInputLayout FocusedColor="#2968C8"   ContainerType="Outlined" Hint="Monto"   BackgroundColor="Transparent" ContainerBackgroundColor="Transparent" 
+                                                         HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  HelperText="Opcional *">
+
+                                <custom:CustomEntry x:Name="entryMontoReserva"   Keyboard="Numeric"     HorizontalOptions="FillAndExpand"/>
+
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+
+
+                <syncfusion:SfButton x:Name="btnGuardar" Clicked="btnGuardar_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
+                                     HeightRequest="40" CornerRadius="3"  Margin="0,10,0,20" BackgroundColor="#17202A"
+                                     BorderWidth="1.5" TextColor="White">
+
+                    <syncfusion:SfButton.Content>
+                        <AbsoluteLayout  HorizontalOptions="FillAndExpand">
+                            <ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0.5" x:Name="activityIndicadorBtnGuardar" IsVisible="True" HorizontalOptions="Start" Color="White" WidthRequest="25" VerticalOptions="Center"/>
+                            <Label Text="Guardar cambios" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5" FontSize="16" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                        </AbsoluteLayout>
+                    </syncfusion:SfButton.Content>
+                </syncfusion:SfButton>
+
+
+
+
+
+            </StackLayout>
+        </ScrollView>
+
+    </AbsoluteLayout>
+
+</ContentPage>

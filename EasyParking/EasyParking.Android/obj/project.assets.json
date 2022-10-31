@@ -1754,6 +1754,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "EasyParking.Model": "1.0.0",
           "Newtonsoft.Json": "13.0.1",
           "Rg.Plugins.Popup": "2.1.0",
           "ServiceWebApi": "1.0.0",
@@ -1776,21 +1777,21 @@
           "bin/placeholder/EasyParking.dll": {}
         }
       },
-      "Model/1.0.2": {
+      "EasyParking.Model/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "compile": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParking.Model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParking.Model.dll": {}
         }
       },
       "ServiceWebApi/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Model": "1.0.2",
+          "EasyParking.Model": "1.0.0",
           "Newtonsoft.Json": "13.0.1"
         },
         "compile": {
@@ -3887,10 +3888,10 @@
       "path": "../EasyParking/EasyParking.csproj",
       "msbuildProject": "../EasyParking/EasyParking.csproj"
     },
-    "Model/1.0.2": {
+    "EasyParking.Model/1.0.0": {
       "type": "project",
-      "path": "../../../EasyParkingAPI/Model/Model.csproj",
-      "msbuildProject": "../../../EasyParkingAPI/Model/Model.csproj"
+      "path": "../../Model/Model.csproj",
+      "msbuildProject": "../../Model/Model.csproj"
     },
     "ServiceWebApi/1.0.0": {
       "type": "project",

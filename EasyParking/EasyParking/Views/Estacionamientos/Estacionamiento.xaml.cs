@@ -4,10 +4,12 @@ using Model;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
+using ServiceWebApi;
 using ServiceWebApi.DTO;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -20,95 +22,34 @@ namespace EasyParking.Views.Estacionamientos
     {
         List<byte[]> BytesLista = new List<byte[]>();
         byte[] ImagenArray = null;
-
-        ServiceWebApi.DTO.EstacionamientoDTO estacionamiento = new ServiceWebApi.DTO.EstacionamientoDTO();
-
+        EstacionamientoServiceWebApi estacionamientoServiceWebApi;
         Stream STREAM;
         List<ImageSource> ImageSourceLista = new List<ImageSource>();
+        Model.Estacionamiento _estacionamiento = new Model.Estacionamiento();
+
+        List<RangoH> ListaDeHorariosLunes = new List<RangoH>();
+        List<RangoH> ListaDeHorariosMartes = new List<RangoH>();
+        List<RangoH> ListaDeHorariosMiercoles= new List<RangoH>();
+        List<RangoH> ListaDeHorariosJueves = new List<RangoH>();
+        List<RangoH> ListaDeHorariosViernes = new List<RangoH>();
+        List<RangoH> ListaDeHorariosSabado = new List<RangoH>();
+        List<RangoH> ListaDeHorariosDomingo = new List<RangoH>();
 
         public ImageSource EstacionamientoImagen { get; set; }
-        public Estacionamiento(EstacionamientoDTO estacionamientoDTO = null)
+        public Estacionamiento()
         {
             InitializeComponent();
+
+            estacionamientoServiceWebApi = new EstacionamientoServiceWebApi(App.WebApiAccess);
+
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    _estacionamiento.Jornadas.Add(new Jornada());
+            //}
+
             frameTarifaAuto.IsVisible = frameTarifaCamioneta.IsVisible = frameTarifaMoto.IsVisible = false;
             entryCantidadAuto.IsEnabled = entryCantidadCamioneta.IsEnabled = entryCantidadMoto.IsEnabled = false;
-
-            if (estacionamientoDTO == null) // es para agregar un nuevo estacionamient
-            {
-                btnAgregarOguardar.Text = "Agregar estacionamiento";
-                btnAgregarOguardar.BackgroundColor = Color.FromHex("#2968C8");
-            }
-            else
-            {
-                navBar.Title = "Editar Estacionamiento";
-                CargarDatosParaEditar(estacionamientoDTO);
-                btnAgregarOguardar.Text = "Guardar cambios";
-                btnAgregarOguardar.BackgroundColor = Color.FromHex("#17202A");
-            }
-
-        }
-
-
-        void CargarDatosParaEditar(EstacionamientoDTO estacionamientoDTO)
-        {
-            Imagen.Source = ImageSource.FromStream(() =>                //
-            {                                                                   // Convierte de array de bytes a source imagen
-                return new MemoryStream(estacionamientoDTO.Imagen);             //
-            });
-
-            comboboxCiudad.Text = estacionamientoDTO.Ciudad; // CIUDAD DEL LUGAR
-
-            entryNombre.Text = estacionamientoDTO.Nombre; // NOMBRE DEL LUGAR
-
-            entryDireccion.Text = estacionamientoDTO.Direccion; // DIRECCION DEL LUGAR
-
-            comboBoxTipoDeLugar.Text = estacionamientoDTO.TipoDeLugar; // TIPO DEL LUGAR
-
-            // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
-
-            //********** TEMA VEHICULOS ACEPTADOS Y SUS TARIFAS **********//
-
-            foreach (var item in estacionamientoDTO.TiposDeVehiculosAdmitidos)
-            {
-                if (item.TipoDeVehiculo.ToLower() == "auto")
-                {
-                    checkBoxAuto.IsChecked = true;
-                    frameTarifaAuto.IsVisible = true;
-                    entryCantidadAuto.Value = item.CapacidadDeAlojamiento;
-                    entryAuto_TarifaHora.Text = item.Tarifa_Hora.ToString();
-                    entryAuto_TarifaDia.Text = item.Tarifa_Dia.ToString();
-                    entryAuto_TarifaSemana.Text = item.Tarifa_Semana.ToString();
-                    entryAuto_TarifaMes.Text = item.Tarifa_Mes.ToString();
-                }
-                if (item.TipoDeVehiculo.ToLower() == "moto")
-                {
-                    checkBoxMoto.IsChecked = true;
-                    frameTarifaMoto.IsVisible = true; 
-                    entryCantidadMoto.Value = item.CapacidadDeAlojamiento;
-                    entryMoto_TarifaHora.Text = item.Tarifa_Hora.ToString();
-                    entryMoto_TarifaDia.Text = item.Tarifa_Dia.ToString();
-                    entryMoto_TarifaSemana.Text = item.Tarifa_Semana.ToString();
-                    entryMoto_TarifaMes.Text = item.Tarifa_Mes.ToString();
-                }
-                if (item.TipoDeVehiculo.ToLower() == "camioneta")
-                {
-                    checkBoxCamioneta.IsChecked = true;
-                    frameTarifaCamioneta.IsVisible = true;
-                    entryCantidadCamioneta.Value = item.CapacidadDeAlojamiento;
-                    entryCamioneta_TarifaHora.Text = item.Tarifa_Hora.ToString();
-                    entryCamioneta_TarifaDia.Text = item.Tarifa_Dia.ToString();
-                    entryCamioneta_TarifaSemana.Text = item.Tarifa_Semana.ToString();
-                    entryCamioneta_TarifaMes.Text = item.Tarifa_Mes.ToString();
-                }
-            }
-
-            entryMontoReserva.Text = estacionamientoDTO.MontoReserva.ToString(); // MONTO DE LA RESERVA
-        }
-
-        public class Horario
-        {
-            public string Periodo { get; set; }
-        }
+        } 
 
         private void ConvertSourceToBytes()
         {
@@ -150,36 +91,6 @@ namespace EasyParking.Views.Estacionamientos
             }
         }
 
-
-
-
-        private void comboBoxTipoDeEstado_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void comboBoxTipoDeLugar_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
-        {
-
-        }
-
-        /// /////// No se usan /// ///////
-        private async void btnAutoTarifa_Clicked(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PushAsync(new PopupTarifa("Auto"));
-        }
-
-        private async void btnCamionetaTarifa_Clicked(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PushAsync(new PopupTarifa("Camioneta"));
-        }
-
-        private async void btnMotoTarifa_Clicked(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PushAsync(new PopupTarifa("Moto"));
-        }
-        /// /////// //////// /// ///////
-
         private void checkBoxAuto_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if ((bool)checkBoxAuto.IsChecked)
@@ -217,23 +128,27 @@ namespace EasyParking.Views.Estacionamientos
             }
         }
 
-
-
-
         private async void btnTomarFoto_Clicked(object sender, EventArgs e)
         {
-            var result = await MediaPicker.CapturePhotoAsync();
-
-            if (result != null)
+            try
             {
-                STREAM = await result.OpenReadAsync();
+                var result = await MediaPicker.CapturePhotoAsync();
 
-                Imagen.Source = ImageSource.FromStream(() => STREAM);
-                Imagen.Rotation = 90;
-                imagenEmpty.IsVisible = labelimagenEmpty.IsVisible = false;
-                ImageSource IM = Imagen.Source;
-                ConvertSourceToBytes4(result, IM);
-                //STREAM.Dispose();
+                if (result != null)
+                {
+                    STREAM = await result.OpenReadAsync();
+
+                    Imagen.Source = ImageSource.FromStream(() => STREAM);
+                    Imagen.Rotation = 90;
+                    imagenEmpty.IsVisible = labelimagenEmpty.IsVisible = false;
+                    ImageSource IM = Imagen.Source;
+                    ConvertSourceToBytes4(result, IM);
+                    //STREAM.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
             }
 
 
@@ -298,42 +213,52 @@ namespace EasyParking.Views.Estacionamientos
 
         private async void btnSeleccionarFoto_Clicked(object sender, EventArgs e)
         {
-
-            if (!CrossMedia.Current.IsPickPhotoSupported)
+            try
             {
-                await DisplayAlert("Seleccion de fotos NO permitida", "Se require permisos para seleccionar fotos.", "Entendido");
-                return;
+
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    await DisplayAlert("Seleccion de fotos NO permitida", "Se require permisos para seleccionar fotos.", "Entendido");
+                    return;
+                }
+
+                var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.MaxWidthHeight,
+
+                });
+
+
+                if (file == null)
+                {
+                    return;
+
+                }
+                else
+                {
+                    imagenEmpty.IsVisible = labelimagenEmpty.IsVisible = false;
+
+                }
+
+                Imagen.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    return stream;
+                });
+
+
+                Imagen.Rotation = 0;
+
+
+                ConvertSourceToBytes4(file, Imagen.Source);
+
+                //file.Dispose();
             }
-
-            var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            catch (Exception ex)
             {
-                PhotoSize = Plugin.Media.Abstractions.PhotoSize.MaxWidthHeight,
-
-            });
-
-
-            if (file == null)
-            {
-                return;
-
+                await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
             }
-            else
-            {
-                imagenEmpty.IsVisible = labelimagenEmpty.IsVisible = false;
-
-            }
-
-            Imagen.Source = ImageSource.FromStream(() =>
-            {
-                var stream = file.GetStream();
-                return stream;
-            });
-
-            ConvertSourceToBytes4(file, Imagen.Source);
-
-            //file.Dispose();
         }
-
 
         private async void btnEditarHorario_Clicked(object sender, EventArgs e)
         {
@@ -348,116 +273,232 @@ namespace EasyParking.Views.Estacionamientos
                 List<string> respuesta = args; // lista de los horarios en string
                 List<RangoH> ListaDeHorarios = args2; // lista de los horarios en objeto RangoH
 
-                //if (respuesta.Count != 0)
-                //{
-                //    switch (dia)
-                //    {
-                //        case Model.Enums.Dia.LUNES:
-                //            estacionamiento.Jornadas[0].Horarios = ListaDeHorarios;
-                //            estacionamiento.Jornadas[0].DiaDeLaSemana = dia;
-                //            lwHorariosLunes.ItemsSource = respuesta;
-                //            break;
-                //        case Model.Enums.Dia.MARTES:
-                //            estacionamiento.Jornadas[1].Horarios = ListaDeHorarios;
-                //            estacionamiento.Jornadas[1].DiaDeLaSemana = dia;
-                //            lwHorariosMartes.ItemsSource = respuesta;
-                //            break;
-                //        case Model.Enums.Dia.MIERCOLES:
-                //            estacionamiento.Jornadas[2].Horarios = ListaDeHorarios;
-                //            estacionamiento.Jornadas[2].DiaDeLaSemana = dia;
-                //            lwHorariosMiercoles.ItemsSource = respuesta;
-                //            break;
-                //        case Model.Enums.Dia.JUEVES:
-                //            estacionamiento.Jornadas[3].Horarios = ListaDeHorarios;
-                //            estacionamiento.Jornadas[3].DiaDeLaSemana = dia;
-                //            lwHorariosJueves.ItemsSource = respuesta;
-                //            break;
-                //        case Model.Enums.Dia.VIERNES:
-                //            estacionamiento.Jornadas[4].Horarios = ListaDeHorarios;
-                //            estacionamiento.Jornadas[4].DiaDeLaSemana = dia;
-                //            lwHorariosViernes.ItemsSource = respuesta;
-                //            break;
-                //        case Model.Enums.Dia.SABADO:
-                //            estacionamiento.Jornadas[5].Horarios = ListaDeHorarios;
-                //            estacionamiento.Jornadas[5].DiaDeLaSemana = dia;
-                //            lwHorariosSabado.ItemsSource = respuesta;
-                //            break;
-                //        case Model.Enums.Dia.DOMINGO:
-                //            estacionamiento.Jornadas[6].Horarios = ListaDeHorarios;
-                //            estacionamiento.Jornadas[6].DiaDeLaSemana = dia;
-                //            lwHorariosDomingo.ItemsSource = respuesta;
-                //            break;
-                //    }
+                if (respuesta.Count != 0)
+                {
+                    switch (dia)
+                    {
+                        case Model.Enums.Dia.LUNES:
+                            //_estacionamiento.Jornadas[0].Horarios = ListaDeHorarios;
+                            //_estacionamiento.Jornadas[0].DiaDeLaSemana = dia;
+                            lwHorariosLunes.ItemsSource = ListaDeHorariosLunes =  ListaDeHorarios;
+                            break;
+                        case Model.Enums.Dia.MARTES:
+                           // _estacionamiento.Jornadas[1].Horarios = ListaDeHorarios;
+                            //_estacionamiento.Jornadas[1].DiaDeLaSemana = dia;
+                            lwHorariosMartes.ItemsSource = ListaDeHorariosMartes = ListaDeHorarios;
+                            break;
+                        case Model.Enums.Dia.MIERCOLES:
+                            //_estacionamiento.Jornadas[2].Horarios = ListaDeHorarios;
+                            //_estacionamiento.Jornadas[2].DiaDeLaSemana = dia;
+                            lwHorariosMiercoles.ItemsSource = ListaDeHorariosMiercoles = ListaDeHorarios;
+                            break;
+                        case Model.Enums.Dia.JUEVES:
+                            //_estacionamiento.Jornadas[3].Horarios = ListaDeHorarios;
+                            //_estacionamiento.Jornadas[3].DiaDeLaSemana = dia;
+                            lwHorariosJueves.ItemsSource = ListaDeHorariosJueves = ListaDeHorarios;
+                            break;
+                        case Model.Enums.Dia.VIERNES:
+                            //_estacionamiento.Jornadas[4].Horarios = ListaDeHorarios;
+                            //_estacionamiento.Jornadas[4].DiaDeLaSemana = dia;
+                            lwHorariosViernes.ItemsSource = ListaDeHorariosViernes = ListaDeHorarios;
+                            break;
+                        case Model.Enums.Dia.SABADO:
+                            //_estacionamiento.Jornadas[5].Horarios = ListaDeHorarios;
+                            //_estacionamiento.Jornadas[5].DiaDeLaSemana = dia;
+                            lwHorariosSabado.ItemsSource = ListaDeHorariosSabado = ListaDeHorarios;
+                            break;
+                        case Model.Enums.Dia.DOMINGO:
+                           // _estacionamiento.Jornadas[6].Horarios = ListaDeHorarios;
+                           // _estacionamiento.Jornadas[6].DiaDeLaSemana = dia;
+                            lwHorariosDomingo.ItemsSource = ListaDeHorariosDomingo = ListaDeHorarios;
+                            break;
+                    }
 
-                //}
+                }
             };
         }
 
-        private async void btnAgregarOguardar_Clicked(object sender, EventArgs e)
+
+        private async void btnAgregar_Clicked(object sender, EventArgs e)
         {
-            estacionamiento.Imagen = ImagenArray; // IMAGEN DEL LUGAR
-
-            estacionamiento.Ciudad = comboboxCiudad.Text; // CIUDAD DEL LUGAR
-
-            estacionamiento.Nombre = entryNombre.Text; // NOMBRE DEL LUGAR
-
-            estacionamiento.Direccion = entryDireccion.Text; // DIRECCION DEL LUGAR
-
-            estacionamiento.TipoDeLugar = comboBoxTipoDeLugar.Text; // TIPO DEL LUGAR
-
-            // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
-
-            //********** TEMA VEHICULOS ACEPTADOS Y SUS TARIFAS **********//
-
-            if ((bool)checkBoxAuto.IsChecked && Convert.ToInt32(entryCantidadAuto.Value) != 0)  // AUTO DESDE ACA
+            try
             {
-                Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
-                dataVehiculo.TipoDeVehiculo = "Auto";
-                dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadAuto.Value);
-                dataVehiculo.Tarifa_Hora = Convert.ToInt32(entryAuto_TarifaHora.Text);
-                dataVehiculo.Tarifa_Dia = Convert.ToInt32(entryAuto_TarifaDia.Text);
-                dataVehiculo.Tarifa_Semana = Convert.ToInt32(entryAuto_TarifaSemana.Text);
-                dataVehiculo.Tarifa_Mes = Convert.ToInt32(entryAuto_TarifaMes.Text);
+                activityIndicadorBtnAgregar.IsEnabled = false;
+                activityIndicadorBtnAgregar.IsVisible = activityIndicadorBtnAgregar.IsRunning = true;
 
-                // estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
+                if (ListaDeHorariosLunes.Any())
+                {
+                    Jornada jornada = new Jornada();
+                    jornada.Horarios = ListaDeHorariosLunes;
+                    jornada.DiaDeLaSemana = Model.Enums.Dia.LUNES;
+                    _estacionamiento.Jornadas.Add(jornada);
+                }
+
+                if (ListaDeHorariosMartes.Any())
+                {
+                    Jornada jornada = new Jornada();
+                    jornada.Horarios = ListaDeHorariosMartes;
+                    jornada.DiaDeLaSemana = Model.Enums.Dia.MARTES;
+                    _estacionamiento.Jornadas.Add(jornada);
+                }
+
+                if (ListaDeHorariosMiercoles.Any())
+                {
+                    Jornada jornada = new Jornada();
+                    jornada.Horarios = ListaDeHorariosMiercoles;
+                    jornada.DiaDeLaSemana = Model.Enums.Dia.MIERCOLES;
+                    _estacionamiento.Jornadas.Add(jornada);
+                }
+
+                if (ListaDeHorariosJueves.Any())
+                {
+                    Jornada jornada = new Jornada();
+                    jornada.Horarios = ListaDeHorariosJueves;
+                    jornada.DiaDeLaSemana = Model.Enums.Dia.JUEVES;
+                    _estacionamiento.Jornadas.Add(jornada);
+                }
+
+                if (ListaDeHorariosViernes.Any())
+                {
+                    Jornada jornada = new Jornada();
+                    jornada.Horarios = ListaDeHorariosViernes;
+                    jornada.DiaDeLaSemana = Model.Enums.Dia.VIERNES;
+                    _estacionamiento.Jornadas.Add(jornada);
+                }
+
+                if (ListaDeHorariosSabado.Any())
+                {
+                    Jornada jornada = new Jornada();
+                    jornada.Horarios = ListaDeHorariosSabado;
+                    jornada.DiaDeLaSemana = Model.Enums.Dia.SABADO;
+                    _estacionamiento.Jornadas.Add(jornada);
+                }
+
+                if (ListaDeHorariosDomingo.Any())
+                {
+                    Jornada jornada = new Jornada();
+                    jornada.Horarios = ListaDeHorariosDomingo;
+                    jornada.DiaDeLaSemana = Model.Enums.Dia.DOMINGO;
+                    _estacionamiento.Jornadas.Add(jornada);
+                }
+
+                if (ImagenArray != null)
+                {
+                    _estacionamiento.Imagen = ImagenArray; // IMAGEN DEL LUGAR 
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Deber ingresar alguna imagen o foto del lugar", "Entendido");
+                    return;
+                }
+
+                _estacionamiento.Ciudad = comboboxCiudad.Text; // CIUDAD DEL LUGAR
+
+                if (!string.IsNullOrEmpty(entryNombre.Text))
+                {
+                    _estacionamiento.Nombre = entryNombre.Text; // NOMBRE DEL LUGAR
+
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Deber ingresar el nombre del lugar", "Entendido");
+                    return;
+                }
+
+                if (true)
+                {
+                    _estacionamiento.Direccion = entryDireccion.Text; // DIRECCION DEL LUGAR
+
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Deber ingresar la direccion del lugar", "Entendido");
+                    return;
+                }
+                _estacionamiento.TipoDeLugar = comboBoxTipoDeLugar.Text; // TIPO DEL LUGAR
+
+                // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
+
+                if ((bool)checkBoxAuto.IsChecked && Convert.ToInt32(entryCantidadAuto.Value) != 0)  // AUTO DESDE ACA
+                {
+                    Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
+                    dataVehiculo.TipoDeVehiculo = "Auto";
+                    dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadAuto.Value);
+                    dataVehiculo.Tarifa_Hora = Convert.ToDecimal(entryAuto_TarifaHora.Text);
+                    dataVehiculo.Tarifa_Dia = Convert.ToDecimal(entryAuto_TarifaDia.Text);
+                    dataVehiculo.Tarifa_Semana = Convert.ToDecimal(entryAuto_TarifaSemana.Text);
+                    dataVehiculo.Tarifa_Mes = Convert.ToDecimal(entryAuto_TarifaMes.Text);
+
+                    _estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
+                }
+                else if ((bool)checkBoxAuto.IsChecked && Convert.ToInt32(entryCantidadAuto.Value) == 0)
+                {
+                    await DisplayAlert("Error", "Ha seleccionado Auto como vehiculo a alojar, debe indicar la cantidad de vehiculos de ese tipo que admite en el lugar", "Entendido");
+                    return;
+                }
+
+                if ((bool)checkBoxCamioneta.IsChecked && Convert.ToInt32(entryCantidadCamioneta.Value) != 0)  // CAMIONETA DESDE ACA
+                {
+                    Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
+                    dataVehiculo.TipoDeVehiculo = "Camioneta";
+                    dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadCamioneta.Value);
+                    dataVehiculo.Tarifa_Hora = Convert.ToDecimal(entryCamioneta_TarifaHora.Text);
+                    dataVehiculo.Tarifa_Dia = Convert.ToDecimal(entryCamioneta_TarifaDia.Text);
+                    dataVehiculo.Tarifa_Semana = Convert.ToDecimal(entryCamioneta_TarifaSemana.Text);
+                    dataVehiculo.Tarifa_Mes = Convert.ToDecimal(entryCamioneta_TarifaMes.Text);
+
+                    _estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
+                }
+                else if ((bool)checkBoxCamioneta.IsChecked && Convert.ToInt32(entryCantidadCamioneta.Value) == 0)
+                {
+                    await DisplayAlert("Error", "Ha seleccionado Camioneta como vehiculo a alojar, debe indicar la cantidad de vehiculos de ese tipo que admite en el lugar", "Entendido");
+                    return;
+                }
+
+                if ((bool)checkBoxMoto.IsChecked && Convert.ToInt32(entryCantidadMoto.Value) != 0) // MOTO DESDE ACA
+                {
+                    Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
+                    dataVehiculo.TipoDeVehiculo = "Moto";
+                    dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadMoto.Value);
+                    dataVehiculo.Tarifa_Hora = Convert.ToDecimal(entryMoto_TarifaHora.Text);
+                    dataVehiculo.Tarifa_Dia = Convert.ToDecimal(entryMoto_TarifaDia.Text);
+                    dataVehiculo.Tarifa_Semana = Convert.ToDecimal(entryMoto_TarifaSemana.Text);
+                    dataVehiculo.Tarifa_Mes = Convert.ToDecimal(entryMoto_TarifaMes.Text);
+
+                    _estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
+                }
+                else if ((bool)checkBoxMoto.IsChecked && Convert.ToInt32(entryCantidadMoto.Value) == 0)
+                {
+                    await DisplayAlert("Error", "Ha seleccionado Moto como vehiculo a alojar, debe indicar la cantidad de vehiculos de ese tipo que admite en el lugar", "Entendido");
+                    return;
+                }
+
+                if ((bool)checkBoxMoto.IsChecked == false && (bool)checkBoxAuto.IsChecked == false && (bool)checkBoxCamioneta.IsChecked == false)
+                {
+                    await DisplayAlert("Error", "Debe seleccionar al menos 1 tipo de vehiculo que admite en el lugar y sus respectivas tarifas y capacidad de dicho vehiculo", "Entendido");
+                    return;
+                }
+
+                //********************//
+
+                _estacionamiento.MontoReserva = Convert.ToDecimal(entryMontoReserva.Text); // MONTO DE LA RESERVA
+
+                var xxx = _estacionamiento;
+
+                await estacionamientoServiceWebApi.Add(_estacionamiento);
+                Tools.Tools.Messages("se agrego el estacionamiento");
+                await Navigation.PopAsync();
+
             }
-
-
-            if ((bool)checkBoxCamioneta.IsChecked && Convert.ToInt32(entryCantidadCamioneta.Value) != 0)  // CAMIONETA DESDE ACA
+            catch (Exception ex)
             {
-                Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
-                dataVehiculo.TipoDeVehiculo = "Camioneta";
-                dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadCamioneta.Value);
-                dataVehiculo.Tarifa_Hora = Convert.ToInt32(entryCamioneta_TarifaHora.Text);
-                dataVehiculo.Tarifa_Dia = Convert.ToInt32(entryCamioneta_TarifaDia.Text);
-                dataVehiculo.Tarifa_Semana = Convert.ToInt32(entryCamioneta_TarifaSemana.Text);
-                dataVehiculo.Tarifa_Mes = Convert.ToInt32(entryCamioneta_TarifaMes.Text);
-
-                //estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
+                await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
             }
-
-
-            if ((bool)checkBoxMoto.IsChecked && Convert.ToInt32(entryCantidadMoto.Value) != 0) // MOTO DESDE ACA
+            finally
             {
-                Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
-                dataVehiculo.TipoDeVehiculo = "Moto";
-                dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadMoto.Value);
-                dataVehiculo.Tarifa_Hora = Convert.ToInt32(entryMoto_TarifaHora.Text);
-                dataVehiculo.Tarifa_Dia = Convert.ToInt32(entryMoto_TarifaDia.Text);
-                dataVehiculo.Tarifa_Semana = Convert.ToInt32(entryMoto_TarifaSemana.Text);
-                dataVehiculo.Tarifa_Mes = Convert.ToInt32(entryMoto_TarifaMes.Text);
-
-                //estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
+                activityIndicadorBtnAgregar.IsEnabled = true;
+                activityIndicadorBtnAgregar.IsVisible = activityIndicadorBtnAgregar.IsRunning = false;
             }
-
-            //********************//
-
-
-            estacionamiento.MontoReserva = Convert.ToDecimal(entryMontoReserva.Text); // MONTO DE LA RESERVA
-
-            var xxx = estacionamiento;
-
-            App.Estacionamientos.Add(estacionamiento);
         }
     }
 }

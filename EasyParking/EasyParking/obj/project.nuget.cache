@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ovhI29iMc/PURIuzHwtPsuYGBbyhGDiZ6x3tNZFbvxRw+5FxJQKbiQibrw+iivIucr9r39/oqAbvP0Q6ToseLw==",
+  "dgSpecHash": "Mc1y4x+edWUlCpBca/ZqtrdS6gTk1TmHmyM7duBZQjsG9tKQLeUVwMIgGLQRzQ9DPGQprzXU/8z5MdfAK2lYJw==",
   "success": true,
   "projectFilePath": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\EasyParking\\EasyParking\\EasyParking.csproj",
   "expectedPackageFiles": [
@@ -21,7 +21,8 @@
     "C:\\Users\\LUCIANO\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\xam.plugin.media\\5.0.1\\xam.plugin.media.5.0.1.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.essentials\\1.7.3\\xamarin.essentials.1.7.3.nupkg.sha512",
-    "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.forms\\5.0.0.2515\\xamarin.forms.5.0.0.2515.nupkg.sha512"
+    "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.forms\\5.0.0.2515\\xamarin.forms.5.0.0.2515.nupkg.sha512",
+    "C:\\Users\\LUCIANO\\.nuget\\packages\\easyparking.model\\1.0.0\\easyparking.model.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -219,21 +219,21 @@
           "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
-      "Model/1.0.2": {
+      "EasyParking.Model/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "compile": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParking.Model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/EasyParking.Model.dll": {}
         }
       },
       "ServiceWebApi/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
-          "Model": "1.0.2",
+          "EasyParking.Model": "1.0.0",
           "Newtonsoft.Json": "13.0.1"
         },
         "compile": {
@@ -1029,10 +1029,10 @@
         "xamarin.forms.nuspec"
       ]
     },
-    "Model/1.0.2": {
+    "EasyParking.Model/1.0.0": {
       "type": "project",
-      "path": "../../../EasyParkingAPI/Model/Model.csproj",
-      "msbuildProject": "../../../EasyParkingAPI/Model/Model.csproj"
+      "path": "../../Model/Model.csproj",
+      "msbuildProject": "../../Model/Model.csproj"
     },
     "ServiceWebApi/1.0.0": {
       "type": "project",
@@ -1042,6 +1042,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
+      "EasyParking.Model >= 1.0.0",
       "Newtonsoft.Json >= 13.0.1",
       "Rg.Plugins.Popup >= 2.1.0",
       "ServiceWebApi >= 1.0.0",
@@ -1095,6 +1096,9 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
+            "C:\\ProyectosGitHubUTN\\EasyParkingApp\\Model\\Model.csproj": {
+              "projectPath": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\Model\\Model.csproj"
+            },
             "C:\\ProyectosGitHubUTN\\EasyParkingApp\\ServiceWebApi\\ServiceWebApi.csproj": {
               "projectPath": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\ServiceWebApi\\ServiceWebApi.csproj"
             }

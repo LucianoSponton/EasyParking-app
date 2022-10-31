@@ -7,8 +7,15 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:views="clr-namespace:EasyParking.Components"
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
-             xmlns:syncfusion1="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:syncfusion1="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:local="clr-namespace:EasyParking.Converter"
              x:Class="EasyParking.Views.Estacionamientos.Estacionamiento">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ZeroToDoubleZero x:Key="ZeroToDoubleZero" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <NavigationPage.TitleView>
         <views:NavBar x:Name="navBar" Title="Nuevo Estacionamiento"   IsVisibleBoxSearch="False" IsVisibleFavoritos="False" Margin="0,0,0,0"  />
@@ -18,8 +25,8 @@
         <ScrollView  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
             <StackLayout Padding="10,10,10,10" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                <AbsoluteLayout HorizontalOptions="FillAndExpand"  HeightRequest="250">
-                    <ImageButton x:Name="Imagen" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFit" CornerRadius="3" BorderColor="Gray" BorderWidth="1.5" BackgroundColor="Transparent"/>
+                <AbsoluteLayout WidthRequest="250"  HeightRequest="250">
+                    <Image x:Name="Imagen" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFit" BackgroundColor="Transparent"/>
 
                     <StackLayout AbsoluteLayout.LayoutBounds="0.5,0.5" AbsoluteLayout.LayoutFlags="PositionProportional">
                         <Image x:Name="imagenEmpty" Source="EmptyImage.png" HeightRequest="50" WidthRequest="50"/>
@@ -28,7 +35,7 @@
 
                 </AbsoluteLayout>
 
-                <Grid ColumnSpacing="10" RowSpacing="10">
+                <Grid ColumnSpacing="10" RowSpacing="10" Margin="0,40,0,20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
@@ -39,54 +46,57 @@
 
                     <syncfusion:SfButton Grid.Column="0" Grid.Row="0" x:Name="btnTomarFoto" Clicked="btnTomarFoto_Clicked" Text="Tomar foto" HorizontalOptions="FillAndExpand" HeightRequest="40"  
                                          Padding="0" FontSize="14"
-                                         BorderColor="#2968C8" BorderWidth="1.5" TextColor="#2968C8" BackgroundColor="Transparent" 
+                                         BorderColor="Gray" BorderWidth="1.5" TextColor="#17202A" BackgroundColor="Transparent" 
                                          VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
                                          CornerRadius="3" ShowIcon="True" ImageAlignment="Right" ImageSource="camera.png"   />
 
 
                     <syncfusion:SfButton Grid.Column="1" Grid.Row="0" x:Name="btnSeleccionarFoto" Clicked="btnSeleccionarFoto_Clicked" Text="Seleccionar foto" HorizontalOptions="FillAndExpand" HeightRequest="40" 
                                          Padding="0"
-                                         FontSize="14" BorderColor="#2968C8" BorderWidth="1.5" TextColor="#2968C8" BackgroundColor="Transparent"  
+                                         FontSize="14" BorderColor="Gray" BorderWidth="1.5" TextColor="#17202A" BackgroundColor="Transparent"  
                                          VerticalTextAlignment="Center"  HorizontalTextAlignment="Center"
                                          CornerRadius="3" ShowIcon="True" ImageAlignment="Right" ImageSource="upload.png"   />
 
 
                 </Grid>
 
-                <combobox:SfComboBox Margin="5,0,5,0" TextSize="16" Watermark="Ciudad" VerticalOptions="Center" EnableAutoSize="True"  
+                <inputLayout:SfTextInputLayout  FocusedColor="#2968C8"  ContainerType="Outlined" Hint="Seleccionela ciudad" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
+                    <combobox:SfComboBox Margin="5,0,5,10" TextSize="16" Watermark="Ciudad" VerticalOptions="Center" EnableAutoSize="True"  
                                              HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30"
                                              MaximumDropDownHeight="400" IsEditableMode="false" x:Name="comboboxCiudad" >
-                    <combobox:SfComboBox.ComboBoxSource>
-                        <ListCollection:List x:TypeArguments="x:String">
-                            <x:String>La Plata</x:String>
-                            <x:String>San Fernando del Valle de Catamarca</x:String>
-                            <x:String>Resistencia</x:String>
-                            <x:String>Rawson</x:String>
-                            <x:String>Córdoba</x:String>
-                            <x:String>Corrientes</x:String>
-                            <x:String>Paraná</x:String>
-                            <x:String>Formosa</x:String>
-                            <x:String>San Salvador de Jujuy</x:String>
-                            <x:String>Santa Rosa</x:String>
-                            <x:String>La Rioja</x:String>
-                            <x:String>Mendoza</x:String>
-                            <x:String>Posadas</x:String>
-                            <x:String>Neuquén</x:String>
-                            <x:String>Viedma</x:String>
-                            <x:String>Salta</x:String>
-                            <x:String>San Juan</x:String>
-                            <x:String>San Luis</x:String>
-                            <x:String>Río Gallegos</x:String>
-                            <x:String>Santa Fe</x:String>
-                            <x:String>Santiago del Estero</x:String>
-                            <x:String>Ushuaia</x:String>
-                            <x:String>San Miguel de Tucumán</x:String>
-                        </ListCollection:List>
-                    </combobox:SfComboBox.ComboBoxSource>
-                </combobox:SfComboBox>
+                        <combobox:SfComboBox.ComboBoxSource>
+                            <ListCollection:List x:TypeArguments="x:String">
+                                <x:String>La Plata</x:String>
+                                <x:String>San Fernando del Valle de Catamarca</x:String>
+                                <x:String>Resistencia</x:String>
+                                <x:String>Rawson</x:String>
+                                <x:String>Córdoba</x:String>
+                                <x:String>Corrientes</x:String>
+                                <x:String>Paraná</x:String>
+                                <x:String>Formosa</x:String>
+                                <x:String>San Salvador de Jujuy</x:String>
+                                <x:String>Santa Rosa</x:String>
+                                <x:String>La Rioja</x:String>
+                                <x:String>Mendoza</x:String>
+                                <x:String>Posadas</x:String>
+                                <x:String>Neuquén</x:String>
+                                <x:String>Viedma</x:String>
+                                <x:String>Salta</x:String>
+                                <x:String>San Juan</x:String>
+                                <x:String>San Luis</x:String>
+                                <x:String>Río Gallegos</x:String>
+                                <x:String>Santa Fe</x:String>
+                                <x:String>Santiago del Estero</x:String>
+                                <x:String>Ushuaia</x:String>
+                                <x:String>San Miguel de Tucumán</x:String>
+                            </ListCollection:List>
+                        </combobox:SfComboBox.ComboBoxSource>
+                    </combobox:SfComboBox>
+                </inputLayout:SfTextInputLayout>
 
 
-                <inputLayout:SfTextInputLayout FocusedColor="#2968C8"   ContainerType="Outlined" Hint="Nombre del lugar" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
+
+                <inputLayout:SfTextInputLayout FocusedColor="#2968C8"  Margin="0,5,0,0"  ContainerType="Outlined" Hint="Nombre del lugar" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
                     <custom:CustomEntry  x:Name="entryNombre"  Keyboard="Default" Placeholder="Ingrese el nombre" ClearButtonVisibility="WhileEditing" HorizontalOptions="FillAndExpand"/>
                 </inputLayout:SfTextInputLayout>
 
@@ -118,7 +128,16 @@
                                     <syncfusion1:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <custom:CustomLabel Text="{Binding ., StringFormat='{0:N}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
                                     </syncfusion1:SfListView.ItemTemplate>
@@ -139,7 +158,16 @@
                                     <syncfusion1:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <custom:CustomLabel Text="{Binding ., StringFormat='{0:N}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
                                     </syncfusion1:SfListView.ItemTemplate>
@@ -160,7 +188,16 @@
                                     <syncfusion1:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <custom:CustomLabel Text="{Binding ., StringFormat='{0:N}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
                                     </syncfusion1:SfListView.ItemTemplate>
@@ -181,7 +218,16 @@
                                     <syncfusion1:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <custom:CustomLabel Text="{Binding ., StringFormat='{0:N}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
                                     </syncfusion1:SfListView.ItemTemplate>
@@ -203,7 +249,16 @@
                                     <syncfusion1:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <custom:CustomLabel Text="{Binding ., StringFormat='{0:N}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
                                     </syncfusion1:SfListView.ItemTemplate>
@@ -224,7 +279,16 @@
                                     <syncfusion1:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <custom:CustomLabel Text="{Binding ., StringFormat='{0:N}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
                                     </syncfusion1:SfListView.ItemTemplate>
@@ -246,7 +310,16 @@
                                     <syncfusion1:SfListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <custom:CustomLabel Text="{Binding ., StringFormat='{0:N}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="3">
+                                                    <custom:CustomLabel Text="{Binding DesdeHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding DesdeMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=" - " TextColor="Black" HorizontalOptions="End"/>
+
+                                                    <custom:CustomLabel Text="{Binding HastaHora, StringFormat='{0:N0}'}" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text=":" TextColor="Black" HorizontalOptions="End"/>
+                                                    <custom:CustomLabel Text="{Binding HastaMinuto, StringFormat='{0:N}', Converter={StaticResource ZeroToDoubleZero}}" TextColor="Black" HorizontalOptions="End"/>
+                                                </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
                                     </syncfusion1:SfListView.ItemTemplate>
@@ -271,8 +344,8 @@
                         <custom:CustomLabel Text="Indique el tipo del lugar:"  FontAttributes="Bold" FontSize="16" TextColor="Black"/>
 
                         <combobox:SfComboBox Margin="5,0,5,0" TextSize="16" Watermark="Tipo" VerticalOptions="Center" EnableAutoSize="True"  
-                                             HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30"
-                                             MaximumDropDownHeight="1000" IsEditableMode="false" x:Name="comboBoxTipoDeLugar" SelectionChanged="comboBoxTipoDeLugar_SelectionChanged" >
+                                             HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30" ShowClearButton="False"
+                                             MaximumDropDownHeight="1000" IsEditableMode="false" x:Name="comboBoxTipoDeLugar"  >
                             <combobox:SfComboBox.ComboBoxSource>
                                 <ListCollection:List x:TypeArguments="x:String">
                                     <x:String>Terreno al aire libre</x:String>
@@ -509,11 +582,18 @@
 
 
 
-                <custom:CustomButton x:Name="btnAgregarOguardar" Clicked="btnAgregarOguardar_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
-                                     HeightRequest="40" CornerRadius="3"  Margin="0,10,0,20"  FontSize="16"
-                                     BorderWidth="1.5" TextColor="White"/>
-                
-                
+                <syncfusion:SfButton x:Name="btnAgregar" Clicked="btnAgregar_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
+                                     HeightRequest="40" CornerRadius="3"  Margin="0,10,0,20" BackgroundColor="#2968C8"
+                                     BorderWidth="1.5" TextColor="White">
+
+                    <syncfusion:SfButton.Content>
+                        <AbsoluteLayout  HorizontalOptions="FillAndExpand">
+                            <ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0.5" x:Name="activityIndicadorBtnAgregar" IsVisible="True" HorizontalOptions="Start" Color="White" WidthRequest="25" VerticalOptions="Center"/>
+                            <Label Text="Agregar estacionamiendo" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5" FontSize="16" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                        </AbsoluteLayout>
+                    </syncfusion:SfButton.Content>
+                </syncfusion:SfButton>
+
 
 
 
