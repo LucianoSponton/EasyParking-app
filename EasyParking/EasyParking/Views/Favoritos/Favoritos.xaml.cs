@@ -1,9 +1,4 @@
-﻿
-using EasyParking.DTO;
-using Model;
-using ServiceWebApi.DTO;
-using System.Collections.Generic;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace EasyParking.Views.Favoritos

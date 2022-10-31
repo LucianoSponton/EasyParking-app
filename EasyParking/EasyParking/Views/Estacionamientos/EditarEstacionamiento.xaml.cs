@@ -1,27 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using EasyParking.Views.Estacionamientos.MisEstacionamientos;
-using EasyParking.Views.PerfilDeNegocio.Tarifas.Tarifa;
+﻿using EasyParking.Views.Estacionamientos.MisEstacionamientos;
 using Model;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using ServiceWebApi;
-using ServiceWebApi.DTO;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Android.Graphics;
 
 namespace EasyParking.Views.Estacionamientos
 {
@@ -477,7 +467,7 @@ namespace EasyParking.Views.Estacionamientos
 
 
 
-               
+
 
                 if ((bool)checkBoxMoto.IsChecked == false && (bool)checkBoxAuto.IsChecked == false && (bool)checkBoxCamioneta.IsChecked == false)
                 {

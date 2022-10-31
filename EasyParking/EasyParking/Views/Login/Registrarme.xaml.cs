@@ -112,7 +112,7 @@ namespace EasyParking.Views.Login
                 userInfo.Telefono = entryTelefono.Text;
                 userInfo.Password = entryContraseña.Text;
                 userInfo.FechaDeNacimiento = new DateTime(datePickerFechaDeNacimiento.Date.Year, datePickerFechaDeNacimiento.Date.Month, datePickerFechaDeNacimiento.Date.Day);
-             
+
                 AccountServiceWebApi accountServiceWebApi = new AccountServiceWebApi(App.WebApiAccess);
 
                 await WebApiAccess.CreateUserAsync(App.cloudData.URLDeAPI, userInfo);

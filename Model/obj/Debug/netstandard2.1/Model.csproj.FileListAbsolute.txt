@@ -1,9 +1,9 @@
+C:\ProyectosGitHubUTN\EasyParkingApp\Model\bin\Debug\netstandard2.1\Model.deps.json
+C:\ProyectosGitHubUTN\EasyParkingApp\Model\bin\Debug\netstandard2.1\Model.dll
+C:\ProyectosGitHubUTN\EasyParkingApp\Model\bin\Debug\netstandard2.1\Model.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.GeneratedMSBuildEditorConfig.editorconfig
 C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.AssemblyInfoInputs.cache
 C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.AssemblyInfo.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.csproj.CoreCompileInputs.cache
-C:\ProyectosGitHubUTN\EasyParkingApp\Model\bin\Debug\netstandard2.1\Model.deps.json
-C:\ProyectosGitHubUTN\EasyParkingApp\Model\bin\Debug\netstandard2.1\Model.dll
-C:\ProyectosGitHubUTN\EasyParkingApp\Model\bin\Debug\netstandard2.1\Model.pdb
 C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.pdb

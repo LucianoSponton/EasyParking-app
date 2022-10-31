@@ -20,11 +20,11 @@ namespace EasyParking.Converter
             {
                 return "auto.png";
             }
-            else 
+            else
             {
                 return "camioneta.png";
             }
-          
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

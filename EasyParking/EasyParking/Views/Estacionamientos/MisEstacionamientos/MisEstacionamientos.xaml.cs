@@ -1,11 +1,8 @@
-﻿using EasyParking.DTO;
-using EasyParking.Views.Generales;
+﻿using EasyParking.Views.Generales;
 using Rg.Plugins.Popup.Services;
 using ServiceWebApi;
-using ServiceWebApi.DTO;
 using Syncfusion.XForms.Buttons;
 using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -111,12 +108,12 @@ namespace EasyParking.Views.Estacionamientos.MisEstacionamientos
 
 
                 if (result)
-                {                  
+                {
                     if (detalle.PublicacionPausada) // Si entra aca es porque la publicacion estaba pausada, entonces ahora la activo
                     {
                         await estacionamientoServiceWebApi.SetReanudarPublicacion(detalle.Id);
                         detalle.PublicacionPausada = true;
-                       
+
                     }
                     else  // Si entra aca es porque la publicacion estaba activa, entonces ahora la pauso
                     {

@@ -75,7 +75,7 @@ namespace EasyParking.Views.Inicio
             try
             {
                 var btn = sender as ContentView;
-                var detalle  = btn?.BindingContext as Model.Estacionamiento; 
+                var detalle = btn?.BindingContext as Model.Estacionamiento;
                 var p = new PopupItemImage(detalle.Imagen);
                 await PopupNavigation.Instance.PushAsync(p);
             }

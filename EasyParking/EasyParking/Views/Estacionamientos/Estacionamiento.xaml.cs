@@ -1,11 +1,9 @@
 ﻿using EasyParking.Views.Estacionamientos.MisEstacionamientos;
-using EasyParking.Views.PerfilDeNegocio.Tarifas.Tarifa;
 using Model;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using ServiceWebApi;
-using ServiceWebApi.DTO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +27,7 @@ namespace EasyParking.Views.Estacionamientos
 
         List<RangoH> ListaDeHorariosLunes = new List<RangoH>();
         List<RangoH> ListaDeHorariosMartes = new List<RangoH>();
-        List<RangoH> ListaDeHorariosMiercoles= new List<RangoH>();
+        List<RangoH> ListaDeHorariosMiercoles = new List<RangoH>();
         List<RangoH> ListaDeHorariosJueves = new List<RangoH>();
         List<RangoH> ListaDeHorariosViernes = new List<RangoH>();
         List<RangoH> ListaDeHorariosSabado = new List<RangoH>();
@@ -49,7 +47,7 @@ namespace EasyParking.Views.Estacionamientos
 
             frameTarifaAuto.IsVisible = frameTarifaCamioneta.IsVisible = frameTarifaMoto.IsVisible = false;
             entryCantidadAuto.IsEnabled = entryCantidadCamioneta.IsEnabled = entryCantidadMoto.IsEnabled = false;
-        } 
+        }
 
         private void ConvertSourceToBytes()
         {
@@ -280,10 +278,10 @@ namespace EasyParking.Views.Estacionamientos
                         case Model.Enums.Dia.LUNES:
                             //_estacionamiento.Jornadas[0].Horarios = ListaDeHorarios;
                             //_estacionamiento.Jornadas[0].DiaDeLaSemana = dia;
-                            lwHorariosLunes.ItemsSource = ListaDeHorariosLunes =  ListaDeHorarios;
+                            lwHorariosLunes.ItemsSource = ListaDeHorariosLunes = ListaDeHorarios;
                             break;
                         case Model.Enums.Dia.MARTES:
-                           // _estacionamiento.Jornadas[1].Horarios = ListaDeHorarios;
+                            // _estacionamiento.Jornadas[1].Horarios = ListaDeHorarios;
                             //_estacionamiento.Jornadas[1].DiaDeLaSemana = dia;
                             lwHorariosMartes.ItemsSource = ListaDeHorariosMartes = ListaDeHorarios;
                             break;
@@ -308,8 +306,8 @@ namespace EasyParking.Views.Estacionamientos
                             lwHorariosSabado.ItemsSource = ListaDeHorariosSabado = ListaDeHorarios;
                             break;
                         case Model.Enums.Dia.DOMINGO:
-                           // _estacionamiento.Jornadas[6].Horarios = ListaDeHorarios;
-                           // _estacionamiento.Jornadas[6].DiaDeLaSemana = dia;
+                            // _estacionamiento.Jornadas[6].Horarios = ListaDeHorarios;
+                            // _estacionamiento.Jornadas[6].DiaDeLaSemana = dia;
                             lwHorariosDomingo.ItemsSource = ListaDeHorariosDomingo = ListaDeHorarios;
                             break;
                     }
