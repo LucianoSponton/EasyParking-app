@@ -93,7 +93,7 @@ namespace EasyParking.Views.Estacionamientos
                         lwHorariosMiercoles.ItemsSource = item.Horarios;
                         break;
                     case Model.Enums.Dia.JUEVES:
-                        lwHorariosJueves.ItemsSource = item.Horarios;
+                        lwHorariosJueves.ItemsSource = item.Horarios; 
                         break;
                     case Model.Enums.Dia.VIERNES:
                         lwHorariosViernes.ItemsSource = item.Horarios;
@@ -391,7 +391,6 @@ namespace EasyParking.Views.Estacionamientos
                 if (!string.IsNullOrEmpty(entryNombre.Text))
                 {
                     _estacionamiento.Nombre = entryNombre.Text; // NOMBRE DEL LUGAR
-
                 }
                 else
                 {
@@ -399,7 +398,7 @@ namespace EasyParking.Views.Estacionamientos
                     return;
                 }
 
-                if (true)
+                if (!string.IsNullOrEmpty(entryDireccion.Text))
                 {
                     _estacionamiento.Direccion = entryDireccion.Text; // DIRECCION DEL LUGAR
 
@@ -409,6 +408,7 @@ namespace EasyParking.Views.Estacionamientos
                     await DisplayAlert("Error", "Deber ingresar la direccion del lugar", "Entendido");
                     return;
                 }
+
                 _estacionamiento.TipoDeLugar = comboBoxTipoDeLugar.Text; // TIPO DEL LUGAR
 
                 // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
@@ -464,10 +464,6 @@ namespace EasyParking.Views.Estacionamientos
                         return;
                     }
                 }
-
-
-
-
 
                 if ((bool)checkBoxMoto.IsChecked == false && (bool)checkBoxAuto.IsChecked == false && (bool)checkBoxCamioneta.IsChecked == false)
                 {
