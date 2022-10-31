@@ -1,24 +1,40 @@
-name: CD 02
-on: 
+name: .NET
+on:
   push:
-    branches:
-    - dev
     tags:
     - "v[0-9]+.[0-9]+.[0-9]+"
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    strategy:
+     matrix:
+      dotnet: ['3.1.x']
+    env:
+     OWNER_REPOSITORY: LucianoSponton
+    
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+
+    - name: Display dotnet version
+      run: dotnet --version
+    
+    - name: Restore dependencies
+      run: dotnet restore Model/Model.csproj
+    
+
     - name: Set VERSION variable from tag
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+    
     - name: Build
-      run: dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}
-    - name: Pack
-      run: dotnet pack Model/Model.csproj --configuration Release /p:Version=${VERSION} --no-build --output .
+      run: | 
+        dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
+      
     - name: Push
-      run: dotnet nuget push NuGet.Workflow.${VERSION}.nupkg --source https://nuget.pkg.github.com/LucianoSponton/index.json --api-key ${TOKEN_GITHUB }
+      run: dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg --source https://nuget.pkg.github.com/${{env.OWNER_REPOSITORY}}/index.json --api-key ${TOKEN_GITHUB }
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB  }}
