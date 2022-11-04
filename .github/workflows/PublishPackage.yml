@@ -29,8 +29,9 @@ jobs:
         github_token: ${{ secrets.TOKEN_GITHUB }}
 
     - name: Next Release Number
-      run: echo ${{ steps.versioning.outputs.version }}
-    
+      ##run: echo ${{ steps.versioning.outputs.version }}
+      run: echo "VERSION=${ steps.versioning.outputs.version }"
+
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
 
@@ -43,8 +44,8 @@ jobs:
         dotnet-version: 3.1.x
         
    # Obtengo la Version del Tag con la cual generar el paquete Nuget
-    - name: Set VERSION variable from tag
-      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+   # - name: Set VERSION variable from tag
+    #  run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
  
   # Muestro cual es la version del tag que se va usar
     - name: Show number of tag VERSION
