@@ -1,11 +1,10 @@
-name: CI
+name: Build & Publish Release Nuget Package Model.csproj
 
 on: 
   push:
     tags:
     - "v[0-9]+.[0-9]+.[0-9]+"
 
-    
 jobs:
   build:
 
@@ -30,20 +29,16 @@ jobs:
       with:
         dotnet-version: 3.1.x
         
+   # Obtengo la Version del Tag con la cual generar el paquete Nuget
     - name: Set VERSION variable from tag
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
  
-    #- name: Set env
-    #  run: echo "VERSION=1.0.2" >> $GITHUB_ENV
-    - name: Test
+  # Muestro cual es la version del tag que se va usar
+    - name: Show number of tag VERSION
       run: |
                 echo $VERSION
                 echo ${{ env.VERSION }}
-          
-          
-    #- name: Set VERSION variable from tag
-     # run: echo "VERSION=1.0.0" >> $GITHUB_ENV
-
+     
     # Compilo el proyecto y establesco version de la dll
     - name: Build
       run: | 
@@ -53,7 +48,7 @@ jobs:
     - name: Auth
       run: dotnet nuget add source --username LucianoSponton --password ${{ secrets.TOKEN_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/LucianoSponton/index.json"
   
-  # Genero el paquete en modo Release
+  # Genero el paquete nuget en modo Release
     - name: Pack
       run: dotnet pack Model/Model.csproj --configuration Release
       
