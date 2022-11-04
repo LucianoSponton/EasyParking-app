@@ -1,4 +1,4 @@
-name: Build & Publish Release Nuget Package Model.csproj
+name: Nuget Package 1er Tag
 
 on:  
   push:
