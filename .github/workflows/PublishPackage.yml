@@ -24,6 +24,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+
+      
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+
+    - name: Restore dependencies
+      run: nuget restore $PROJECT
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+        
     - name: Set VERSION variable from tag
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
  
@@ -37,18 +51,6 @@ jobs:
           
     #- name: Set VERSION variable from tag
      # run: echo "VERSION=1.0.0" >> $GITHUB_ENV
-      
-
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
-
-    - name: Restore dependencies
-      run: nuget restore $PROJECT
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.x
 
     # Compilo el proyecto y establesco version de la dll
     - name: Build
