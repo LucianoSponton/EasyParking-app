@@ -30,7 +30,7 @@ jobs:
 
     - name: Next Release Number
       ##run: echo ${{ steps.versioning.outputs.version }}
-      run: echo "VERSION=${{ steps.versioning.outputs.version }}
+      run: echo "VERSION=${{ steps.versioning.outputs.version }}"
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
