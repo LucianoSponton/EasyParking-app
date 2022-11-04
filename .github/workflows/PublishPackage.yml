@@ -8,7 +8,7 @@ on:
     branches:
     - dev
     tags:
-    - 'v*.*.*'
+    - "v[0-9]+.[0-9]+.[0-9]+"
 
     
 jobs:
@@ -24,22 +24,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Checkout code
-      uses: actions/checkout@master
-
-    - name: Extract version
-      id: extract_version
-      uses: Saionaro/extract-package-version@v1.0.6
-      # From now you can access the version
-    - name: Print version
-      run: echo ${{ steps.extract_version.outputs.version }}
-    
-    - name: Set env
-      run: echo "VERSION=1.0.2" >> $GITHUB_ENV
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+ 
+    #- name: Set env
+    #  run: echo "VERSION=1.0.2" >> $GITHUB_ENV
     - name: Test
       run: |
-          echo $VERSION
-          echo ${{ env.VERSION }}
+                echo $VERSION
+                echo ${{ env.VERSION }}
           
           
     #- name: Set VERSION variable from tag
