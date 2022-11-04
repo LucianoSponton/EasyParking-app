@@ -1,12 +1,9 @@
 name: CI
 
 on: 
-  create:
-    branches: 
-      - dev
   push:
-    branches:
-    - dev
+    tags:
+    - "v[0-9]+.[0-9]+.[0-9]+"
 
     
 jobs:
@@ -22,11 +19,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-
-    - name: Set VERSION variable from tag
-      run: echo "VERSION=1.0.0" >> $GITHUB_ENV
-      
-
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
 
@@ -37,24 +29,37 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
+        
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+ 
+    #- name: Set env
+    #  run: echo "VERSION=1.0.2" >> $GITHUB_ENV
+    - name: Test
+      run: |
+                echo $VERSION
+                echo ${{ env.VERSION }}
+          
+          
+    #- name: Set VERSION variable from tag
+     # run: echo "VERSION=1.0.0" >> $GITHUB_ENV
 
+    # Compilo el proyecto y establesco version de la dll
     - name: Build
       run: | 
         dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
         
+   # Me autentico en mi repositorio nuget
     - name: Auth
       run: dotnet nuget add source --username LucianoSponton --password ${{ secrets.TOKEN_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/LucianoSponton/index.json"
-    
+  
+  # Genero el paquete en modo Release
     - name: Pack
       run: dotnet pack Model/Model.csproj --configuration Release
       
+  # Publico la ultima version generada del paquete en mi repositorio nuget
     - name: Publish
-      run:  dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*.nupkg  --api-key ${{ secrets.TOKEN_GITHUB }} --source "https://nuget.pkg.github.com/LucianoSponton/index.json"
+      run:  dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*${VERSION}.nupkg  --api-key ${{ secrets.TOKEN_GITHUB }} --source "https://nuget.pkg.github.com/LucianoSponton/index.json"
 
-    #- name: publish nuget package
-    #  uses: myci-actions/publish-nuget@5
-    #  with:
-   #     filename: '*.nupkg'
-   #     api-key: ${{ secrets.TOKEN_GITHUB }}
-   #     repo-url: 'https://nuget.pkg.github.com/${{env.OWNER_REPOSITORY}}/index.json'
+
 
