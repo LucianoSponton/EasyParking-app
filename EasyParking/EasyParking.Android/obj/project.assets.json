@@ -3938,6 +3938,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "http://20.85.241.82:12525/nuget": {},
+        "https://api.nuget.org/v3/index.json": {},
         "https://nuget.pkg.github.com/LucianoSponton/index.json": {}
       },
       "frameworks": {

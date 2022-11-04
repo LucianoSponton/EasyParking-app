@@ -1,2 +1,2 @@
-AdbTarget=-s ZE222BWFCS
+AdbTarget=-s emulator-5554
 AdbOptions=
