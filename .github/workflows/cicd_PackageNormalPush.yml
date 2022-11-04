@@ -1,0 +1,100 @@
+name: Build & Publish Release Nuget Package Model.csproj
+
+on:  
+  push:
+    branches:
+    - dev
+
+jobs:
+  build:
+
+    env:
+      BUILD_CONFIG: 'Release'
+      PROJECT: 'Model/Model.csproj'
+      OWNER_REPOSITORY: LucianoSponton
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    ###### Obtiene y muestra el Tag actual ###### 
+    - name: Minor version for each merge
+      id: taggerDryRun
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        WITH_V: true
+        DRY_RUN: true
+    - name: echo tag
+      run: |
+        echo "VERSION=${{ steps.taggerDryRun.outputs.tag }}"  >> $GITHUB_ENV
+      # echo "The current tag is: ${{ steps.taggerDryRun.outputs.tag }}"
+
+    ###### ------------------------------ ###### 
+    
+    - uses: actions/checkout@v2
+    - name: Bump version and push tag
+      id: tag_version
+      uses: mathieudutour/github-tag-action@v6.1
+      with:
+        github_token: ${{ secrets.TOKEN_GITHUB }}
+    - name: Create a GitHub release
+      uses: ncipollo/release-action@v1
+      with:
+        tag: ${{ steps.tag_version.outputs.new_tag }}
+        #name: Release ${{ steps.tag_version.outputs.new_tag }}
+        #body: ${{ steps.tag_version.outputs.changelog }}
+
+    ###### Incremente el Tag actual ###### 
+    #- name: Auto Increment Semver Action
+    #  uses: MCKanpolat/auto-semver-action@1.0.5
+    #  id: versioning
+    #  with:
+    #    releaseType: patch 
+    #    incrementPerCommit: false
+    #    github_token: ${{ secrets.GITHUB_TOKEN }}
+
+   # - name: Next Release Number
+   #   run: echo "VERSION=${{ steps.versioning.outputs.version }}"  >> $GITHUB_ENV
+    ###### ------------------------------ ###### 
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+
+    - name: Restore dependencies
+      run: nuget restore $PROJECT
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+        
+   # Obtengo la Version del Tag con la cual generar el paquete Nuget
+   # - name: Set VERSION variable from tag
+    #  run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+ 
+  # Muestro cual es la version del tag que se va usar
+    - name: Show number of tag VERSION
+      run: |
+                echo $VERSION
+                echo ${{ env.VERSION }}
+     
+    # Compilo el proyecto y establesco version de la dll
+    - name: Build
+      run: | 
+        dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
+        
+   # Me autentico en mi repositorio nuget
+    - name: Auth
+      run: dotnet nuget add source --username LucianoSponton --password ${{ secrets.TOKEN_GITHUB }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/LucianoSponton/index.json"
+  
+  # Genero el paquete nuget en modo Release
+    - name: Pack
+      run: dotnet pack Model/Model.csproj --configuration Release
+      
+  # Publico la ultima version generada del paquete en mi repositorio nuget
+    - name: Publish
+      run:  dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*${VERSION}.nupkg  --api-key ${{ secrets.TOKEN_GITHUB }} --source "https://nuget.pkg.github.com/LucianoSponton/index.json"
+
+
