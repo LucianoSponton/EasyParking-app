@@ -1,7 +1,7 @@
 name: Build & Publish Release APK
 
 on: 
-  push:
+  pull_request:
     branches:
     - master
 
