@@ -57,11 +57,11 @@ namespace EasyParking.Views.Estacionamientos
             catch (Exception ex)
             {
                 await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
-            }
+            } 
         }
 
 
-        void CargarDatosParaEditar()
+        void CargarDatosParaEditar() //
         {
             ImagenArray = _estacionamiento.Imagen;
 
