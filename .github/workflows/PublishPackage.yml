@@ -2,8 +2,10 @@ name: Build & Publish Release Nuget Package Model.csproj
 
 on: 
   push:
-    tags:
-    - "v[0-9]+.[0-9]+.[0-9]+"
+   branches:
+   - dev
+    #ags:
+  #"v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
   build:
@@ -17,6 +19,26 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+      with:
+        fetch-depth: '0'
+    - name: Minor version for each merge
+      id: taggerDryRun
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        WITH_V: true
+        DRY_RUN: true
+
+    - name: echo new tag
+      run: |
+        echo "The next tag version will be: ${{ steps.taggerDryRun.outputs.new_tag }}"
+    - name: echo tag
+      run: |
+        echo "The current tag is: ${{ steps.taggerDryRun.outputs.tag }}"
+    - name: echo part
+      run: |
+        echo "The version increment was: ${{ steps.taggerDryRun.outputs.part }}"
     
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
