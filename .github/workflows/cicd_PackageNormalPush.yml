@@ -2,10 +2,8 @@ name: Build & Publish Release Nuget Package Model.csproj
 
 on:  
   push:
-   branches:
-   - dev
-    #ags:
-  #"v[0-9]+.[0-9]+.[0-9]+"
+    branches:
+    - dev
 
 jobs:
   build:
@@ -30,20 +28,35 @@ jobs:
         DRY_RUN: true
     - name: echo tag
       run: |
-        echo "The current tag is: ${{ steps.taggerDryRun.outputs.tag }}"
+        echo "VERSION=${{ steps.taggerDryRun.outputs.tag }}"  >> $GITHUB_ENV
+      # echo "The current tag is: ${{ steps.taggerDryRun.outputs.tag }}"
+
     ###### ------------------------------ ###### 
+    
+    - uses: actions/checkout@v2
+    - name: Bump version and push tag
+      id: tag_version
+      uses: mathieudutour/github-tag-action@v6.1
+      with:
+        github_token: ${{ secrets.TOKEN_GITHUB }}
+    - name: Create a GitHub release
+      uses: ncipollo/release-action@v1
+      with:
+        tag: ${{ steps.tag_version.outputs.new_tag }}
+        #name: Release ${{ steps.tag_version.outputs.new_tag }}
+        #body: ${{ steps.tag_version.outputs.changelog }}
 
     ###### Incremente el Tag actual ###### 
-    - name: Auto Increment Semver Action
-      uses: MCKanpolat/auto-semver-action@1.0.5
-      id: versioning
-      with:
-        releaseType: patch 
-        incrementPerCommit: false
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+    #- name: Auto Increment Semver Action
+    #  uses: MCKanpolat/auto-semver-action@1.0.5
+    #  id: versioning
+    #  with:
+    #    releaseType: patch 
+    #    incrementPerCommit: false
+    #    github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Next Release Number
-      run: echo "VERSION=${{ steps.versioning.outputs.version }}"  >> $GITHUB_ENV
+   # - name: Next Release Number
+   #   run: echo "VERSION=${{ steps.versioning.outputs.version }}"  >> $GITHUB_ENV
     ###### ------------------------------ ###### 
 
     - name: Setup NuGet
@@ -83,6 +96,5 @@ jobs:
   # Publico la ultima version generada del paquete en mi repositorio nuget
     - name: Publish
       run:  dotnet nuget push $GITHUB_WORKSPACE/Model/bin/Release/*${VERSION}.nupkg  --api-key ${{ secrets.TOKEN_GITHUB }} --source "https://nuget.pkg.github.com/LucianoSponton/index.json"
-
 
 
