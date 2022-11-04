@@ -20,11 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Auto Increment Semver Action
-      uses: MCKanpolat/auto-semver-action@1.0.5
-      id: versioning
-      with:
-        fetch-depth: '0'
+    #
     - name: Minor version for each merge
       id: taggerDryRun
       uses: anothrNick/github-tag-action@1.36.0
@@ -32,7 +28,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         WITH_V: true
         DRY_RUN: true
-
+#
 
     - name: echo tag
       run: |
