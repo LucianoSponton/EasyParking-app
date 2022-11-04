@@ -1,6 +1,6 @@
 name: Build & Publish Release Nuget Package Model.csproj
 
-on: 
+on:  
   push:
    branches:
    - dev
