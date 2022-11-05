@@ -18,16 +18,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - uses: nowsprinting/check-version-format-action@v3
-      id: version
-
-    - name: Version tag only step
-      run: |
-          echo "Found valid version format in tag!"
-          echo "Full version: ${{ steps.version.outputs.full }}"
-          echo "Major version: ${{ steps.version.outputs.major }}"
-          echo "Major with pre-release: ${{ steps.version.outputs.major_prerelease }}"
-          echo "Major with pre-release: ${{ steps.version.outputs.full_without_prefix }}"
+    - name: Create an incremental release
+      uses: aurestic/incrementarl-create-release@master
+      with:
+        flag_branch: true
+        message: Bump version
+        update_odoo_module_version: true
+      env:
+           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
 
     ###### Obtiene y muestra el Tag actual ###### 
     #- name: Minor version for each merge
