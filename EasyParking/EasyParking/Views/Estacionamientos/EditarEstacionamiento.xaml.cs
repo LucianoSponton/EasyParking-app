@@ -61,7 +61,7 @@ namespace EasyParking.Views.Estacionamientos
         }
 
 
-        void CargarDatosParaEditar() //
+        void CargarDatosParaEditar()  
         {
             ImagenArray = _estacionamiento.Imagen;
 
