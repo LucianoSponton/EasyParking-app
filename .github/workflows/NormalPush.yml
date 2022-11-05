@@ -47,7 +47,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         WITH_V: true
-    
 
     #- name: Next Release Number
     #  run: echo ${{ steps.versioning1.outputs.version }}
