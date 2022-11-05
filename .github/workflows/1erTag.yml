@@ -21,9 +21,9 @@ jobs:
     - name: Create an incremental release
       uses: aurestic/incrementarl-create-release@master
       with:
-        flag_branch: true
-        message: Bump version
-    #    prev_tag: 'v'
+     #   flag_branch: true
+     #   message: Bump version
+        prev_tag: ''
         update_odoo_module_version: true
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
