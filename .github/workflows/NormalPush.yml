@@ -26,6 +26,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         WITH_V: true
+        PRERELEASE_SUFFIX: ""
 
     
 
