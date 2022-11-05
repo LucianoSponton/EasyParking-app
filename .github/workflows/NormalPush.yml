@@ -24,11 +24,18 @@ jobs:
 
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@v1
+      id: versioning3
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         WITH_V: true
 
-    
+    - name: Test Next Number
+      run: echo "VERSION1=${{ steps.versioning3.outputs.tag }}"  >> $GITHUB_ENV
+      
+    - name: Show number of tag VERSION1
+      run: |
+                echo $VERSION1
+                echo ${{ env.VERSION1 }}
 
     #- name: Next Release Number
     #  run: echo ${{ steps.versioning1.outputs.version }}
