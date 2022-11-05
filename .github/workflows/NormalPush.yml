@@ -25,6 +25,9 @@ jobs:
           value: 'Mona the Octocat'
           start: '9'
           
+    - name: Test Next Number
+      run: echo "VERSION0=${{ steps.substring.outputs.result }}"  >> $GITHUB_ENV
+      
     - uses: actions/checkout@v3
       with:
         fetch-depth: '0'
