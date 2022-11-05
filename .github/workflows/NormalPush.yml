@@ -33,11 +33,6 @@ jobs:
     - name: Test Next Number
       run: echo "VERSION1=${{ steps.versioning3.outputs.tag }}"  >> $GITHUB_ENV
       
-    - name: Show number of tag VERSION1
-      run: |
-                echo $VERSION1
-                echo ${{ env.VERSION1 }}
-
 
     #- name: Next Release Number
     #  run: echo ${{ steps.versioning1.outputs.version }}
@@ -100,13 +95,11 @@ jobs:
       run: |
                 echo $VERSION
                 echo ${{ env.VERSION }}
-                
-      # steps.one.outputs.substring = 'c123'
-     
+                 
     # Compilo el proyecto y establesco version de la dll
     - name: Build
       run: | 
-        dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION1}  --no-restore
+        dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
         
    # Me autentico en mi repositorio nuget
     - name: Auth
