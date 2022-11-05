@@ -9,7 +9,7 @@ jobs:
   build: 
 
     env:
-      BUILD_CONFIG: 'Release'
+      BUILD_CONFIG: 'Release' 
       PROJECT: 'Model/Model.csproj'
       OWNER_REPOSITORY: LucianoSponton
 
