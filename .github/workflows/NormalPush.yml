@@ -35,7 +35,7 @@ jobs:
       run: |
         echo "The current tag is: ${{ steps.taggerDryRun.outputs.tag }}"
     - name: echo part
-      run: |
+      run: | 
         echo "The version increment was: ${{ steps.taggerDryRun.outputs.part }}"
     # DO MY BUILD HERE
     # IN CASE OF FAILURE, THE STEP BELOW WILL NOT RUN.
