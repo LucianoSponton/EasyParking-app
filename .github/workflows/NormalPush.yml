@@ -6,7 +6,7 @@ on:
     - dev   
 
 jobs:
-  build:
+  build: 
 
     env:
       BUILD_CONFIG: 'Release'
