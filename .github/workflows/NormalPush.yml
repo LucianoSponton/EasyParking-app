@@ -18,6 +18,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Substring
+      uses: web3j/substr-action@v1.2
+      id: substring
+      with:
+          value: 'Mona the Octocat'
+          start: '9'
+          
     - uses: actions/checkout@v3
       with:
         fetch-depth: '0'
@@ -60,7 +67,7 @@ jobs:
     #  run: |
     #    echo "The current tag is: ${{ steps.taggerDryRun.outputs.tag }}"
     ###### ------------------------------ ###### 
-    
+
 
     ###### Incremente el Tag actual ###### 
     - name: Auto Increment Semver Action
