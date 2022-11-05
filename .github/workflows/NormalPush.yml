@@ -17,16 +17,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Auto Increment Semver Action
-      uses: MCKanpolat/auto-semver-action@1.0.5
-      id: versioning1
+    
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
       with:
-        releaseType: patch 
-        incrementPerCommit: true
-        github_token: ${{ secrets.TOKEN_GITHUB }}
+          tag_name: ${{ env.release_tag }}
+          release_name: Release ${{ env.release_tag }}
 
-    - name: Next Release Number
-      run: echo ${{ steps.versioning1.outputs.version }}
+    #- name: Next Release Number
+    #  run: echo ${{ steps.versioning1.outputs.version }}
    
    
     #- name: Create an incremental release
