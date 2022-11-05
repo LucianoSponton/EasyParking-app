@@ -20,8 +20,6 @@ jobs:
     
     - uses: nowsprinting/check-version-format-action@v3
       id: version
-      with:
-        prefix: 'v'
 
     - name: Version tag only step
       run: |
