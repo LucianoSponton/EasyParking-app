@@ -18,13 +18,35 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - run: git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-    - run: git config user.name "$GITHUB_ACTOR"
-    - run: npm version minor -m "v%s"
-    - run: VERSION=$(node -p "require('./package.json').version")
-    - run: git tag ${VERSION}
-    - run: git push "https://$GITHUB_ACTOR:${{ secrets.TOKEN_GITHUB }}@github.com/$GITHUB_REPOSITORY.git" --follow-tags
-    - run: git push "https://$GITHUB_ACTOR:${{ secrets.TOKEN_GITHUB }}@github.com/$GITHUB_REPOSITORY.git" --tags
+      with:
+        fetch-depth: '0'
+    - name: Minor version for each merge
+      id: taggerDryRun
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        WITH_V: true
+        DRY_RUN: true
+
+    - name: echo new tag
+      run: |
+        echo "The next tag version will be: ${{ steps.taggerDryRun.outputs.new_tag }}"
+    - name: echo tag
+      run: |
+        echo "The current tag is: ${{ steps.taggerDryRun.outputs.tag }}"
+    - name: echo part
+      run: |
+        echo "The version increment was: ${{ steps.taggerDryRun.outputs.part }}"
+    # DO MY BUILD HERE
+    # IN CASE OF FAILURE, THE STEP BELOW WILL NOT RUN.
+    
+
+    - name: Minor version for each merge
+      id: taggerFinal
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        WITH_V: true
 
     #- name: Next Release Number
     #  run: echo ${{ steps.versioning1.outputs.version }}
