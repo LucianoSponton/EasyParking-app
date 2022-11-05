@@ -18,20 +18,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Substring
-      uses: web3j/substr-action@v1.2
-      id: substring
-      with:
-          value: 'Mona the Octocat'
-          start: '9'
-          
-    - name: Test Next Number
-      run: echo "VERSION0=${{ steps.substring.outputs.result }}"  >> $GITHUB_ENV
-      
     - uses: actions/checkout@v3
       with:
         fetch-depth: '0'
 
+     ###### Crear Tag siguiente ###### 
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@v1
       id: versioning3
@@ -40,9 +31,21 @@ jobs:
         WITH_V: true
         INITIAL_VERSION: 1.0.0
         
-    - name: Test Next Number
-      run: echo "VERSION1=${{ steps.versioning3.outputs.tag }}"  >> $GITHUB_ENV
+    ###### se muestra solamente el Tag siguiente ###### 
+    - name: Show Next Tag
+      run: echo "VERSION=${{ steps.versioning3.outputs.tag }}"  >> $GITHUB_ENV
       
+    ###### Se obtiene el substring de ej: v1.0.0 --> 1.0.0 ######
+    - name: Generar Substring del Tag
+      uses: web3j/substr-action@v1.2
+      id: substring
+      with:
+          value: ${VERSION}
+          start: '1'
+          
+    ###### Obtengo el substring, ej: v1.0.0 --> 1.0.0, y lo guardo en la variable VERSION ######     
+    - name: Get Substring - Just Numer Version
+      run: echo "VERSION=${{ steps.substring.outputs.result }}"  >> $GITHUB_ENV
 
     #- name: Next Release Number
     #  run: echo ${{ steps.versioning1.outputs.version }}
@@ -73,16 +76,16 @@ jobs:
 
 
     ###### Incremente el Tag actual ###### 
-    - name: Auto Increment Semver Action
-      uses: MCKanpolat/auto-semver-action@1.0.5
-      id: versioning
-      with:
-        releaseType: patch 
-        incrementPerCommit: false
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+   # - name: Auto Increment Semver Action
+   #   uses: MCKanpolat/auto-semver-action@1.0.5
+   #   id: versioning
+   #   with:
+   #     releaseType: patch 
+   #     incrementPerCommit: false
+   #     github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Next Release Number
-      run: echo "VERSION=${{ steps.versioning.outputs.version }}"  >> $GITHUB_ENV
+  #  - name: Next Release Number
+  #    run: echo "VERSION=${{ steps.versioning.outputs.version }}"  >> $GITHUB_ENV
     ###### ------------------------------ ###### 
 
     - name: Setup NuGet
