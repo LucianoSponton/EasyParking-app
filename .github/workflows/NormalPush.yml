@@ -28,6 +28,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         WITH_V: true
+        INITIAL_VERSION: 0.0.1
 
     - name: Test Next Number
       run: echo "VERSION1=${{ steps.versioning3.outputs.tag }}"  >> $GITHUB_ENV
@@ -102,7 +103,7 @@ jobs:
     # Compilo el proyecto y establesco version de la dll
     - name: Build
       run: | 
-        dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION}  --no-restore
+        dotnet build Model/Model.csproj --configuration Release /p:Version=${VERSION1}  --no-restore
         
    # Me autentico en mi repositorio nuget
     - name: Auth
