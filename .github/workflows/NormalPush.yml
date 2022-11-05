@@ -18,15 +18,27 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Create an incremental release
-      uses: aurestic/incrementarl-create-release@master
+    - name: Generate release tag
+      uses: amitsingh-007/next-release-tag@v1.0.0
       with:
-        flag_branch: false
-        message: Bump version
-        prev_tag: "v"
-        update_odoo_module_version: true
+          github_token: ${{ secrets.TOKEN_GITHUB }}
+
+    - name: Create Release
+      uses: actions/create-release@v1
       env:
-           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+      with:
+          tag_name: ${{ env.release_tag }}
+          release_name: Release ${{ env.release_tag }}
+    #- name: Create an incremental release
+    #  uses: aurestic/incrementarl-create-release@master
+    #  with:
+    #    flag_branch: false
+    #    message: Bump version
+    #    prev_tag: "v"
+    #    update_odoo_module_version: true
+    #  env:
+    #       GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
 
     ###### Obtiene y muestra el Tag actual ###### 
     #- name: Minor version for each merge
