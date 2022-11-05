@@ -40,7 +40,7 @@ jobs:
       uses: web3j/substr-action@v1.2
       id: substring
       with:
-          value: ${VERSION}
+          value: ${{ env.VERSION }}
           start: '1'
           
     ###### Obtengo el substring, ej: v1.0.0 --> 1.0.0, y lo guardo en la variable VERSION ######     
