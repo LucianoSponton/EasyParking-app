@@ -3,13 +3,13 @@ name: Build & Publish Release Nuget Package Model.csproj
 on:  
   push:
    branches:
-    - dev
+    - dev   
 
 jobs:
-  build:
+  build: 
 
     env:
-      BUILD_CONFIG: 'Release'
+      BUILD_CONFIG: 'Release' 
       PROJECT: 'Model/Model.csproj'
       OWNER_REPOSITORY: LucianoSponton
 
@@ -18,7 +18,36 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: '0'
+
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@v1
+      id: versioning3
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        WITH_V: true
+        INITIAL_VERSION: 1.0.0
+        
+    - name: Test Next Number
+      run: echo "VERSION1=${{ steps.versioning3.outputs.tag }}"  >> $GITHUB_ENV
+      
+
+    #- name: Next Release Number
+    #  run: echo ${{ steps.versioning1.outputs.version }}
+   
+   
+    #- name: Create an incremental release
+    #  uses: aurestic/incrementarl-create-release@master
+    #  with:
+    #    flag_branch: false
+    #    message: Bump version
+    #    prev_tag: "v"
+    #    update_odoo_module_version: true
+    #  env:
+    #       GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+
     ###### Obtiene y muestra el Tag actual ###### 
     #- name: Minor version for each merge
     #  id: taggerDryRun
@@ -66,7 +95,7 @@ jobs:
       run: |
                 echo $VERSION
                 echo ${{ env.VERSION }}
-     
+                 
     # Compilo el proyecto y establesco version de la dll
     - name: Build
       run: | 
