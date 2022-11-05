@@ -37,16 +37,8 @@ jobs:
     - name: echo part
       run: |
         echo "The version increment was: ${{ steps.taggerDryRun.outputs.part }}"
-    # DO MY BUILD HERE
-    # IN CASE OF FAILURE, THE STEP BELOW WILL NOT RUN.
-    
 
-    - name: Minor version for each merge
-      id: taggerFinal
-      uses: anothrNick/github-tag-action@1.36.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-        WITH_V: true
+    
 
     #- name: Next Release Number
     #  run: echo ${{ steps.versioning1.outputs.version }}
