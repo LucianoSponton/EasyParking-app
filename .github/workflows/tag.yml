@@ -8,7 +8,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release' 
-      PROJECT: 'Model/Model.csproj'
+      PROJECT: 'Model/Model.csproj' 
       OWNER_REPOSITORY: LucianoSponton
 
     runs-on: ubuntu-latest
