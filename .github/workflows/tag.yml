@@ -19,6 +19,7 @@ jobs:
       id: create_tag
       uses: jaywcjlove/create-tag-action@v1.1.8
       with:
+        token: ${{ secrets.TOKEN_GITHUB }}
         package-path: ./package.json
     - run: echo "version - ${{ steps.create_tag.outputs.version }}"
     - run: echo "version || preversion - ${{ steps.create_tag.outputs.version || steps.create_tag.outputs.preversion }}"
