@@ -29,7 +29,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         WITH_V: true
-        INITIAL_VERSION: 0.0.0
+        INITIAL_VERSION: 0.0.1
         
     ###### se muestra solamente el Tag siguiente ###### 
     - name: Show Next Tag
