@@ -12,9 +12,14 @@ jobs:
 
       - name: Generate release tag
         uses: amitsingh-007/next-release-tag@v2.2.0
+        id: geberate_tag
         with:
           github_token: ${{ secrets.TOKEN_GITHUB }}
 
+      ###### se muestra solamente el Tag creado ###### 
+      - name: Show Next Tag
+        run: echo "VERSION=${{ steps.geberate_tag.outputs.tag }}"  >> $GITHUB_ENV
+        
      # - name: Create Release
      #   uses: actions/create-release@v1
      #   env:
