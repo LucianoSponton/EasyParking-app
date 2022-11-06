@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2  
     - name: Create Tag
       id: create_tag
-      uses: jaywcjlove/create-tag-action@main
+      uses: jaywcjlove/create-tag-action@v1.1.8
       with:
         package-path: ./package.json
     - run: echo "version - ${{ steps.create_tag.outputs.version }}"
