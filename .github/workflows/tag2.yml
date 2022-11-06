@@ -18,7 +18,7 @@ jobs:
 
       ###### se muestra solamente el Tag creado ###### 
       - name: Show Next Tag
-        run: echo "VERSION=${{ steps.generate_tag.outputs.tag }}"  >> $GITHUB_ENV
+        run: echo "VERSION=${{ steps.generate_tag.outputs.release_tag }}"  >> $GITHUB_ENV
         
      # - name: Create Release
      #   uses: actions/create-release@v1
