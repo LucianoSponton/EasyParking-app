@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - master
+      
+      
+- name: Create Tag
+  id: create_tag
+  uses: jaywcjlove/create-tag-action@main
+  with:
+    package-path: ./package.json
+    - run: echo "version - ${{ steps.create_tag.outputs.version }}"
+- run: echo "version || preversion - ${{ steps.create_tag.outputs.version || steps.create_tag.outputs.preversion }}"
+- run: echo "versionNumber - ${{ steps.create_tag.outputs.versionNumber }}"
+- run: echo "versionNumber || preversionNumber - ${{ steps.create_tag.outputs.versionNumber || steps.create_tag.outputs.preversionNumber }}"
+- run: echo "majorVersion - ${{ steps.create_tag.outputs.majorVersion }}"
+- run: echo "minorVersion - ${{ steps.create_tag.outputs.minorVersion }}"
+- run: echo "patchVersion - ${{ steps.create_tag.outputs.patchVersion }}"
+- run: echo "preversion - ${{ steps.create_tag.outputs.preversion }}"
+- run: echo "successful - ${{ steps.create_tag.outputs.successful }}"
