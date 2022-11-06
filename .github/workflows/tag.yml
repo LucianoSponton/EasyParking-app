@@ -14,19 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2  
-    - name: Create Tag
-      id: create_tag
-      uses: jaywcjlove/create-tag-action@v1.1.8
-      with:
-        token: ${{ secrets.TOKEN_GITHUB }}
-        package-path: ./tags
-    - run: echo "version - ${{ steps.create_tag.outputs.version }}"
-    - run: echo "version || preversion - ${{ steps.create_tag.outputs.version || steps.create_tag.outputs.preversion }}"
-    - run: echo "versionNumber - ${{ steps.create_tag.outputs.versionNumber }}"
-    - run: echo "versionNumber || preversionNumber - ${{ steps.create_tag.outputs.versionNumber || steps.create_tag.outputs.preversionNumber }}"
-    - run: echo "majorVersion - ${{ steps.create_tag.outputs.majorVersion }}"
-    - run: echo "minorVersion - ${{ steps.create_tag.outputs.minorVersion }}"
-    - run: echo "patchVersion - ${{ steps.create_tag.outputs.patchVersion }}"
-    - run: echo "preversion - ${{ steps.create_tag.outputs.preversion }}"
-    - run: echo "successful - ${{ steps.create_tag.outputs.successful }}"
+      - name: Auto increment tag
+        id: tag
+        uses: sophiware/actions-auto-increment-tag@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Container tag
+        run: echo "VERSION=${{ steps.tag.outputs.tag }}"  >> $GITHUB_ENV
