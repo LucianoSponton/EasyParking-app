@@ -8,25 +8,26 @@ jobs:
 
     steps:
       - name: Checkout branch
-      ##  uses: actions/checkout@v2
-        
         uses: actions/checkout@v3
-      - uses: rickstaa/action-create-tag@v1
+
+      - name: Generate release tag
+        uses: amitsingh-007/next-release-tag@v2.2.0
         id: generate_tag
         with:
-          tag: "latest"
-          message: "Latest release"
-
-      #- name: Generate release tag
-      ##  uses: amitsingh-007/next-release-tag@v2.2.0
-      #  id: generate_tag
-      #  with:
-      #    github_token: ${{ secrets.TOKEN_GITHUB }} 
+          github_token: ${{ secrets.TOKEN_GITHUB }} 
 
       ###### se muestra solamente el Tag creado ###### 
       - name: Show Next Tag
-        run: echo "VERSION=${{ steps.generate_tag.outputs.release_tag }}"  >> $GITHUB_ENV
+        run: echo "VERSION=${{ steps.generate_tag.outputs.new_tag }}"  >> $GITHUB_ENV
         
+      - uses: rickstaa/action-create-tag@v1
+        id: generate_custom_tag
+        with:
+          tag: ${{ VERSION }}"
+      #    message: "Latest release"
+        
+        
+     ###### Esto si se combina con lo del Generate se crea un tag con una release   
      # - name: Create Release
      #   uses: actions/create-release@v1
      #   env:
