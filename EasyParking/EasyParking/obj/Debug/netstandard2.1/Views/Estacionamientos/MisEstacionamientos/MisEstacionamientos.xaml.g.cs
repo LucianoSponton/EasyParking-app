@@ -29,12 +29,16 @@ namespace EasyParking.Views.Estacionamientos.MisEstacionamientos {
         private global::Xamarin.Forms.ImageButton btnAgregar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.StackLayout BoxNotSearchResult;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MisEstacionamientos));
             navBar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Components.NavBar>(this, "navBar");
             activityIndicator = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "activityIndicator");
             lwlisado = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.ListView.XForms.SfListView>(this, "lwlisado");
             btnAgregar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "btnAgregar");
+            BoxNotSearchResult = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "BoxNotSearchResult");
         }
     }
 }

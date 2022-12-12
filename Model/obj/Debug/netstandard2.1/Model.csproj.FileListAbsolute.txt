@@ -7,4 +7,3 @@ C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.Assemb
 C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.csproj.CoreCompileInputs.cache
 C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.dll
 C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.pdb
-C:\ProyectosGitHubUTN\EasyParkingApp\Model\obj\Debug\netstandard2.1\Model.csproj.AssemblyReference.cache

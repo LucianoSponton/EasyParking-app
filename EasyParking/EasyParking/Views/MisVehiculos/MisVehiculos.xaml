@@ -8,6 +8,17 @@
     </NavigationPage.TitleView>
 
     <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+
+        <ActivityIndicator x:Name="activityIndicator"  AbsoluteLayout.LayoutBounds="0.5,0.20" AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                       IsRunning="True"  
+                       IsEnabled="True"  
+                       IsVisible="False"  
+                       Color="#17202A"  
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       BackgroundColor="Transparent"/>
+
+        
         <syncfusion:SfListView x:Name="lwlistado" AutoFitMode="DynamicHeight" ItemSpacing="0" AllowSwiping="True"
                                     VerticalOptions="FillAndExpand"  SelectionMode="None">
 
@@ -37,7 +48,7 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="Tipo:" FontSize="16" Margin="0" HorizontalOptions="Center" FontAttributes="Bold"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-                                    <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{Binding Tipo}" FontSize="16" Margin="0" HorizontalOptions="Center"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                                    <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{Binding TipoDeVehiculo}" FontSize="16" Margin="0" HorizontalOptions="Center"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
                                     <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="Patente:" FontSize="16" Margin="0"  HorizontalOptions="Center" FontAttributes="Bold"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
                                     <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="{Binding Patente}" FontSize="16" Margin="0"  HorizontalOptions="Center"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
 
@@ -69,6 +80,24 @@
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
         </ImageButton>
+
+        <StackLayout x:Name="BoxNotSearchResult" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5,0.4" AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="False">
+            <StackLayout HorizontalOptions="Center" Spacing="0">
+                <Image Source="coche.gif" IsAnimationPlaying="True" HeightRequest="70" WidthRequest="70" BackgroundColor="Transparent" HorizontalOptions="Center"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                    <Image Source="pickup.gif" IsAnimationPlaying="True" HeightRequest="70" WidthRequest="70" BackgroundColor="Transparent"/>
+                    <Image Source="motocicleta.gif" IsAnimationPlaying="True" HeightRequest="70" WidthRequest="70" BackgroundColor="Transparent"/>
+                </StackLayout>
+            </StackLayout>
+            <custom:CustomLabel Text="Aún no haz cargado" MaxLines="2"
+                                FontSize="25" Margin="0,20,0,0"
+                                HorizontalOptions="FillAndExpand" 
+                                HorizontalTextAlignment="Center"/>
+            <custom:CustomLabel Text="algún vehículo" MaxLines="2"
+                                FontSize="25" Margin="0,0,0,0"
+                                HorizontalOptions="FillAndExpand" 
+                                HorizontalTextAlignment="Center"/>
+        </StackLayout>
 
 
     </AbsoluteLayout>

@@ -25,6 +25,7 @@
             <StackLayout Padding="10,10,10,10" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                 <StackLayout Margin="0,0,0,20">
+                    
                     <AbsoluteLayout WidthRequest="250"  HeightRequest="250">
                         <Image x:Name="Imagen" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFit" BackgroundColor="Transparent"/>
 
@@ -35,9 +36,7 @@
 
                     </AbsoluteLayout>
 
-
-
-                    <Grid ColumnSpacing="10" RowSpacing="10" >
+                    <Grid ColumnSpacing="10" RowSpacing="10" Margin="0,40,0,5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
@@ -62,12 +61,11 @@
 
                     </Grid>
                 </StackLayout>
-               
 
-                <inputLayout:SfTextInputLayout  FocusedColor="#2968C8"  ContainerType="Outlined" Hint="Seleccionela ciudad" BackgroundColor="Transparent"
-                                                ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
-                    <combobox:SfComboBox Margin="5,0,5,10" TextSize="16" Watermark="Ciudad" VerticalOptions="Center" EnableAutoSize="True"  
-                                             HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30"
+
+                <inputLayout:SfTextInputLayout Margin="0,0,0,20"  FocusedColor="#2968C8" Padding="0"  ContainerType="Outlined" Hint="Seleccionela ciudad" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
+                    <combobox:SfComboBox Margin="5,0,5,0" TextSize="16" Watermark="Ciudad" VerticalOptions="Center" EnableAutoSize="True"  
+                                             HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30" ShowClearButton="False"
                                              MaximumDropDownHeight="400" IsEditableMode="false" x:Name="comboboxCiudad" >
                         <combobox:SfComboBox.ComboBoxSource>
                             <ListCollection:List x:TypeArguments="x:String">
@@ -101,12 +99,12 @@
 
 
 
-                <inputLayout:SfTextInputLayout FocusedColor="#2968C8"  Margin="0,5,0,0"  ContainerType="Outlined" Hint="Nombre del lugar" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
+                <inputLayout:SfTextInputLayout FocusedColor="#2968C8"  Margin="0,5,0,10"  ContainerType="Outlined" Hint="Nombre del lugar" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
                     <custom:CustomEntry  x:Name="entryNombre"  Keyboard="Default" Placeholder="Ingrese el nombre" ClearButtonVisibility="WhileEditing" HorizontalOptions="FillAndExpand"/>
                 </inputLayout:SfTextInputLayout>
 
 
-                <inputLayout:SfTextInputLayout  FocusedColor="#2968C8"  ContainerType="Outlined" Hint="Dirección del lugar" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
+                <inputLayout:SfTextInputLayout  FocusedColor="#2968C8" Margin="0,0,0,10"  ContainerType="Outlined" Hint="Dirección del lugar" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
                     <custom:CustomEntry  x:Name="entryDireccion" Keyboard="Default" Placeholder="Ingrese la dirección" ClearButtonVisibility="WhileEditing" HorizontalOptions="FillAndExpand"/>
                 </inputLayout:SfTextInputLayout>
 

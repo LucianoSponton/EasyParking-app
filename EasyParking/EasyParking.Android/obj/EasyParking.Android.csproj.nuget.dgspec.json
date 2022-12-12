@@ -57,6 +57,10 @@
             "Xamarin.Forms": {
               "target": "Package",
               "version": "[5.0.0.2515, )"
+            },
+            "Xamarin.Forms.Maps": {
+              "target": "Package",
+              "version": "[5.0.0.2515, )"
             }
           }
         }
@@ -146,6 +150,10 @@
               "target": "Package",
               "version": "[20.1.0.55, )"
             },
+            "Syncfusion.Xamarin.SfPullToRefresh": {
+              "target": "Package",
+              "version": "[20.3.0.56, )"
+            },
             "Syncfusion.Xamarin.SfRangeSlider": {
               "target": "Package",
               "version": "[20.2.0.36, )"
@@ -165,6 +173,10 @@
             "Xamarin.Forms": {
               "target": "Package",
               "version": "[5.0.0.2515, )"
+            },
+            "Xamarin.Forms.Maps": {
+              "target": "Package",
+              "version": "[5.0.0.2012, )"
             }
           },
           "imports": [
@@ -182,7 +194,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.110\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.111\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -245,7 +257,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.110\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.111\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -318,7 +330,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.110\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.111\\RuntimeIdentifierGraph.json"
         }
       }
     }

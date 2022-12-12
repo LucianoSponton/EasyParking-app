@@ -20,10 +20,12 @@
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="20.1.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="20.1.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="20.3.0.56" />
     <PackageReference Include="Syncfusion.Xamarin.SfRangeSlider" Version="20.2.0.36" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="20.1.0.55" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+	  <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
 
@@ -67,8 +69,14 @@
     <EmbeddedResource Update="Views\Favoritos\Favoritos.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Generales\Busquedas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Generales\InternetNotAvailable.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Generales\Mapa.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Generales\PopCargando.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Generales\WebViewVideos.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Inicio\Filtros.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Inicio\Inicio.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

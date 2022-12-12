@@ -18,7 +18,7 @@
                     <AbsoluteLayout  WidthRequest="60"   HeightRequest="50"  >
 
                         <Image Aspect="Fill" Rotation="0"   x:Name="imagenCard" WidthRequest="60"
-                              Source="messi.jpg"/>
+                              Source="{Binding FotoDePerfil, Converter={StaticResource ByteArrayToImageSource}}"/>
 
 
                         <ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5" x:Name="activity" BindingContext="{x:Reference imagenCard}" IsRunning="{Binding IsLoading}"
@@ -34,8 +34,16 @@
 
 
                     <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Padding="10" Spacing="10">
-                        <custom:CustomLabel Text="Lionel Messi"  Margin="0" FontSize="16"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-                        <custom:CustomLabel Text="Auto -- AV 654 RT" FontSize="16" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <custom:CustomLabel Text="{Binding Nombre}"  Margin="0" FontSize="16"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                            <custom:CustomLabel Text="{Binding Apellido}"  Margin="0" FontSize="16"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                        <custom:CustomLabel Text="{Binding Nombre}"  Margin="0" FontSize="16"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <custom:CustomLabel Text="{Binding TipoDeVehiculo}" FontSize="16" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                            <custom:CustomLabel Text="{Binding Patente}" FontSize="16" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+
+                        </StackLayout>
 
                     </StackLayout>
 

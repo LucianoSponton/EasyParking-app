@@ -13,6 +13,10 @@ namespace Model
         public string Ciudad { get; set; } // ciudad del lugar
         public string Nombre { get; set; } // nombre del lugar
         public string Direccion { get; set; } // Direccion del lugar
+
+        // posicion latitud y longitud
+        public double Latitud { get; set; }
+        public double Longitud { get; set; }
         public List<Jornada> Jornadas { get; set; } = new List<Jornada>(); // horarios en los que opera
         public string TipoDeLugar { get; set; } // descripcion del lugar - galpon, aire libre etc..
         public List<DataVehiculoAlojado> TiposDeVehiculosAdmitidos { get; set; } = new List<DataVehiculoAlojado>();// vehiculos aceptados

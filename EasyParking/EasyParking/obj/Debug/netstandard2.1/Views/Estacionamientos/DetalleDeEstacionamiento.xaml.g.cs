@@ -20,10 +20,37 @@ namespace EasyParking.Views.Estacionamientos {
         private global::EasyParking.Components.NavBar navBar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.ImageButton imagenCard;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.ActivityIndicator activity;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.ImageButton btnFavorito;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Syncfusion.XForms.Buttons.SfButton btnVerMapa;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Syncfusion.XForms.Buttons.SfButton btnVerReseñas;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Syncfusion.ListView.XForms.SfListView lwJornadas;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Syncfusion.XForms.ComboBox.SfComboBox comboBox;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::EasyParking.Custom.CustomLabel labelTarifa_hora;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::EasyParking.Custom.CustomLabel labelTarifa_dia;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::EasyParking.Custom.CustomLabel labelTarifa_semana;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::EasyParking.Custom.CustomLabel labelTarifa_mes;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Syncfusion.XForms.Buttons.SfButton btnReserva;
@@ -32,8 +59,17 @@ namespace EasyParking.Views.Estacionamientos {
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(DetalleDeEstacionamiento));
             navBar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Components.NavBar>(this, "navBar");
+            imagenCard = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "imagenCard");
+            activity = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ActivityIndicator>(this, "activity");
+            btnFavorito = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ImageButton>(this, "btnFavorito");
+            btnVerMapa = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnVerMapa");
             btnVerReseñas = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnVerReseñas");
+            lwJornadas = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.ListView.XForms.SfListView>(this, "lwJornadas");
             comboBox = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.ComboBox.SfComboBox>(this, "comboBox");
+            labelTarifa_hora = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomLabel>(this, "labelTarifa_hora");
+            labelTarifa_dia = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomLabel>(this, "labelTarifa_dia");
+            labelTarifa_semana = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomLabel>(this, "labelTarifa_semana");
+            labelTarifa_mes = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomLabel>(this, "labelTarifa_mes");
             btnReserva = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnReserva");
         }
     }

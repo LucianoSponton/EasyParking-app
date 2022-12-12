@@ -14,12 +14,17 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <queries>
     <intent>
       <action android:name="android.media.browse.MediaBrowserService" />
     </intent>
   </queries>
+  <uses-feature android:glEsVersion="0x00020000" android:required="true" />
   <application android:name="androidx.multidex.MultiDexApplication" android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@drawable/eplogo" android:label="EasyParking" android:usesCleartextTraffic="true">
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC875-XhgWTA3C8MxV9AZmY9j0aoQBawGo" />
+    <uses-library android:name="org.apache.http.legacy" android:required="false" />
     <activity android:name="crc64883d62bc89b36178.MainActivity" android:configChanges="orientation|screenSize" android:icon="@drawable/eplogo" android:label="Easy Parking" android:theme="@style/MainTheme" />
     <activity android:name="crc64883d62bc89b36178.SplashActivity" android:exported="true" android:label="Easy Parking" android:noHistory="true" android:theme="@style/MyTheme.Splash">
       <intent-filter>
@@ -40,5 +45,7 @@
     <receiver android:name="crc643f46942d9dd1fff9.PowerSaveModeBroadcastReceiver" android:enabled="true" android:exported="false" />
     <provider android:name="mono.android.MultiDexLoader" android:authorities="com.grupo2.easyparking.mono.android.MultiDexLoader.__mono_init__" android:exported="false" android:initOrder="1999999999" />
     <provider android:name="mono.MonoRuntimeProvider" android:authorities="com.grupo2.easyparking.mono.MonoRuntimeProvider.__mono_init__" android:exported="false" android:initOrder="1999999998" />
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    <activity android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
   </application>
 </manifest>

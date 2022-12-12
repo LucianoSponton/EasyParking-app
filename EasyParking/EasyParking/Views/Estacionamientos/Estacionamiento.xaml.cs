@@ -181,7 +181,7 @@ namespace EasyParking.Views.Estacionamientos
             }
         }
 
-        private async void ConvertSourceToBytes4(MediaFile result, ImageSource IM)
+        private async Task<byte[]> ConvertSourceToBytes4(MediaFile result, ImageSource IM)
         {
 
 
@@ -206,7 +206,11 @@ namespace EasyParking.Views.Estacionamientos
                 }
 
                 ImagenArray = imageArray;
+
+                return imageArray;
             }
+
+            return null;
         }
 
         private async void btnSeleccionarFoto_Clicked(object sender, EventArgs e)
@@ -225,6 +229,7 @@ namespace EasyParking.Views.Estacionamientos
                     PhotoSize = Plugin.Media.Abstractions.PhotoSize.MaxWidthHeight,
 
                 });
+
 
 
                 if (file == null)
@@ -249,6 +254,12 @@ namespace EasyParking.Views.Estacionamientos
 
 
                 ConvertSourceToBytes4(file, Imagen.Source);
+
+                //              byte[] image = await ConvertSourceToBytes4(file, Imagen.Source);
+
+                //await estacionamientoServiceWebApi.SedImage(image);
+
+                //                DisplayAlert("ok", "send", "Entendido");
 
                 //file.Dispose();
             }
@@ -394,7 +405,7 @@ namespace EasyParking.Views.Estacionamientos
 
                 if (!string.IsNullOrEmpty(entryNombre.Text))
                 {
-                    _estacionamiento.Nombre = entryNombre.Text; // NOMBRE DEL LUGAR
+                    _estacionamiento.Nombre = entryNombre.Text.Trim().ToLower(); // NOMBRE DEL LUGAR
 
                 }
                 else
@@ -403,9 +414,27 @@ namespace EasyParking.Views.Estacionamientos
                     return;
                 }
 
-                if (true)
+                if (!string.IsNullOrEmpty(entryDireccion.Text))
                 {
-                    _estacionamiento.Direccion = entryDireccion.Text; // DIRECCION DEL LUGAR
+                    _estacionamiento.Direccion = entryDireccion.Text.Trim().ToLower(); // DIRECCION DEL LUGAR
+
+                    var result = await Geocoding.GetLocationsAsync(entryDireccion.Text.Trim());
+
+
+                    try
+                    {
+                        if (result.Any())
+                        {
+
+                            _estacionamiento.Latitud = (double)(result.FirstOrDefault()?.Latitude);
+                            _estacionamiento.Longitud = (double)(result.FirstOrDefault()?.Longitude);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
 
                 }
                 else
@@ -490,7 +519,16 @@ namespace EasyParking.Views.Estacionamientos
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
+                if (ex.Message.Contains("ERROR ... BadRequest -"))
+                {
+                    string msjError = ex.Message.Replace("ERROR ... BadRequest -", "");
+
+                    await DisplayAlert("Error", msjError, "Entendido");
+                }
+                else
+                {
+                    await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
+                }
             }
             finally
             {

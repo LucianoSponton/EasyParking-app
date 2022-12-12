@@ -1,6 +1,10 @@
 ﻿using Model;
+using ServiceWebApi.DTO;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ServiceWebApi
@@ -26,12 +30,12 @@ namespace ServiceWebApi
                 throw ex;
             }
         }
-        public async Task<List<Estacionamiento>> GetAllInclude()
+        public async Task<List<EstacionamientoDTO>> GetAllInclude()
         {
             try
             {
-                WebApiGet<List<Estacionamiento>> webApiGet = new WebApiGet<List<Estacionamiento>>(_webApiAccess);
-                List<Estacionamiento> lista = await webApiGet.GetAsync($"api/Estacionamiento/GetAllInclude");
+                WebApiGet<List<EstacionamientoDTO>> webApiGet = new WebApiGet<List<EstacionamientoDTO>>(_webApiAccess);
+                List<EstacionamientoDTO> lista = await webApiGet.GetAsync($"api/Estacionamiento/GetAllInclude");
                 return lista;
             }
             catch (Exception ex)
@@ -60,6 +64,35 @@ namespace ServiceWebApi
             {
                 WebApiGet<List<Estacionamiento>> webApiGet = new WebApiGet<List<Estacionamiento>>(_webApiAccess);
                 List<Estacionamiento> lista = await webApiGet.GetAsync($"api/Estacionamiento/GetConsultaSimple/{text}");
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<Jornada>> GetJornadas(int estacionamientoId)
+        {
+            try
+            {
+                WebApiGet<List<Model.Jornada>> webApiGet = new WebApiGet<List<Model.Jornada>>(_webApiAccess);
+                List<Jornada> lista = await webApiGet.GetAsync($"api/Estacionamiento/GetJornadas/{estacionamientoId}");
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public async Task<List<Tag>> GetTags(string text)
+        {
+            try
+            {
+                WebApiGet<List<Tag>> webApiGet = new WebApiGet<List<Tag>>(_webApiAccess);
+                List<Tag> lista = await webApiGet.GetAsync($"api/Estacionamiento/GetTags/{text}");
                 return lista;
             }
             catch (Exception ex)
@@ -115,6 +148,20 @@ namespace ServiceWebApi
                 WebApiGet<List<Estacionamiento>> webApiGet = new WebApiGet<List<Estacionamiento>>(_webApiAccess);
                 List<Estacionamiento> lista = await webApiGet.GetAsync($"/api/Estacionamiento/GetByTiposDeVehiculosAdmitidos/{tipoDeLugar}");
                 return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<Estacionamiento>> GetConsultaGenerica(DTO.ParametroBusquedaDTO parametroBusquedaDTO)
+        {
+            try
+            {
+                WebApiPost<DTO.ParametroBusquedaDTO, List<Estacionamiento>> webApiPost = new WebApiPost<DTO.ParametroBusquedaDTO, List<Estacionamiento>>(_webApiAccess);
+
+                return await webApiPost.PostAsync($"/api/Estacionamiento/GetConsultaGenerica", parametroBusquedaDTO);
             }
             catch (Exception ex)
             {
@@ -192,6 +239,24 @@ namespace ServiceWebApi
                 throw ex;
             }
         }
+
+        public async Task SedImage(byte[] image)
+        {
+            try
+            {
+                var content = new MultipartFormDataContent("Upload----" + DateTime.Now.ToString(CultureInfo.InvariantCulture));
+                content.Add(new StreamContent(new MemoryStream(image)), "bilddatei", "upload.jpg");
+                WebApiPost<MultipartFormDataContent> webApiPost = new WebApiPost<MultipartFormDataContent>(_webApiAccess);
+                await webApiPost.PostAsync(content);
+                return;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public async Task<string> AddAutonumeric(Estacionamiento estacionamiento)
         {
             try

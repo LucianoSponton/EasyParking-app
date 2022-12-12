@@ -23,11 +23,14 @@ C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstanda
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Estacionamientos\MisEstacionamientos\MisEstacionamientos.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Estacionamientos\MisEstacionamientos\PopupRangoHorario.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Favoritos\Favoritos.xaml.g.cs
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Generales\Busquedas.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Generales\InternetNotAvailable.xaml.g.cs
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Generales\Mapa.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Generales\PopCargando.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Generales\PopupEditSimpleData.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Generales\PopupItemImage.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Generales\WebViewVideos.xaml.g.cs
+C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Inicio\Filtros.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Inicio\Inicio.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Login\IniciarSesion.xaml.g.cs
 C:\ProyectosGitHubUTN\EasyParkingApp\EasyParking\EasyParking\obj\Debug\netstandard2.1\Views\Login\Login.xaml.g.cs

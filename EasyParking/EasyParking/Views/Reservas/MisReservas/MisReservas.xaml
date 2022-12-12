@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:custom="clr-namespace:EasyParking.Custom" xmlns:views="clr-namespace:EasyParking.Components" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:local="clr-namespace:EasyParking.Converter"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:custom="clr-namespace:EasyParking.Custom" xmlns:views="clr-namespace:EasyParking.Components" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:local="clr-namespace:EasyParking.Converter" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="EasyParking.Views.Reservas.MisReservas.MisReservas">
 
     <NavigationPage.TitleView>
@@ -10,218 +10,99 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:ByteArrayToImageSource  x:Key="ByteArrayToImageSource" />
-            <local:ZeroToBool              x:Key="ZeroToBool" />
-            <local:BoolToFavoritoImagen    x:Key="BoolToFavoritoImagen" />
+            <local:ByteArrayToImageSource                         x:Key="ByteArrayToImageSource" />
+            <local:ZeroToBool                                     x:Key="ZeroToBool" />
+            <local:BoolToFavoritoImagen                           x:Key="BoolToFavoritoImagen" />
+            <local:EstadoReservaToTextInfoEstadoReserva           x:Key="EstadoReservaToTextInfoEstadoReserva" />
+            <local:EstadoReservaToColor                           x:Key="EstadoReservaToColor" />
+            <local:EstadoReservaToIcon                            x:Key="EstadoReservaToIcon" />
+            <local:EstadoReservaToColorBtn                        x:Key="EstadoReservaToColorBtn" />
+            <local:EstadoReservaToTextBtn                         x:Key="EstadoReservaToTextBtn" />
+            <local:EstadoReservaToIsVisible                       x:Key="EstadoReservaToIsVisible" />
+            <local:EstadoReservaToCodigoDeValidacionIsVisible     x:Key="EstadoReservaToCodigoDeValidacionIsVisible" />
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Padding="10" Spacing="5">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+
+        <ActivityIndicator x:Name="activityIndicator"  AbsoluteLayout.LayoutBounds="0.5,0.20" AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                       IsRunning="True"  
+                       IsEnabled="True"  
+                       IsVisible="False"  
+                       Color="#17202A"  
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       BackgroundColor="Transparent"/>
+
+        <syncfusion:SfListView  x:Name="lwlistado"    AutoFitMode="DynamicHeight"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                                VerticalOptions="Center" SelectionBackgroundColor="Transparent"
+                                                    HorizontalOptions="EndAndExpand" >
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="0" Margin="10" Spacing="5">
 
 
-                <Frame  CornerRadius="3" Padding="0" HasShadow="True"  BackgroundColor="White">
-                    <StackLayout Spacing="0">
-                        <border:SfBorder BackgroundColor="#EAEDED" CornerRadius="3,3,0,0" Padding="3,5,3,5" HorizontalOptions="FillAndExpand" BorderColor="Transparent" BorderWidth="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="2"  VerticalOptions="Center">
-                                <custom:CustomLabel  Text="Esperando tu arribo al lugar" Margin="5,0,0,0" FontSize="18" 
+                            <Frame  CornerRadius="3" Padding="0" HasShadow="True"  BackgroundColor="Transparent">
+                                <StackLayout Spacing="0">
+
+                                    <buttons:SfButton HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"  
+                                                HeightRequest="40" CornerRadius="3,3,0,0"  Margin="0" BackgroundColor="{Binding Estado, Converter={StaticResource EstadoReservaToColor}}"
+                                                BorderWidth="0">
+
+                                        <buttons:SfButton.Content>
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="2"  VerticalOptions="Center">
+                                                <custom:CustomLabel  Text="{Binding Estado, Converter={StaticResource EstadoReservaToTextInfoEstadoReserva}}" Margin="5,0,0,0" FontSize="18" 
                                                  VerticalOptions="Center" TextColor="Black" 
                                                  FontFamily="Lobster"/>
-                                <Image Source="hourglass.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-                            </StackLayout>
-                        </border:SfBorder>
+                                                <Image Source="{Binding Estado, Converter={StaticResource EstadoReservaToIcon}}" Margin="0,0,5,0" HeightRequest="25" WidthRequest="25" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                                            </StackLayout>
+                                        </buttons:SfButton.Content>
+                                    </buttons:SfButton>
 
-                        <StackLayout Orientation="Horizontal" Margin="0" HorizontalOptions="FillAndExpand" Spacing="5">
-
-                            <Image Aspect="Fill" Rotation="0"   WidthRequest="130"  BackgroundColor="Transparent" HeightRequest="130"  
-                              Source="https://imgar.zonapropcdn.com/avisos/1/00/27/31/65/31/720x532/1615800904.jpg"/>
-
-
-                            <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Spacing="10">
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
-                                    <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
-
-                                        <custom:CustomLabel Text="Ibañes pack" FontSize="15.5" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Image Source="ubicacion.png" HeightRequest="15" WidthRequest="15"/>
-                                            <custom:CustomLabel Text="Monteagudo 1542" FontSize="14" VerticalOptions="Center" TextColor="Gray" />
-                                        </StackLayout>
-
-
-                                    </StackLayout>
-
-
+                                    <views:Card_Parking x:Name="Card_Parking" BindingContext="{Binding Estacionamiento}" IsVisibleFooter="False"/>
 
 
                                 </StackLayout>
 
-                                <custom:CustomLabel Text="Galpon cerrado" Margin="0"  TextColor="Gray"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                            </Frame>
 
-                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Spacing="10">
-
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="2"  VerticalOptions="Center">
-                                        <Image Source="estrella.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                        <custom:CustomLabel  Text="3.3" FontSize="15" VerticalOptions="Center" TextColor="Black" />
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0"  VerticalOptions="Center" IsVisible="{Binding MontoReserva, Converter={StaticResource ZeroToBool}}">
-                                        <custom:CustomLabel  Text="Reserva:" FontSize="15" VerticalOptions="Center" TextColor="Black" />
-                                        <Image Source="peso.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                        <custom:CustomLabel  Text = "150" FontSize="14" Margin="0,0,4,0" VerticalOptions="Center" TextColor="#17202A" />
-                                    </StackLayout>
-
-
-                                </StackLayout>
-
-
-                            </StackLayout>
-
-
-
-
-
-
-
-
-                        </StackLayout>
-                        
-                        
-
-                    </StackLayout>
-
-                </Frame>
-
-                <border:SfBorder BackgroundColor="White" HasShadow="True" CornerRadius="3" Padding="3,5,3,5"  ShadowColor="Gainsboro"  HorizontalOptions="FillAndExpand" BorderColor="Transparent" BorderWidth="0">
-                    <custom:CustomLabel  Text="Código de reserva: ASD897WER" Margin="5,0,0,0" FontSize="16" 
+                            <border:SfBorder IsVisible="{Binding Estado, Converter={StaticResource EstadoReservaToCodigoDeValidacionIsVisible}}" BackgroundColor="White" HasShadow="True" CornerRadius="3" Padding="3,5,3,5"  ShadowColor="Gainsboro"  HorizontalOptions="FillAndExpand" BorderColor="Transparent" BorderWidth="0">
+                                <custom:CustomLabel BindingContext="{Binding .}"  Text="{Binding CodigoDeValidacion ,StringFormat='Código de reserva: {0}'}" Margin="5,0,0,0" FontSize="16" 
                                                  VerticalOptions="Center" TextColor="Black" 
                                                  FontFamily="Lobster"/>
-                </border:SfBorder>
+                            </border:SfBorder>
 
 
-                <StackLayout Orientation="Horizontal" Spacing="5" Margin="0" Padding="0" VerticalOptions="EndAndExpand">
-                    <buttons:SfButton CornerRadius="3" HasShadow="True" x:Name="btnReserva1"   Text="Cancelar"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"  Padding="0" 
-                                                              BackgroundColor="#E74C3C"  TextColor="White"  Margin="0"   FontAttributes="Bold"  VerticalOptions="EndAndExpand" ShadowColor="Gainsboro" />
+                            <StackLayout Orientation="Horizontal" Spacing="5" Margin="0" Padding="0" VerticalOptions="EndAndExpand">
+                                <buttons:SfButton CornerRadius="3" HasShadow="True" x:Name="btnCancelarReserva"   Text="{Binding Estado, Converter={StaticResource EstadoReservaToTextBtn}}"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"  Padding="0" 
+                                                              BackgroundColor="{Binding Estado, Converter={StaticResource EstadoReservaToColorBtn}}" IsVisible="{Binding Estado, Converter={StaticResource EstadoReservaToIsVisible}}"  TextColor="White"  Margin="0"   FontAttributes="Bold"  VerticalOptions="EndAndExpand" ShadowColor="Gainsboro" />
 
-                    <buttons:SfButton CornerRadius="3" HasShadow="True" Text="Ver más"  Padding="0" FontSize="14" TextColor="#0366D6" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Start"   Margin="0,0,0,0"
+                                <buttons:SfButton CornerRadius="3" HasShadow="True" Text="Ver más"  Padding="0" FontSize="14" TextColor="#0366D6" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Start"   Margin="0,0,0,0"
                                                                BackgroundColor="White" x:Name="btnVerMas11"  ShadowColor="Gainsboro" />
 
-                    <buttons:SfButton CornerRadius="3" HasShadow="True" Text="Ver mapa"  Padding="0" FontSize="14" TextColor="#2968C8" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Start"   Margin="0,0,0,0"
+                                <buttons:SfButton CornerRadius="3" HasShadow="True" Text="Ver mapa"  Padding="0" FontSize="14" TextColor="#2968C8" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Start"   Margin="0,0,0,0"
                                                                ShowIcon="True" ImageAlignment="Right" ImageSource="map.png" x:Name="btnVerMapa11" ShadowColor="Gainsboro"  />
 
 
-                </StackLayout>
-
-
-
-            </StackLayout>
-
-            <StackLayout Padding="10" Spacing="5">
-
-
-                <Frame  CornerRadius="3" Padding="0" HasShadow="True"  BackgroundColor="White">
-                    <StackLayout Spacing="0">
-                        <border:SfBorder BackgroundColor="#D1F2EB" CornerRadius="3,3,0,0" Padding="3,5,3,5" HorizontalOptions="FillAndExpand" BorderColor="Transparent" BorderWidth="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="2"  VerticalOptions="Center">
-                                <custom:CustomLabel  Text="Estuviste aqui" Margin="5,0,0,0" FontSize="18" 
-                                                 VerticalOptions="Center" TextColor="Black" 
-                                                 FontFamily="Lobster"/>
-                                <Image Source="checkEstado.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
                             </StackLayout>
-                        </border:SfBorder>
-
-                        <StackLayout Orientation="Horizontal" Margin="0" HorizontalOptions="FillAndExpand" Spacing="5">
-
-                            <Image Aspect="Fill" Rotation="0"   WidthRequest="130"  BackgroundColor="Transparent" HeightRequest="130"  
-                              Source="https://imgar.zonapropcdn.com/avisos/1/00/27/31/65/31/720x532/1615800904.jpg"/>
-
-
-                            <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Spacing="10">
-
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="0">
-                                    <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
-
-                                        <custom:CustomLabel Text="Ibañes pack" FontSize="15.5" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Image Source="ubicacion.png" HeightRequest="15" WidthRequest="15"/>
-                                            <custom:CustomLabel Text="Monteagudo 1542" FontSize="14" VerticalOptions="Center" TextColor="Gray" />
-                                        </StackLayout>
-
-
-                                    </StackLayout>
-
-
-
-
-                                </StackLayout>
-
-                                <custom:CustomLabel Text="Galpon cerrado" Margin="0"  TextColor="Gray"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-
-                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Spacing="10">
-
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="2"  VerticalOptions="Center">
-                                        <Image Source="estrella.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                        <custom:CustomLabel  Text="3.3" FontSize="15" VerticalOptions="Center" TextColor="Black" />
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="0"  VerticalOptions="Center" IsVisible="{Binding MontoReserva, Converter={StaticResource ZeroToBool}}">
-                                        <custom:CustomLabel  Text="Reserva:" FontSize="15" VerticalOptions="Center" TextColor="Black" />
-                                        <Image Source="peso.png" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                        <custom:CustomLabel  Text = "240" FontSize="14" Margin="0,0,4,0" VerticalOptions="Center" TextColor="#17202A" />
-                                    </StackLayout>
-
-
-                                </StackLayout>
-
-
-                            </StackLayout>
-
-
-
-
-
-
 
 
                         </StackLayout>
 
-                    </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
 
-                </Frame>
-
-                <StackLayout Orientation="Horizontal" Spacing="5" Margin="0" Padding="0" VerticalOptions="EndAndExpand">
-                    <buttons:SfButton CornerRadius="3" HasShadow="True" x:Name="btnReserva"   Text="Reservar"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" Padding="0" 
-                                                              BackgroundColor="#2968C8"   Margin="0"   FontAttributes="Bold"  VerticalOptions="EndAndExpand" ShadowColor="Gainsboro" />
-
-                    <buttons:SfButton CornerRadius="3" HasShadow="True" Text="Ver más"  Padding="0" FontSize="14" TextColor="#0366D6" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Start"   Margin="0,0,0,0"
-                                                               BackgroundColor="White" x:Name="btnVerMas1"  ShadowColor="Gainsboro" />
-
-                    <buttons:SfButton CornerRadius="3" HasShadow="True" Text="Ver mapa"  Padding="0" FontSize="14" TextColor="#2968C8" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Start"   Margin="0,0,0,0"
-                                                               ShowIcon="True" ImageAlignment="Right" ImageSource="map.png" x:Name="btnVerMapa1" ShadowColor="Gainsboro"  />
-
-
-                </StackLayout>
-
-                <!--<buttons:SfButton  Text="Volver a reservar"  ShadowColor="Gainsboro"    HorizontalOptions="FillAndExpand" CornerRadius="3"
-                                          HorizontalTextAlignment="Center" BorderWidth="1" TextColor="#2968C8" Padding="0" 
-                                          BackgroundColor="White"   Margin="0" x:Name="btnReservar"
-                                          HasShadow="True" ShowIcon="True" ImageAlignment="Right" ImageSource="refresh.png"  />-->
-
-
-
-                <buttons:SfButton  Text="Dejar una reseña del lugar"  ShadowColor="Gainsboro"    HorizontalOptions="FillAndExpand" CornerRadius="3"
-                                          HorizontalTextAlignment="Center" BorderWidth="1" TextColor="#2968C8" Padding="0" 
-                                          BackgroundColor="White"   Margin="0" x:Name="btnAgregarReseña" Clicked="btnAgregarReseña_Clicked"
-                                          HasShadow="True" ShowIcon="True" ImageAlignment="Right" ImageSource="comment.png"  />
-
-
-
-
-
-
-            </StackLayout>
+        <StackLayout x:Name="BoxNotSearchResult" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5,0.4" AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="False">
+            <Image Source="recibo.gif" IsAnimationPlaying="True" HeightRequest="150" WidthRequest="150" BackgroundColor="Transparent"/>
+            <custom:CustomLabel Text="¡No tienes reservas!" MaxLines="2"
+                                FontSize="25" Margin="0,20,0,0"
+                                HorizontalOptions="FillAndExpand" 
+                                HorizontalTextAlignment="Center"/>
         </StackLayout>
-        
-    </ContentPage.Content>
+
+    </AbsoluteLayout>
 </ContentPage>

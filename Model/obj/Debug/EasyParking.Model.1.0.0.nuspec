@@ -5,6 +5,7 @@
     <version>1.0.0</version>
     <authors>Model</authors>
     <description>Package Description</description>
+    <tags>1.0.0</tags>
     <repository type="git" url="https://github.com/LucianoSponton/EasyParking-app" />
     <dependencies>
       <group targetFramework=".NETStandard2.1" />

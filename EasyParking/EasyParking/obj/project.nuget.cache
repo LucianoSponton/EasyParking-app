@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "KO8y3VSR1w2lNcwuADZS8KK/D1o8gF2OCmYJBX8QOdxgykXN+w7aCns+k9SZfXewKU7wysJxbo2ycnriIeuqfA==",
+  "dgSpecHash": "hK4+0L642CWh3IeoH4Wj1jjJxMwSlFEOzbyrpBMgL+B0/DMxGbEa+r2Z2kPext7BM0VHv6PfvCBrX7yIRuSnvw==",
   "success": true,
   "projectFilePath": "C:\\ProyectosGitHubUTN\\EasyParkingApp\\EasyParking\\EasyParking\\EasyParking.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LUCIANO\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\rg.plugins.popup\\2.1.0\\rg.plugins.popup.2.1.0.nupkg.sha512",
-    "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.licensing\\20.3.0.50\\syncfusion.licensing.20.3.0.50.nupkg.sha512",
+    "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.licensing\\20.3.0.56\\syncfusion.licensing.20.3.0.56.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.buttons\\20.1.0.55\\syncfusion.xamarin.buttons.20.1.0.55.nupkg.sha512",
-    "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.core\\20.3.0.50\\syncfusion.xamarin.core.20.3.0.50.nupkg.sha512",
+    "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.core\\20.3.0.56\\syncfusion.xamarin.core.20.3.0.56.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.datasource\\20.1.0.55\\syncfusion.xamarin.datasource.20.1.0.55.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.gridcommon\\20.1.0.55\\syncfusion.xamarin.gridcommon.20.1.0.55.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.sfcombobox\\20.1.0.55\\syncfusion.xamarin.sfcombobox.20.1.0.55.nupkg.sha512",
@@ -16,12 +16,14 @@
     "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.sflistview\\20.1.0.55\\syncfusion.xamarin.sflistview.20.1.0.55.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.sfnavigationdrawer\\20.1.0.55\\syncfusion.xamarin.sfnavigationdrawer.20.1.0.55.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.sfnumericupdown\\20.1.0.55\\syncfusion.xamarin.sfnumericupdown.20.1.0.55.nupkg.sha512",
+    "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.sfpulltorefresh\\20.3.0.56\\syncfusion.xamarin.sfpulltorefresh.20.3.0.56.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.sfrangeslider\\20.2.0.36\\syncfusion.xamarin.sfrangeslider.20.2.0.36.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\syncfusion.xamarin.sfrating\\20.1.0.55\\syncfusion.xamarin.sfrating.20.1.0.55.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\xam.plugin.media\\5.0.1\\xam.plugin.media.5.0.1.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.essentials\\1.7.3\\xamarin.essentials.1.7.3.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.forms\\5.0.0.2515\\xamarin.forms.5.0.0.2515.nupkg.sha512",
+    "C:\\Users\\LUCIANO\\.nuget\\packages\\xamarin.forms.maps\\5.0.0.2012\\xamarin.forms.maps.5.0.0.2012.nupkg.sha512",
     "C:\\Users\\LUCIANO\\.nuget\\packages\\easyparking.model\\1.0.0\\easyparking.model.1.0.0.nupkg.sha512"
   ],
   "logs": []

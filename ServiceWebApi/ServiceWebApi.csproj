@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageTags>1.0.0</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

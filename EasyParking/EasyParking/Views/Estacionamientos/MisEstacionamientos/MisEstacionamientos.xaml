@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:EasyParking.Components" xmlns:custom="clr-namespace:EasyParking.Custom" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:local="clr-namespace:EasyParking.Converter"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:views="clr-namespace:EasyParking.Components"
+             xmlns:custom="clr-namespace:EasyParking.Custom"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" 
+             xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+             xmlns:local="clr-namespace:EasyParking.Converter" xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
              x:Class="EasyParking.Views.Estacionamientos.MisEstacionamientos.MisEstacionamientos">
 
 
@@ -166,13 +173,20 @@
 
                                 <StackLayout>
 
-                                    <StackLayout HorizontalOptions="FillAndExpand">
+                                    <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
 
                                         <custom:CustomLabel  Text="Actualizar lugares disponibles" FontSize="16" MaxLines="2" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Gray" />
 
 
                                         <syncfusion:SfListView  ItemsSource="{Binding TiposDeVehiculosAdmitidos}" ItemSpacing="10" AllowSwiping="True" BackgroundColor="Transparent"
                                                 FlowDirection="RightToLeft" Orientation="Horizontal" HeightRequest="100"  Padding="0" ItemSize="130" SelectionMode="None">
+                                            <syncfusion:SfListView.DataSource>
+                                                <data:DataSource>
+                                                    <data:DataSource.SortDescriptors>
+                                                        <data:SortDescriptor PropertyName="TipoDeVehiculo" Direction="Ascending"/>
+                                                    </data:DataSource.SortDescriptors>
+                                                </data:DataSource>
+                                            </syncfusion:SfListView.DataSource>
                                             <syncfusion:SfListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
@@ -192,6 +206,36 @@
                                             </syncfusion:SfListView.ItemTemplate>
                                         </syncfusion:SfListView>
 
+                                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0" Margin="10,10,10,0">
+
+
+                                            <buttons:SfButton x:Name="btnGuardarCambios"  HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
+                                                             HeightRequest="40" CornerRadius="3"   BackgroundColor="#17202A"
+                                                             BorderWidth="1.5" TextColor="White"  >
+
+                                                <buttons:SfButton.Content>
+                                                    <AbsoluteLayout  HorizontalOptions="FillAndExpand">
+                                                        <ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0.5" x:Name="activityIndicadorBtnGuardar" IsVisible="True" HorizontalOptions="Start" Color="White" WidthRequest="25" VerticalOptions="Center"/>
+                                                        <Label Text="Guardar cambios" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5" FontSize="16" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                                    </AbsoluteLayout>
+                                                </buttons:SfButton.Content>
+                                            </buttons:SfButton>
+                                            
+                                            <buttons:SfButton x:Name="btnDescartarCambios"  HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
+                                                             HeightRequest="40" CornerRadius="3"  Margin="0,10,0,10" BorderColor="#17202A" BackgroundColor="Transparent"
+                                                             BorderWidth="1.5" TextColor="White"  >
+
+                                                <buttons:SfButton.Content>
+                                                    <AbsoluteLayout  HorizontalOptions="FillAndExpand">
+                                                        <ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0.5" x:Name="activityIndicadorBtnDescartarCambios" IsVisible="True" HorizontalOptions="Start" Color="White" WidthRequest="25" VerticalOptions="Center"/>
+                                                        <Label Text="Descartar cambios" TextColor="#17202A" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5" FontSize="16" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"   />
+                                                    </AbsoluteLayout>
+                                                </buttons:SfButton.Content>
+                                            </buttons:SfButton>
+
+                                        </StackLayout>
+
+                                       
 
 
                                     </StackLayout>
@@ -246,6 +290,16 @@
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
         </ImageButton>
+
+
+        <StackLayout x:Name="BoxNotSearchResult" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5,0.4" AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="False">
+            <Image Source="sinResultado.png" HeightRequest="150" WidthRequest="150"/>
+            <custom:CustomLabel Text="¡No tienes estacionamientos!" 
+                                FontSize="25" Margin="0,20,0,0"
+                                HorizontalOptions="FillAndExpand" 
+                                HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        
         
     </AbsoluteLayout>
 </ContentPage>

@@ -25,6 +25,21 @@ namespace EasyParking.Components
         public delegate void OnClicked_VeImagenDelegate();
         public event EventHandler OnClicked_VeImagen;
 
+        public delegate void OnClicked_FavoritoDelegate();
+        public event EventHandler OnClicked_Favorito;
+
+        private bool _isVisibleFooter { get; set; }
+
+        public bool IsVisibleFooter
+        {
+            get { return _isVisibleFooter; }
+            set
+            {
+                stackFooter.IsVisible = value;
+            }
+        }
+
+
         private void btnReserva_Clicked(object sender, EventArgs e)
         {
             OnClicked_Reserva?.Invoke(this, EventArgs.Empty);
@@ -44,6 +59,11 @@ namespace EasyParking.Components
         private void bntVerImagen_Clicked(object sender, EventArgs e)
         {
             OnClicked_VeImagen?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnFavorito_Clicked(object sender, EventArgs e)
+        {
+            OnClicked_Favorito?.Invoke(this, EventArgs.Empty);
         }
     }
 }

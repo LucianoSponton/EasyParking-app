@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:EasyParking.Components"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="EasyParking.Views.Inicio.Filtros" Title="Filtros">
+
+
+    <NavigationPage.TitleView>
+        <views:NavBar x:Name="navBar" Title="Filtros"  IsVisibleBoxSearch="False"  IsVisibleTituloDePagina="True" IsVisibleFavoritos="False" Margin="0,0,10,0"    />
+    </NavigationPage.TitleView>
+    
+    <ScrollView>
+        <StackLayout>
+            <StackLayout>
+                <Label Text="Vehiculos" FontAttributes="Bold" TextColor="Black" FontSize="20" Padding="10"
+                VerticalOptions="Center"   HorizontalOptions="Start" />
+                <ScrollView Orientation="Horizontal" Padding="10,0,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout  Orientation="Horizontal">
+                        <buttons:SfChip  Text="Auto" x:Name="chipAuto" ClassId="chipAuto" Clicked="chip_Clicked"
+                                         CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+
+                        <buttons:SfChip  Text="Camioneta"  x:Name="chipCamioneta"  ClassId="chipCamioneta" Clicked="chip_Clicked"
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+
+                        <buttons:SfChip  Text="Moto" x:Name="chipMoto"  ClassId="chipMoto" Clicked="chip_Clicked"
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+
+                        <buttons:SfChip  Text="Todos los vehiculos" x:Name="chipVehiculosTodos"  ClassId="chipVehiculosTodos" Clicked="chip_Clicked"
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+                    </StackLayout>
+                   
+
+
+                </ScrollView>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Tipos de lugar" FontAttributes="Bold" TextColor="Black" FontSize="20" Padding="10"
+                VerticalOptions="Center"   HorizontalOptions="Start" />
+                <ScrollView Orientation="Horizontal" Padding="10,0,10,0" HorizontalOptions="FillAndExpand">
+                    <StackLayout  Orientation="Horizontal">
+                        <buttons:SfChip  Text="Terreno al aire libre" 
+                                         x:Name="chipTerrenoAlAireLibre"  ClassId="chipTerrenoAlAireLibre" Clicked="chip_Clicked"
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+
+                        <buttons:SfChip  Text="Terreno parialmente cubierto" 
+                                         x:Name="chipTerrenoParcialmenteCubierto"  ClassId="chipTerrenoParcialmenteCubierto" Clicked="chip_Clicked"
+
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+
+                        <buttons:SfChip  Text="Galpón abierto" 
+                                         x:Name="chipGalponAbierto"  ClassId="chipGalponAbierto" Clicked="chip_Clicked"
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+
+                        <buttons:SfChip  Text="Galpón cerrado" 
+                                         x:Name="chipGalponCerrado"  ClassId="chipGalponCerrado" Clicked="chip_Clicked"
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+
+                        <buttons:SfChip  Text="Lugar bajo edificio" 
+                                        x:Name="chipLugarBajoEdificio"  ClassId="chipLugarBajoEdificio" Clicked="chip_Clicked"
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+
+                        <buttons:SfChip  Text="Casa" 
+                                         x:Name="chipCasa"  ClassId="chipCasa" Clicked="chip_Clicked"
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+
+                        <buttons:SfChip  Text="Todos los lugares" 
+                                        x:Name="chipTipoDeLugarTodos"  ClassId="chipTipoDeLugarTodos" Clicked="chip_Clicked"
+                                       CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="False" BackgroundColor="#AEB6BF">
+                        </buttons:SfChip>
+                    </StackLayout>
+
+
+
+                </ScrollView>
+            </StackLayout>
+
+            <!--<buttons:SfButton  Text="Aplicar"  ShadowColor="Black" HeightRequest="50" ImageWidth="25"  VerticalOptions="EndAndExpand"   HorizontalOptions="FillAndExpand" CornerRadius="5"
+                                          HorizontalTextAlignment="Center" BorderWidth="1" TextColor="LightYellow" Padding="0" 
+                                          BackgroundColor="#17202A"   Margin="20,0,20,20"  FontSize="18" x:Name="btnIniciarSesion"  
+                                            />-->
+
+
+            <buttons:SfButton x:Name="btnAplicar"   HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Clicked="btnAplicar_Clicked"
+                                     HeightRequest="40" CornerRadius="3"  Margin="10,10,10,20" BackgroundColor="#17202A"
+                                     BorderWidth="1.5" TextColor="White">
+
+                <buttons:SfButton.Content>
+                    <AbsoluteLayout  HorizontalOptions="FillAndExpand">
+                        <ActivityIndicator AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0.5" x:Name="activityIndicadorBtnAplicar" IsVisible="True" HorizontalOptions="Start" Color="White" WidthRequest="25" VerticalOptions="Center"/>
+                        <Label Text="Aplicar" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5" FontSize="16" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                    </AbsoluteLayout>
+                </buttons:SfButton.Content>
+            </buttons:SfButton>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

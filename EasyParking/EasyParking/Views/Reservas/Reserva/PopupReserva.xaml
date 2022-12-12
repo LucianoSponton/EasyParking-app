@@ -32,29 +32,32 @@
             </AbsoluteLayout>
 
 
-            <Frame  CornerRadius="3" Padding="10" HasShadow="True"  BackgroundColor="White">
-                <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
+            <StackLayout x:Name="stackEstacionamiento" Spacing="0">
+                <Frame   CornerRadius="3" Padding="10" HasShadow="True"  BackgroundColor="White">
+                    <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
 
-                    <custom:CustomLabel Text="Estacionamiento Ibañes" FontSize="16" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                        <custom:CustomLabel Text="{Binding Nombre}" FontSize="16" Margin="0"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="ubicacion.png" HeightRequest="15" WidthRequest="15"/>
+                            <custom:CustomLabel Text="{Binding Direccion}" FontSize="14" VerticalOptions="Center" TextColor="Gray" />
+                        </StackLayout>
+                        <custom:CustomLabel Text="{Binding TipoDeLugar}" Margin="0"  TextColor="Gray"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame  CornerRadius="3" Padding="10" HasShadow="True"  BackgroundColor="White">
                     <StackLayout Orientation="Horizontal">
-                        <Image Source="ubicacion.png" HeightRequest="15" WidthRequest="15"/>
-                        <custom:CustomLabel Text="Av 9 de Julio al 987" FontSize="14" VerticalOptions="Center" TextColor="Gray" />
+                        <custom:CustomLabel Text="Total de la reserva:" FontSize="18" VerticalOptions="Center" TextColor="Gray" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="0">
+                            <Image Source="peso.png" HeightRequest="20" WidthRequest="20"/>
+                            <custom:CustomLabel Text="{Binding MontoReserva}" FontSize="18" VerticalOptions="Center" TextColor="Gray" />
+                        </StackLayout>
                     </StackLayout>
-                    <custom:CustomLabel Text="Terreno parcialmente cubierto" Margin="0"  TextColor="Gray"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-
-
-                </StackLayout>
-            </Frame>
-
-            <Frame  CornerRadius="3" Padding="10" HasShadow="True"  BackgroundColor="White">
-                <StackLayout Orientation="Horizontal">
-                    <custom:CustomLabel Text="Total de la reserva:" FontSize="18" VerticalOptions="Center" TextColor="Gray" />
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="0">
-                        <Image Source="peso.png" HeightRequest="20" WidthRequest="20"/>
-                        <custom:CustomLabel Text="120" FontSize="18" VerticalOptions="Center" TextColor="Gray" />
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
+                </Frame>
+            </StackLayout>
+           
 
 
             <Frame  CornerRadius="3" Padding="10" HasShadow="True"  BackgroundColor="White">
@@ -63,7 +66,7 @@
                     <custom:CustomButton x:Name="btnMisVehiculos" Clicked="btnMisVehiculos_Clicked" Text="Seleccionar de mis vehículos" BackgroundColor="{StaticResource Color7}" TextColor="White" CornerRadius="3" HeightRequest="40"/>
                     <custom:CustomButton x:Name="btnNuevoVehiculo" Clicked="btnNuevoVehiculo_Clicked" Text="Ingresar un nuevo vehículo" BackgroundColor="{StaticResource Color7}" TextColor="White" CornerRadius="3" HeightRequest="40"/>
 
-                    <Frame  CornerRadius="3" Padding="0" HasShadow="True" Margin="5,10,5,10"  BackgroundColor="White">
+                    <Frame x:Name="frameVehiculoSeleccionado" CornerRadius="3" Padding="0" HasShadow="True" Margin="5,10,5,10"  BackgroundColor="White">
                         <StackLayout Spacing="0">
                             <border:SfBorder BorderColor = "Gainsboro" BackgroundColor="Gainsboro"  BorderWidth="4" Margin="0,0,0,0">
                                 <!--<custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="Moto" FontSize="16" Margin="0" HorizontalOptions="Center" FontAttributes="Bold"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>-->
@@ -78,9 +81,9 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="Tipo:" FontSize="16" Margin="0" HorizontalOptions="Center" FontAttributes="Bold"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-                                <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="Moto" FontSize="16" Margin="0" HorizontalOptions="Center"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                                <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{Binding TipoDeVehiculo}" FontSize="16" Margin="0" HorizontalOptions="Center"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
                                 <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="Patente:" FontSize="16" Margin="0"  HorizontalOptions="Center" FontAttributes="Bold"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
-                                <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="AS568" FontSize="16" Margin="0"  HorizontalOptions="Center"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
+                                <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="{Binding Patente}" FontSize="16" Margin="0"  HorizontalOptions="Center"  TextColor="Black"  MaxLines="4"  LineBreakMode="TailTruncation"/>
 
                             </Grid>
 
@@ -113,8 +116,9 @@
                                                               BorderColor="{StaticResource Color7}" BorderWidth="2"  BackgroundColor="Transparent"  Margin="0,10,0,10" FontAttributes="Bold"  VerticalOptions="EndAndExpand" />
 
 
-                <syncfusion:SfButton Grid.Column="1" Grid.Row="0" x:Name="btnConfirmarReserva"  Text="Pagar" FontSize="16" HeightRequest="40"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" Padding="0"  CornerRadius="3"
-                                                              BackgroundColor="{StaticResource Color7}"   Margin="0,10,0,10" FontAttributes="Bold"  VerticalOptions="EndAndExpand" />
+                <syncfusion:SfButton Grid.Column="1" Grid.Row="0" x:Name="btnConfirmarReserva"   Text="Pagar" FontSize="16" HeightRequest="40"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
+                                     TextColor="White" Padding="0"  CornerRadius="3" Clicked="btnConfirmarReserva_Clicked"
+                                     BackgroundColor="{StaticResource Color7}"   Margin="0,10,0,10" FontAttributes="Bold"  VerticalOptions="EndAndExpand" />
 
 
 

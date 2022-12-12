@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:custom="clr-namespace:EasyParking.Custom" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" xmlns:views="clr-namespace:EasyParking.Components"
+             x:Class="EasyParking.Views.Generales.Busquedas" NavigationPage.HasNavigationBar="False"  >
+
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
+
+        <ActivityIndicator x:Name="activityIndicator"  AbsoluteLayout.LayoutBounds="0.5,0.20" AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                       IsRunning="True"  
+                       IsEnabled="True"  
+                       IsVisible="False"  
+                       Color="#17202A"  
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       BackgroundColor="Transparent"/>
+        
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" >
+            
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <ImageButton Source="arrowleft.png" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Margin="10,0,0,0" Padding="4" Clicked="ImageButton_Clicked"/>
+                <!--<custom:CustomEntry Placeholder="Buscar"   InputTransparent="True" x:Name="searchBar" PropertyChanged="searchBar_PropertyChanged"  HorizontalOptions="FillAndExpand" Grid.Column="1" Grid.Row="0" Margin="10,0,10,0"/>-->
+                <SearchBar Placeholder="Buscar" FontSize="16" IsEnabled="True" x:Name="searchBar" PropertyChanged="searchBar_PropertyChanged"  HorizontalOptions="FillAndExpand" Margin="0,0,10,0"/>
+
+            </StackLayout>
+
+
+            <syncfusion:SfListView x:Name="lwlistado"  AutoFitMode="DynamicHeight" BackgroundColor="Transparent" ItemTapped="lwlistado_ItemTapped"
+                      VerticalOptions="FillAndExpand"   SelectionMode="Single" SelectionBackgroundColor="#B7CCEC" ItemSpacing="10">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="20" Padding="15,0,15,0">
+                            <Image Source="lupa01.png" HeightRequest="15" WidthRequest="15"/>
+                            <StackLayout>
+                                <custom:CustomLabel Text="{Binding Nombre}" MaxLines="8" LineBreakMode="TailTruncation" TextColor="Black" FontSize="20" Margin="0"/>
+                                <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                    <Image Source="position.png" HeightRequest="15" WidthRequest="15"/>
+                                    <custom:CustomLabel Text="{Binding Direccion}" MaxLines="8" LineBreakMode="TailTruncation" TextColor="Gray" FontSize="15" Margin="0"/>
+                                </StackLayout>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </StackLayout>
+       
+       
+
+    </AbsoluteLayout>
+
+</ContentPage>

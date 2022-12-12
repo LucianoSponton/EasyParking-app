@@ -19,11 +19,13 @@
           "Syncfusion.Xamarin.SfListView": "20.1.0.55",
           "Syncfusion.Xamarin.SfNavigationDrawer": "20.1.0.55",
           "Syncfusion.Xamarin.SfNumericUpDown": "20.1.0.55",
+          "Syncfusion.Xamarin.SfPullToRefresh": "20.3.0.56",
           "Syncfusion.Xamarin.SfRangeSlider": "20.2.0.36",
           "Syncfusion.Xamarin.SfRating": "20.1.0.55",
           "Xam.Plugin.Media": "5.0.1",
           "Xamarin.Essentials": "1.7.3",
-          "Xamarin.Forms": "5.0.0.2515"
+          "Xamarin.Forms": "5.0.0.2515",
+          "Xamarin.Forms.Maps": "5.0.0.2012"
         },
         "runtime": {
           "EasyParking.dll": {}
@@ -48,17 +50,17 @@
           }
         }
       },
-      "Syncfusion.Licensing/20.3.0.50": {
+      "Syncfusion.Licensing/20.3.0.56": {
         "runtime": {
           "lib/netstandard2.0/Syncfusion.Licensing.dll": {
-            "assemblyVersion": "20.3.0.50",
-            "fileVersion": "20.3.0.50"
+            "assemblyVersion": "20.3.0.56",
+            "fileVersion": "20.3.0.56"
           }
         }
       },
       "Syncfusion.Xamarin.Buttons/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Syncfusion.Xamarin.Core": "20.3.0.56",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -68,15 +70,15 @@
           }
         }
       },
-      "Syncfusion.Xamarin.Core/20.3.0.50": {
+      "Syncfusion.Xamarin.Core/20.3.0.56": {
         "dependencies": {
-          "Syncfusion.Licensing": "20.3.0.50",
+          "Syncfusion.Licensing": "20.3.0.56",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
           "lib/netstandard2.0/Syncfusion.Core.XForms.dll": {
-            "assemblyVersion": "20.3451.0.50",
-            "fileVersion": "20.3451.0.50"
+            "assemblyVersion": "20.3451.0.56",
+            "fileVersion": "20.3451.0.56"
           }
         }
       },
@@ -98,7 +100,7 @@
       },
       "Syncfusion.Xamarin.SfComboBox/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Syncfusion.Xamarin.Core": "20.3.0.56",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -110,7 +112,7 @@
       },
       "Syncfusion.Xamarin.SfImageEditor/20.3.0.50": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Syncfusion.Xamarin.Core": "20.3.0.56",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -122,7 +124,7 @@
       },
       "Syncfusion.Xamarin.SfListView/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Syncfusion.Xamarin.Core": "20.3.0.56",
           "Syncfusion.Xamarin.DataSource": "20.1.0.55",
           "Syncfusion.Xamarin.GridCommon": "20.1.0.55",
           "Xamarin.Forms": "5.0.0.2515"
@@ -136,7 +138,7 @@
       },
       "Syncfusion.Xamarin.SfNavigationDrawer/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Syncfusion.Xamarin.Core": "20.3.0.56",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -148,7 +150,7 @@
       },
       "Syncfusion.Xamarin.SfNumericUpDown/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Syncfusion.Xamarin.Core": "20.3.0.56",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -158,9 +160,21 @@
           }
         }
       },
+      "Syncfusion.Xamarin.SfPullToRefresh/20.3.0.56": {
+        "dependencies": {
+          "Syncfusion.Xamarin.Core": "20.3.0.56",
+          "Xamarin.Forms": "5.0.0.2515"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Syncfusion.SfPullToRefresh.XForms.dll": {
+            "assemblyVersion": "20.3451.0.56",
+            "fileVersion": "20.3451.0.56"
+          }
+        }
+      },
       "Syncfusion.Xamarin.SfRangeSlider/20.2.0.36": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Syncfusion.Xamarin.Core": "20.3.0.56",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -172,7 +186,7 @@
       },
       "Syncfusion.Xamarin.SfRating/20.1.0.55": {
         "dependencies": {
-          "Syncfusion.Xamarin.Core": "20.3.0.50",
+          "Syncfusion.Xamarin.Core": "20.3.0.56",
           "Xamarin.Forms": "5.0.0.2515"
         },
         "runtime": {
@@ -228,6 +242,17 @@
           }
         }
       },
+      "Xamarin.Forms.Maps/5.0.0.2012": {
+        "dependencies": {
+          "Xamarin.Forms": "5.0.0.2515"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Xamarin.Forms.Maps.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "5.0.0.671"
+          }
+        }
+      },
       "EasyParking.Model/1.0.0": {
         "runtime": {
           "Model.dll": {}
@@ -264,12 +289,12 @@
       "path": "rg.plugins.popup/2.1.0",
       "hashPath": "rg.plugins.popup.2.1.0.nupkg.sha512"
     },
-    "Syncfusion.Licensing/20.3.0.50": {
+    "Syncfusion.Licensing/20.3.0.56": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-KxTr1PgtR8lyLPTEvcNAEkacGfoysT0ZVQetVsqAHUiRKCRiKGy8ymwYDVX/Ug/WzTWW+NvICSIGDe5yaWMhnw==",
-      "path": "syncfusion.licensing/20.3.0.50",
-      "hashPath": "syncfusion.licensing.20.3.0.50.nupkg.sha512"
+      "sha512": "sha512-tSym/jpNruSOuvDjheCP8dFjBSjKkfcBSvOU6NgTIHma2r597WrJGK94KXxKPX10YVMtirhlw8WO2DOF+G4Z/A==",
+      "path": "syncfusion.licensing/20.3.0.56",
+      "hashPath": "syncfusion.licensing.20.3.0.56.nupkg.sha512"
     },
     "Syncfusion.Xamarin.Buttons/20.1.0.55": {
       "type": "package",
@@ -278,12 +303,12 @@
       "path": "syncfusion.xamarin.buttons/20.1.0.55",
       "hashPath": "syncfusion.xamarin.buttons.20.1.0.55.nupkg.sha512"
     },
-    "Syncfusion.Xamarin.Core/20.3.0.50": {
+    "Syncfusion.Xamarin.Core/20.3.0.56": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GI80Wc5RzcB7bXYs4kWoOC0wd9pA65+BsVJ2ZVGX45qRRCKzgV3msX+AI9VxxlTtJ4sabthWepIiSko9Tac5fQ==",
-      "path": "syncfusion.xamarin.core/20.3.0.50",
-      "hashPath": "syncfusion.xamarin.core.20.3.0.50.nupkg.sha512"
+      "sha512": "sha512-eybIqE7XR5NTvGg1M6HZLI19SmOLusBL2OH5Fr5ELlFvRv7yVkmQfRstrx94r1cZbjZhg2pvH5b3YqTgp1etOA==",
+      "path": "syncfusion.xamarin.core/20.3.0.56",
+      "hashPath": "syncfusion.xamarin.core.20.3.0.56.nupkg.sha512"
     },
     "Syncfusion.Xamarin.DataSource/20.1.0.55": {
       "type": "package",
@@ -334,6 +359,13 @@
       "path": "syncfusion.xamarin.sfnumericupdown/20.1.0.55",
       "hashPath": "syncfusion.xamarin.sfnumericupdown.20.1.0.55.nupkg.sha512"
     },
+    "Syncfusion.Xamarin.SfPullToRefresh/20.3.0.56": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kRdmB1Rzh6sakKnBIfxow0anPUxNPLkSNKudOE4p2TlSTA/AWPJnARCtncjjzXQiPbUOOzpGxYcvc45/Ra1nrg==",
+      "path": "syncfusion.xamarin.sfpulltorefresh/20.3.0.56",
+      "hashPath": "syncfusion.xamarin.sfpulltorefresh.20.3.0.56.nupkg.sha512"
+    },
     "Syncfusion.Xamarin.SfRangeSlider/20.2.0.36": {
       "type": "package",
       "serviceable": true,
@@ -375,6 +407,13 @@
       "sha512": "sha512-n/Y/xk1idWRkxk7xItwvNwwda7CHpIk7JxD6tXkGXmTqiVGV1xRkepf5aKXFkQLM9KIQhXXYBxPsdyJysPpktw==",
       "path": "xamarin.forms/5.0.0.2515",
       "hashPath": "xamarin.forms.5.0.0.2515.nupkg.sha512"
+    },
+    "Xamarin.Forms.Maps/5.0.0.2012": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Zq1mv6sybHzQYWcOYOuLDV1LWQiioGN6kmleau7frhkVLf68FSXd/GIq4uA92TIOYMW9MxmZKOSBW8VVPis5pQ==",
+      "path": "xamarin.forms.maps/5.0.0.2012",
+      "hashPath": "xamarin.forms.maps.5.0.0.2012.nupkg.sha512"
     },
     "EasyParking.Model/1.0.0": {
       "type": "project",

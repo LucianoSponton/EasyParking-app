@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using Xamarin.Forms;
 
@@ -30,46 +31,46 @@ namespace EasyParking.Tools
             return b;
         }
 
-        public static Model.Estacionamiento DarFormaAObjeto(object sender)
+        public static ServiceWebApi.DTO.EstacionamientoDTO DarFormaAObjeto(object sender)
         {
-            Model.Estacionamiento Estacionamiento;
+            ServiceWebApi.DTO.EstacionamientoDTO Estacionamiento;
 
             var x = sender.GetType().BaseType.Name.ToString();
 
             if (sender.GetType().BaseType.Name.ToString() == "Button")
             {
                 var btn = sender as Button;
-                Estacionamiento = btn?.BindingContext as Model.Estacionamiento;
+                Estacionamiento = btn?.BindingContext as ServiceWebApi.DTO.EstacionamientoDTO;
                 return Estacionamiento;
             }
             else if (sender.GetType().BaseType.Name.ToString() == "SfBorder")
             {
                 var btn = sender as SfButton;
-                Estacionamiento = btn?.BindingContext as Model.Estacionamiento;
+                Estacionamiento = btn?.BindingContext as ServiceWebApi.DTO.EstacionamientoDTO;
                 return Estacionamiento;
             }
             else if (sender.GetType().BaseType.Name.ToString() == "Entry")
             {
                 var btn = sender as Entry;
-                Estacionamiento = btn?.BindingContext as Model.Estacionamiento;
+                Estacionamiento = btn?.BindingContext as ServiceWebApi.DTO.EstacionamientoDTO;
                 return Estacionamiento;
             }
             else if (sender.GetType().BaseType.Name.ToString() == "SfButton")
             {
                 var btn = sender as SfButton;
-                Estacionamiento = btn?.BindingContext as Model.Estacionamiento;
+                Estacionamiento = btn?.BindingContext as ServiceWebApi.DTO.EstacionamientoDTO;
                 return Estacionamiento;
             }
             else if (sender.GetType().BaseType.Name.ToString() == "ContentView")
             {
                 var btn = sender as ContentView;
-                Estacionamiento = btn?.BindingContext as Model.Estacionamiento;
+                Estacionamiento = btn?.BindingContext as ServiceWebApi.DTO.EstacionamientoDTO;
                 return Estacionamiento;
             }
             else
             {
                 var btn = sender as CustomButton;
-                Estacionamiento = btn?.BindingContext as Model.Estacionamiento;
+                Estacionamiento = btn?.BindingContext as ServiceWebApi.DTO.EstacionamientoDTO;
                 return Estacionamiento;
             }
 
@@ -292,7 +293,14 @@ namespace EasyParking.Tools
             return (CultureInfo.InvariantCulture.TextInfo.ToTitleCase(value.ToLower()));
         }
 
+        private static Random random = new Random();
 
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
 
         public static void Messages(string Mensaje)
         {

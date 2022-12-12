@@ -1,4 +1,5 @@
 ﻿using Rg.Plugins.Popup.Services;
+using ServiceWebApi;
 using System;
 
 using Xamarin.Forms;
@@ -9,9 +10,40 @@ namespace EasyParking.Views.PerfilDeNegocio.PdN_Reservas
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PdN_Reservas : ContentPage
     {
+        ReservaServiceWebApi reservaServiceWebApi = new ReservaServiceWebApi(App.WebApiAccess);
+
         public PdN_Reservas()
         {
             InitializeComponent();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                activityIndicator.IsVisible = true;
+
+                var lista = await reservaServiceWebApi.GetReservasModalidadDueño();
+
+                lwlistado.ItemsSource = lista;
+
+                activityIndicator.IsVisible = false;
+
+                if (lista.Count == 0)
+                {
+                    BoxNotSearchResult.IsVisible = true;
+                }
+                else
+                {
+                    BoxNotSearchResult.IsVisible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         private async void btnHaLlegado_Clicked(object sender, EventArgs e)

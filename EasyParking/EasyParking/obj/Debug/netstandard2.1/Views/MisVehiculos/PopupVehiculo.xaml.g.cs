@@ -17,24 +17,24 @@ namespace EasyParking.Views.MisVehiculos {
     public partial class PopupVehiculo : global::Rg.Plugins.Popup.Pages.PopupPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Syncfusion.XForms.ComboBox.SfComboBox comboBox;
+        private global::Syncfusion.XForms.ComboBox.SfComboBox comboBoxTipoDeVehiculo;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::EasyParking.Custom.CustomEntry editorPatente;
+        private global::EasyParking.Custom.CustomEntry entryPatente;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::EasyParking.Custom.CustomButton btnCancelar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::EasyParking.Custom.CustomButton btnAceptar;
+        private global::EasyParking.Custom.CustomButton btnAgregar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(PopupVehiculo));
-            comboBox = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.ComboBox.SfComboBox>(this, "comboBox");
-            editorPatente = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomEntry>(this, "editorPatente");
+            comboBoxTipoDeVehiculo = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.ComboBox.SfComboBox>(this, "comboBoxTipoDeVehiculo");
+            entryPatente = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomEntry>(this, "entryPatente");
             btnCancelar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomButton>(this, "btnCancelar");
-            btnAceptar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomButton>(this, "btnAceptar");
+            btnAgregar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomButton>(this, "btnAgregar");
         }
     }
 }

@@ -2,26 +2,53 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:EasyParking.Components"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:custom="clr-namespace:EasyParking.Custom" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:custom="clr-namespace:EasyParking.Custom" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:pulltoRefresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
              x:Class="EasyParking.Views.Favoritos.Favoritos" NavigationPage.IconColor="Black">
 
 
 
     <NavigationPage.TitleView>
-        <views:NavBar x:Name="navBar"    Title="Favoritos" IsVisibleFavoritos="False" IsVisibleBoxSearch="False"  />
+        <views:NavBar x:Name="navBar"   Title="Favoritos" IsVisibleFavoritos="False" IsVisibleBoxSearch="False" Margin="0,0,10,0"  />
     </NavigationPage.TitleView>
 
-    <ContentPage.Content>
-        <syncfusion:SfListView  x:Name="lwlisado"   AutoFitMode="DynamicHeight"
-                                VerticalOptions="Center" SelectionBackgroundColor="Transparent"
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+
+        <ActivityIndicator x:Name="activityIndicator"  AbsoluteLayout.LayoutBounds="0.5,0.20" AbsoluteLayout.LayoutFlags="XProportional,YProportional"
+                       IsRunning="True"  
+                       IsEnabled="True"  
+                       IsVisible="False"  
+                       Color="#17202A"  
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       BackgroundColor="Transparent"/>
+
+
+        <syncfusion:SfListView  x:Name="lwlistado"    AutoFitMode="DynamicHeight"   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                                VerticalOptions="Center" SelectionBackgroundColor="Transparent" IsStickyHeader="True" 
                                                     HorizontalOptions="EndAndExpand" >
             <syncfusion:SfListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <views:Card_Parking x:Name="Card_Parking"   Margin="10,10,10,0"/>
+                        <views:Card_Parking x:Name="Card_Parking" OnClicked_VerMapa="Card_Parking_OnClicked_VerMapa" OnClicked_VerMas="Card_Parking_OnClicked_VerMas" 
+                                            Margin="10,10,10,0" OnClicked_Reserva="Card_Parking_OnClicked_Reserva" OnClicked_VeImagen="Card_Parking_OnClicked_VeImagen"
+                                            OnClicked_Favorito="Card_Parking_OnClicked_Favorito"/>
                     </ViewCell>
                 </DataTemplate>
             </syncfusion:SfListView.ItemTemplate>
         </syncfusion:SfListView>
-    </ContentPage.Content>
+
+
+
+
+
+
+        <StackLayout x:Name="BoxNotSearchResult" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5,0.4" AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="False">
+            <Image Source="heart2.gif" IsAnimationPlaying="True" HeightRequest="150" WidthRequest="150" BackgroundColor="Transparent"/>
+            <custom:CustomLabel Text="¡No tienes favoritos!" MaxLines="2"
+                                FontSize="25" Margin="0,20,0,0"
+                                HorizontalOptions="FillAndExpand" 
+                                HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
+    </AbsoluteLayout>
 </ContentPage>

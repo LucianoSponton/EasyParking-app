@@ -99,6 +99,53 @@ namespace ServiceWebApi
                     {
                         return;
                     }
+                    else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        string errorcontent = response.Content.ReadAsStringAsync().Result;
+                        throw new Exception($"ERROR ... {response.StatusCode.ToString()} - {errorcontent}");
+                    }
+                    else
+                    {
+                        if (intento >= _webApiAccess.Retry)
+                        {
+                            string errorcontent = response.Content.ReadAsStringAsync().Result;
+                            throw new Exception($"ERROR ... {response.StatusCode.ToString()} - {errorcontent}");
+
+                        }
+                    }
+
+                } while (true);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+
+        }
+
+        public async Task PostAsync(MultipartFormDataContent content)
+        {
+            try
+            {
+
+                int intento = 0;
+                do
+                {
+                    intento += 1;
+                    HttpResponseMessage response = await _webApiAccess.HttpClient.PostAsync("/api/Estacionamiento/Uploads", content);
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        return;
+                    }
+                    else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        string errorcontent = response.Content.ReadAsStringAsync().Result;
+                        throw new Exception($"ERROR ... {response.StatusCode.ToString()} - {errorcontent}");
+                    }
                     else
                     {
                         if (intento >= _webApiAccess.Retry)
@@ -119,8 +166,6 @@ namespace ServiceWebApi
             }
 
         }
-
-
     }
 
 }

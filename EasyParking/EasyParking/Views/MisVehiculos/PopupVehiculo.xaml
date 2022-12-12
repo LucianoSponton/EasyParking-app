@@ -32,7 +32,7 @@
                     <Editor x:Name="editorTipo" MinimumHeightRequest="100" AutoSize="TextChanges" Placeholder="Ingrese el tipo"  Keyboard="Default"  HorizontalOptions="FillAndExpand"/>
                 </inputLayout:SfTextInputLayout>-->
 
-                <combobox:SfComboBox HeightRequest="40" x:Name="comboBox"  WatermarkColor="{StaticResource Color7}" Watermark="Tipo de vehiculo">
+                <combobox:SfComboBox HeightRequest="40" x:Name="comboBoxTipoDeVehiculo"  WatermarkColor="{StaticResource Color7}" Watermark="Tipo de vehiculo">
                     <combobox:SfComboBox.ComboBoxSource>
                         <ListCollection:List x:TypeArguments="x:String">
                             <x:String>Auto</x:String>
@@ -43,7 +43,7 @@
                 </combobox:SfComboBox>
                 
                 <inputLayout:SfTextInputLayout  ContainerType="Outlined" Hint="Patente" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"   HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
-                    <custom:CustomEntry x:Name="editorPatente" MinimumHeightRequest="100"  Placeholder="Ingrese la patente"  Keyboard="Default"  HorizontalOptions="FillAndExpand"/>
+                    <custom:CustomEntry x:Name="entryPatente" MinimumHeightRequest="100"  Placeholder="Ingrese la patente"  Keyboard="Default"  HorizontalOptions="FillAndExpand"/>
                 </inputLayout:SfTextInputLayout>
 
                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
@@ -51,7 +51,7 @@
                                          TextColor="{StaticResource Color7}" BorderColor="{StaticResource Color7}" Text="Cancelar"  
                                         HeightRequest="40" VerticalOptions="Center" FontSize="16" CornerRadius="3" Padding="15,0,15,0" HorizontalOptions="FillAndExpand"/>
                   
-                    <custom:CustomButton x:Name="btnAceptar" BackgroundColor="{StaticResource Color7}" Text="Agregar" TextColor="White"
+                    <custom:CustomButton x:Name="btnAgregar" BackgroundColor="{StaticResource Color7}" Text="Agregar" TextColor="White" Clicked="btnAgregar_Clicked"
                                         HeightRequest="40" VerticalOptions="Center" FontSize="16" CornerRadius="3" Padding="15,0,15,0" HorizontalOptions="FillAndExpand"  />
                 </StackLayout>
 

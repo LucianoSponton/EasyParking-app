@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:EasyParking.Components" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:custom="clr-namespace:EasyParking.Custom"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:EasyParking.Components" xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:custom="clr-namespace:EasyParking.Custom" xmlns:pulltoRefresh="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms" xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
              x:Class="EasyParking.Views.Inicio.Inicio" BackgroundColor="#FAFAFA" >
 
 
@@ -20,19 +20,154 @@
                        WidthRequest="50"
                        BackgroundColor="Transparent"/>
 
+        
+        <Grid  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <syncfusion:SfListView  x:Name="lwlisado"   AutoFitMode="DynamicHeight" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
-                                VerticalOptions="Center" SelectionBackgroundColor="Transparent"
+            <ScrollView Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <buttons:SfButton  Text="Filtros" ImageSource="filter.png" BackgroundColor="Transparent" TextColor="Black" HeightRequest="50"
+                                        WidthRequest="100"  Clicked="btnFiltros_Clicked"
+                                        VerticalOptions="Center"
+                                        ShowIcon="true" >
+                    </buttons:SfButton>
+
+                    <syncfusion:SfListView  x:Name="lwTipoDeVehiculos"    AutoFitMode="Height" Orientation="Horizontal"  HeightRequest="50" ItemSpacing="5" 
+                                    VerticalOptions="Center" SelectionBackgroundColor="Transparent" IsStickyHeader="True" IsScrollingEnabled="False" IsScrollBarVisible="False"  >
+                        <syncfusion:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <buttons:SfChip ClassId="chipTipoDeVehiculo" x:Name="chipTipoDeVehiculo"  Text="{Binding .}"  Clicked="chipTipoDeVehiculo_Clicked"
+                                                         CornerRadius="30" 
+                                                        HorizontalOptions="Center"
+                                                        VerticalOptions="Center"
+                                                        ShowCloseButton="true" >
+                                    </buttons:SfChip>
+                                </ViewCell>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+                    </syncfusion:SfListView>
+
+                    <syncfusion:SfListView  x:Name="lwTipoDeLugar"   AutoFitMode="Height" Orientation="Horizontal"  HeightRequest="50" ItemSpacing="5"  IsScrollingEnabled="False" IsScrollBarVisible="False"
+                                    VerticalOptions="Center" SelectionBackgroundColor="Transparent" IsStickyHeader="True"   >
+                        <syncfusion:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <buttons:SfChip ClassId="chipTipoDeLugar"  Text="{Binding .}" x:Name="chipTipoDeLugar"   Clicked="chipTipoDeLugar_Clicked"
+                                                         CornerRadius="30"
+                                                        HorizontalOptions="Center"
+                                                        VerticalOptions="Center"
+                                                        ShowCloseButton="true" >
+                                    </buttons:SfChip>
+                                </ViewCell>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+                    </syncfusion:SfListView>
+                </StackLayout>
+
+            </ScrollView>
+
+
+
+            <!--<ScrollView Orientation="Horizontal"  Grid.Column="0" Grid.Row="0">
+                <StackLayout Orientation="Horizontal" Padding="5">
+                    <buttons:SfChip  Text="auto" 
+                                        WidthRequest="100" CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="true" >
+                    </buttons:SfChip>
+
+                    <buttons:SfChip  Text="camioneta" 
+                                        WidthRequest="120" CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="true" >
+                    </buttons:SfChip>
+
+                    <buttons:SfChip  Text="moto" 
+                                        WidthRequest="100" CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="true" >
+                    </buttons:SfChip>
+
+                </StackLayout>
+
+            </ScrollView>-->
+
+            <pulltoRefresh:SfPullToRefresh x:Name="pullToRefresh"  Grid.Column="0" Grid.Row="1"   Refreshing="pullToRefresh_Refreshing" Margin="0,0,0,20"
+                ProgressBackgroundColor="#428BCA" 
+                               TransitionMode="SlideOnTop" 
+                               IsRefreshing="False">
+                <pulltoRefresh:SfPullToRefresh.PullableContent>
+                    <syncfusion:SfListView  x:Name="lwlistado"    AutoFitMode="DynamicHeight"  
+                                VerticalOptions="Center" SelectionBackgroundColor="Transparent" IsStickyHeader="True" 
                                                     HorizontalOptions="EndAndExpand" >
-            <syncfusion:SfListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <views:Card_Parking x:Name="Card_Parking" OnClicked_VerMapa="Card_Parking_OnClicked_VerMapa" OnClicked_VerMas="Card_Parking_OnClicked_VerMas" 
-                                            Margin="10,10,10,0" OnClicked_Reserva="Card_Parking_OnClicked_Reserva" OnClicked_VeImagen="Card_Parking_OnClicked_VeImagen"/>
-                    </ViewCell>
-                </DataTemplate>
-            </syncfusion:SfListView.ItemTemplate>
-        </syncfusion:SfListView>
+                        <!--<syncfusion:SfListView.HeaderTemplate>
+                        <DataTemplate>
+                            <ScrollView Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <buttons:SfChip  Text="auto" 
+                                        WidthRequest="100" CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="true" >
+                                    </buttons:SfChip>
+
+                                    <buttons:SfChip  Text="camioneta" 
+                                        WidthRequest="120" CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="true" >
+                                    </buttons:SfChip>
+
+                                    <buttons:SfChip  Text="moto" 
+                                        WidthRequest="100" CornerRadius="30"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        ShowCloseButton="true" >
+                                    </buttons:SfChip>
+                                    
+                                </StackLayout>
+                               
+                            </ScrollView>
+                        </DataTemplate>
+                    </syncfusion:SfListView.HeaderTemplate>-->
+                        
+                        <syncfusion:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <views:Card_Parking x:Name="Card_Parking" OnClicked_VerMapa="Card_Parking_OnClicked_VerMapa" OnClicked_VerMas="Card_Parking_OnClicked_VerMas" 
+                                            Margin="10,10,10,0" OnClicked_Reserva="Card_Parking_OnClicked_Reserva" OnClicked_VeImagen="Card_Parking_OnClicked_VeImagen"
+                                                        OnClicked_Favorito="Card_Parking_OnClicked_Favorito"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+                    </syncfusion:SfListView>
+                </pulltoRefresh:SfPullToRefresh.PullableContent>
+            </pulltoRefresh:SfPullToRefresh>
+
+
+        </Grid>
+
+
+       
+
+
+        <StackLayout x:Name="BoxNotSearchResult" Orientation="Vertical"  AbsoluteLayout.LayoutBounds="0.5,0.4" AbsoluteLayout.LayoutFlags="PositionProportional" IsVisible="False">
+            <Image Source="sinResultado2.png" HeightRequest="150" WidthRequest="150"/>
+            <custom:CustomLabel Text="No se encontraron resultados" MaxLines="2"
+                                FontSize="25" Margin="0,20,0,0"
+                                HorizontalOptions="FillAndExpand" 
+                                HorizontalTextAlignment="Center"/>
+        </StackLayout>
 
     </AbsoluteLayout>
 </ContentPage>

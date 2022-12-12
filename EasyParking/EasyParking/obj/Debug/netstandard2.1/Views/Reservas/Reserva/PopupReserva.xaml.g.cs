@@ -17,10 +17,16 @@ namespace EasyParking.Views.Reservas.Reserva {
     public partial class PopupReserva : global::Rg.Plugins.Popup.Pages.PopupPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.StackLayout stackEstacionamiento;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::EasyParking.Custom.CustomButton btnMisVehiculos;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::EasyParking.Custom.CustomButton btnNuevoVehiculo;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Frame frameVehiculoSeleccionado;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Syncfusion.XForms.Buttons.SfButton btnCancelar;
@@ -31,8 +37,10 @@ namespace EasyParking.Views.Reservas.Reserva {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(PopupReserva));
+            stackEstacionamiento = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "stackEstacionamiento");
             btnMisVehiculos = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomButton>(this, "btnMisVehiculos");
             btnNuevoVehiculo = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::EasyParking.Custom.CustomButton>(this, "btnNuevoVehiculo");
+            frameVehiculoSeleccionado = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Frame>(this, "frameVehiculoSeleccionado");
             btnCancelar = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnCancelar");
             btnConfirmarReserva = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Syncfusion.XForms.Buttons.SfButton>(this, "btnConfirmarReserva");
         }

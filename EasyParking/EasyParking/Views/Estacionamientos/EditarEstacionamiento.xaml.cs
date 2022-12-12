@@ -33,6 +33,7 @@ namespace EasyParking.Views.Estacionamientos
 
         public ImageSource EstacionamientoImagen { get; set; }
 
+        bool FirstAppearing = true;
 
         public EditarEstacionamiento(int estacionamientoId)
         {
@@ -41,6 +42,18 @@ namespace EasyParking.Views.Estacionamientos
             imagenEmpty.IsVisible = labelimagenEmpty.IsVisible = false;
 
             _estacionamientoId = estacionamientoId;
+
+
+        }
+
+        public EditarEstacionamiento(Model.Estacionamiento estacionamiento)
+        {
+            InitializeComponent();
+
+            imagenEmpty.IsVisible = labelimagenEmpty.IsVisible = false;
+
+            _estacionamiento = estacionamiento;
+            //_estacionamiento.TiposDeVehiculosAdmitidos.RemoveAt(1);
         }
 
         protected async override void OnAppearing()
@@ -49,32 +62,40 @@ namespace EasyParking.Views.Estacionamientos
 
             try
             {
-                estacionamientoServiceWebApi = new EstacionamientoServiceWebApi(App.WebApiAccess);
-                _estacionamiento = await estacionamientoServiceWebApi.Get(_estacionamientoId);
-                CargarDatosParaEditar();
+                if (FirstAppearing) // Condicional para que no ejecuite de nuevo si seleccioina o toma una imagen 
+                {
+
+                    estacionamientoServiceWebApi = new EstacionamientoServiceWebApi(App.WebApiAccess);
+
+                    //_estacionamiento = await estacionamientoServiceWebApi.Get(_estacionamientoId);
+
+                    CargarDatosParaEditar();
+
+                    FirstAppearing = false;
+                }
 
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
-            } 
+            }
         }
 
 
-        void CargarDatosParaEditar()  
+        void CargarDatosParaEditar()
         {
             ImagenArray = _estacionamiento.Imagen;
 
             Imagen.Source = ImageSource.FromStream(() =>                //
-            {                                                                   // Convierte de array de bytes a source imagen
-                return new MemoryStream(_estacionamiento.Imagen);             //
+            {                                                           // Convierte de array de bytes a source imagen
+                return new MemoryStream(_estacionamiento.Imagen);       //
             });
 
             comboboxCiudad.Text = _estacionamiento.Ciudad; // CIUDAD DEL LUGAR
 
-            entryNombre.Text = _estacionamiento.Nombre; // NOMBRE DEL LUGAR
+            entryNombre.Text = _estacionamiento.Nombre.Trim(); // NOMBRE DEL LUGAR
 
-            entryDireccion.Text = _estacionamiento.Direccion; // DIRECCION DEL LUGAR
+            entryDireccion.Text = _estacionamiento.Direccion.Trim(); // DIRECCION DEL LUGAR
 
             comboBoxTipoDeLugar.Text = _estacionamiento.TipoDeLugar; // TIPO DEL LUGAR
 
@@ -93,7 +114,7 @@ namespace EasyParking.Views.Estacionamientos
                         lwHorariosMiercoles.ItemsSource = item.Horarios;
                         break;
                     case Model.Enums.Dia.JUEVES:
-                        lwHorariosJueves.ItemsSource = item.Horarios; 
+                        lwHorariosJueves.ItemsSource = item.Horarios;
                         break;
                     case Model.Enums.Dia.VIERNES:
                         lwHorariosViernes.ItemsSource = item.Horarios;
@@ -157,9 +178,7 @@ namespace EasyParking.Views.Estacionamientos
                 Imagen.Source = ImageSource.FromStream(() => STREAM);
                 Imagen.Rotation = 90;
                 imagenEmpty.IsVisible = labelimagenEmpty.IsVisible = false;
-                ImageSource IM = Imagen.Source;
-                ConvertSourceToBytes4(result, IM);
-                //STREAM.Dispose();
+                _estacionamiento.Imagen = ImagenArray = await ConvertSourceToBytes(result);
             }
 
 
@@ -167,7 +186,7 @@ namespace EasyParking.Views.Estacionamientos
         }
 
 
-        private async void ConvertSourceToBytes4(FileResult result, ImageSource IM)
+        private async Task<byte[]> ConvertSourceToBytes(FileResult result)
         {
 
 
@@ -181,7 +200,6 @@ namespace EasyParking.Views.Estacionamientos
 
                 STREAM = await result.OpenReadAsync();
                 Imagen.Source = ImageSource.FromStream(() => STREAM);
-                imagenEmpty.IsVisible = labelimagenEmpty.IsVisible = false;
 
                 byte[] imageArray = null;
 
@@ -191,11 +209,15 @@ namespace EasyParking.Views.Estacionamientos
                     imageArray = memory.ToArray();
                 }
 
-                ImagenArray = imageArray;
+                return imageArray;
+            }
+            else
+            {
+                return null;
             }
         }
 
-        private async void ConvertSourceToBytes4(MediaFile result, ImageSource IM)
+        private async Task<byte[]> ConvertSourceToBytes(MediaFile result, ImageSource IM)
         {
 
 
@@ -209,7 +231,6 @@ namespace EasyParking.Views.Estacionamientos
 
                 var stream2 = result.GetStream();
                 Imagen.Source = ImageSource.FromStream(() => stream2);
-                imagenEmpty.IsVisible = labelimagenEmpty.IsVisible = false;
 
                 byte[] imageArray = null;
 
@@ -219,7 +240,11 @@ namespace EasyParking.Views.Estacionamientos
                     imageArray = memory.ToArray();
                 }
 
-                ImagenArray = imageArray;
+                return imageArray;
+            }
+            else
+            {
+                return null;
             }
         }
 
@@ -260,9 +285,8 @@ namespace EasyParking.Views.Estacionamientos
                     return stream;
                 });
 
-                ConvertSourceToBytes4(file, Imagen.Source);
+                _estacionamiento.Imagen = ImagenArray = await ConvertSourceToBytes(file, Imagen.Source);
 
-                //file.Dispose();
             }
             catch (Exception ex)
             {
@@ -330,8 +354,6 @@ namespace EasyParking.Views.Estacionamientos
         }
 
 
-
-
         private void checkBoxAuto_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if ((bool)checkBoxAuto.IsChecked)
@@ -390,7 +412,8 @@ namespace EasyParking.Views.Estacionamientos
 
                 if (!string.IsNullOrEmpty(entryNombre.Text))
                 {
-                    _estacionamiento.Nombre = entryNombre.Text; // NOMBRE DEL LUGAR
+                    _estacionamiento.Nombre = entryNombre.Text.Trim().ToLower(); // NOMBRE DEL LUGAR
+
                 }
                 else
                 {
@@ -400,7 +423,7 @@ namespace EasyParking.Views.Estacionamientos
 
                 if (!string.IsNullOrEmpty(entryDireccion.Text))
                 {
-                    _estacionamiento.Direccion = entryDireccion.Text; // DIRECCION DEL LUGAR
+                    _estacionamiento.Direccion = entryDireccion.Text.Trim().ToLower(); // DIRECCION DEL LUGAR
 
                 }
                 else
@@ -409,12 +432,23 @@ namespace EasyParking.Views.Estacionamientos
                     return;
                 }
 
-                _estacionamiento.TipoDeLugar = comboBoxTipoDeLugar.Text; // TIPO DEL LUGAR
+                if (!string.IsNullOrEmpty(comboBoxTipoDeLugar.Text))
+                {
+                    _estacionamiento.TipoDeLugar = comboBoxTipoDeLugar.Text; // TIPO DEL LUGAR
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Deber ingresar el tipo del lugar", "Entendido");
+                    return;
+                }
+
 
                 // LOS RANGO HORARIOS YA SE CARGARON ANTES EN EL EVENTO --> btnEditarHorario_Clicked
-                if (_estacionamiento.TiposDeVehiculosAdmitidos.Any(x => x.TipoDeVehiculo.ToLower() == "auto")) // SI YA EXISTE UN AUTO MODIFICO SOBRE ESE
+
+
+                if (_estacionamiento.TiposDeVehiculosAdmitidos.Any(x => x.TipoDeVehiculo.ToLower() == "auto")) // SI YA EXISTE UN AUTO MODIFICO SOBRE EL EXISTENTE
                 {
-                    if ((bool)checkBoxAuto.IsChecked && Convert.ToInt32(entryCantidadAuto.Value) != 0)  // AUTO DESDE ACA
+                    if ((bool)checkBoxAuto.IsChecked && Convert.ToInt32(entryCantidadAuto.Value) != 0)
                     {
 
                         _estacionamiento.TiposDeVehiculosAdmitidos.Where(x => x.TipoDeVehiculo.ToLower() == "auto").FirstOrDefault().CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadAuto.Value);
@@ -430,9 +464,22 @@ namespace EasyParking.Views.Estacionamientos
                     }
                 }
 
-                if (_estacionamiento.TiposDeVehiculosAdmitidos.Any(x => x.TipoDeVehiculo.ToLower() == "camioneta")) // SI YA EXISTE UNA CVAMIONETA MODIFICO SOBRE ESE
+                if (_estacionamiento.TiposDeVehiculosAdmitidos.Any(x => x.TipoDeVehiculo.ToLower() == "auto") == false && (bool)checkBoxAuto.IsChecked && Convert.ToInt32(entryCantidadAuto.Value) != 0) // SI NO TENIA CAMIONETA Y ADEMAS SELECCIONO UNA Y CARGO CANTIDADES
                 {
-                    if ((bool)checkBoxCamioneta.IsChecked && Convert.ToInt32(entryCantidadCamioneta.Value) != 0)  // CAMIONETA DESDE ACA
+                    Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
+                    dataVehiculo.TipoDeVehiculo = "Auto";
+                    dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadAuto.Value);
+                    dataVehiculo.Tarifa_Hora = Convert.ToDecimal(entryAuto_TarifaHora.Text);
+                    dataVehiculo.Tarifa_Dia = Convert.ToDecimal(entryAuto_TarifaDia.Text);
+                    dataVehiculo.Tarifa_Semana = Convert.ToDecimal(entryAuto_TarifaSemana.Text);
+                    dataVehiculo.Tarifa_Mes = Convert.ToDecimal(entryAuto_TarifaMes.Text);
+
+                    _estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo);
+                }
+
+                if (_estacionamiento.TiposDeVehiculosAdmitidos.Any(x => x.TipoDeVehiculo.ToLower() == "camioneta")) // SI YA EXISTE UNA CVAMIONETA MODIFICO SOBRE EL EXISTENTE
+                {
+                    if ((bool)checkBoxCamioneta.IsChecked && Convert.ToInt32(entryCantidadCamioneta.Value) != 0)
                     {
                         _estacionamiento.TiposDeVehiculosAdmitidos.Where(x => x.TipoDeVehiculo.ToLower() == "camioneta").FirstOrDefault().CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadCamioneta.Value);
                         _estacionamiento.TiposDeVehiculosAdmitidos.Where(x => x.TipoDeVehiculo.ToLower() == "camioneta").FirstOrDefault().Tarifa_Hora = Convert.ToDecimal(entryCamioneta_TarifaHora.Text);
@@ -447,9 +494,22 @@ namespace EasyParking.Views.Estacionamientos
                     }
                 }
 
-                if (_estacionamiento.TiposDeVehiculosAdmitidos.Any(x => x.TipoDeVehiculo.ToLower() == "moto")) // SI YA EXISTE UN MOTO MODIFICO SOBRE ESE
+                if (_estacionamiento.TiposDeVehiculosAdmitidos.Any(x => x.TipoDeVehiculo.ToLower() == "camioneta") == false && (bool)checkBoxCamioneta.IsChecked && Convert.ToInt32(entryCantidadCamioneta.Value) != 0) // SI NO TENIA CAMIONETA Y ADEMAS SELECCIONO UNA Y CARGO CANTIDADES
                 {
-                    if ((bool)checkBoxMoto.IsChecked && Convert.ToInt32(entryCantidadMoto.Value) != 0) // MOTO DESDE ACA
+                    Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
+                    dataVehiculo.TipoDeVehiculo = "Camioneta";
+                    dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadCamioneta.Value);
+                    dataVehiculo.Tarifa_Hora = Convert.ToDecimal(entryCamioneta_TarifaHora.Text);
+                    dataVehiculo.Tarifa_Dia = Convert.ToDecimal(entryCamioneta_TarifaDia.Text);
+                    dataVehiculo.Tarifa_Semana = Convert.ToDecimal(entryCamioneta_TarifaSemana.Text);
+                    dataVehiculo.Tarifa_Mes = Convert.ToDecimal(entryCamioneta_TarifaMes.Text);
+
+                    _estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo);
+                }
+
+                if (_estacionamiento.TiposDeVehiculosAdmitidos.Any(x => x.TipoDeVehiculo.ToLower() == "moto")) // SI YA EXISTE UN MOTO MODIFICO SOBRE EL EXISTENTE
+                {
+                    if ((bool)checkBoxMoto.IsChecked && Convert.ToInt32(entryCantidadMoto.Value) != 0)
                     {
                         _estacionamiento.TiposDeVehiculosAdmitidos.Where(x => x.TipoDeVehiculo.ToLower() == "moto").FirstOrDefault().CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadMoto.Value);
                         _estacionamiento.TiposDeVehiculosAdmitidos.Where(x => x.TipoDeVehiculo.ToLower() == "moto").FirstOrDefault().Tarifa_Hora = Convert.ToDecimal(entryMoto_TarifaHora.Text);
@@ -464,6 +524,48 @@ namespace EasyParking.Views.Estacionamientos
                         return;
                     }
                 }
+
+                if (_estacionamiento.TiposDeVehiculosAdmitidos.Any(x => x.TipoDeVehiculo.ToLower() == "moto") == false && (bool)checkBoxMoto.IsChecked && Convert.ToInt32(entryCantidadMoto.Value) != 0) // SI NO TENIA CAMIONETA Y ADEMAS SELECCIONO UNA Y CARGO CANTIDADES
+                {
+                    Model.DataVehiculoAlojado dataVehiculo = new Model.DataVehiculoAlojado();
+                    dataVehiculo.TipoDeVehiculo = "Moto";
+                    dataVehiculo.CapacidadDeAlojamiento = Convert.ToInt32(entryCantidadMoto.Value);
+                    dataVehiculo.Tarifa_Hora = Convert.ToDecimal(entryMoto_TarifaHora.Text);
+                    dataVehiculo.Tarifa_Dia = Convert.ToDecimal(entryMoto_TarifaDia.Text);
+                    dataVehiculo.Tarifa_Semana = Convert.ToDecimal(entryMoto_TarifaSemana.Text);
+                    dataVehiculo.Tarifa_Mes = Convert.ToDecimal(entryMoto_TarifaMes.Text);
+
+                    _estacionamiento.TiposDeVehiculosAdmitidos.Add(dataVehiculo); // HASTA ACA
+                }
+
+
+
+                // *** Control para quitar un vehiculo si fue desmarcado *** // 
+
+                List<Model.DataVehiculoAlojado> lista_TiposDeVehiculosAdmitidos = new List<Model.DataVehiculoAlojado>(_estacionamiento.TiposDeVehiculosAdmitidos);
+
+                foreach (var item in lista_TiposDeVehiculosAdmitidos)
+                {
+                    if (item.TipoDeVehiculo.ToLower() == "auto" && (bool)checkBoxAuto.IsChecked == false)
+                    {
+                        _estacionamiento.TiposDeVehiculosAdmitidos.Remove(item);
+                    }
+
+                    if (item.TipoDeVehiculo.ToLower() == "camioneta" && (bool)checkBoxCamioneta.IsChecked == false)
+                    {
+                        _estacionamiento.TiposDeVehiculosAdmitidos.Remove(item);
+                    }
+
+                    if (item.TipoDeVehiculo.ToLower() == "moto" && (bool)checkBoxMoto.IsChecked == false)
+                    {
+                        _estacionamiento.TiposDeVehiculosAdmitidos.Remove(item);
+                    }
+                }
+
+                //////////////////////////////////////////////////////////////
+
+
+
 
                 if ((bool)checkBoxMoto.IsChecked == false && (bool)checkBoxAuto.IsChecked == false && (bool)checkBoxCamioneta.IsChecked == false)
                 {
@@ -484,7 +586,16 @@ namespace EasyParking.Views.Estacionamientos
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
+                if (ex.Message.Contains("ERROR ... BadRequest -"))
+                {
+                    string msjError = ex.Message.Replace("ERROR ... BadRequest -", "");
+
+                    await DisplayAlert("Error", msjError, "Entendido");
+                }
+                else
+                {
+                    await DisplayAlert("Error", Tools.Tools.TraduceError(ex), "Entendido");
+                }
             }
             finally
             {

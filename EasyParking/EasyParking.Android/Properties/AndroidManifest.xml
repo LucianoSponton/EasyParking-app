@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.grupo2.easyparking" android:installLocation="internalOnly">
 	<uses-sdk android:minSdkVersion="18" android:targetSdkVersion="29" />
-	<application android:usesCleartextTraffic="true" android:allowBackup="false" android:debuggable="true" android:label="EasyParking" android:icon="@drawable/EPLogo"></application>
+
+	<application android:usesCleartextTraffic="true" android:allowBackup="false" android:debuggable="true" android:label="EasyParking" android:icon="@drawable/EPLogo">
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC875-XhgWTA3C8MxV9AZmY9j0aoQBawGo" />
+		<uses-library android:name="org.apache.http.legacy" android:required="false" />
+	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 </manifest>

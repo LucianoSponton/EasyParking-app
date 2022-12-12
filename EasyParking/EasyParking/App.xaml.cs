@@ -25,6 +25,9 @@ namespace EasyParking
         public static string Username { get; set; }
         public static string Password { get; set; }
 
+        public static ServiceWebApi.DTO.ParametroBusquedaDTO parametroBusquedaDTO = new ServiceWebApi.DTO.ParametroBusquedaDTO();
+
+
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzQ2MjAwQDMyMzAyZTMzMmUzMENDYkdjb0RCQ2JReEEzaXBPeU52VHdkVnFnbWlGQlJyb2lEdm9TUzJYbkk9");

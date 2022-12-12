@@ -60,9 +60,9 @@
 
                 </Grid>
 
-                <inputLayout:SfTextInputLayout  FocusedColor="#2968C8"  ContainerType="Outlined" Hint="Seleccionela ciudad" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
-                    <combobox:SfComboBox Margin="5,0,5,10" TextSize="16" Watermark="Ciudad" VerticalOptions="Center" EnableAutoSize="True"  
-                                             HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30"
+                <inputLayout:SfTextInputLayout Margin="0,0,0,10"  FocusedColor="#2968C8" Padding="0"  ContainerType="Outlined" Hint="Seleccionela ciudad" BackgroundColor="Transparent" ContainerBackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HelperText="Obligatorio *">
+                    <combobox:SfComboBox Margin="5,0,5,0" TextSize="16" Watermark="Ciudad" VerticalOptions="Center" EnableAutoSize="True"  
+                                             HorizontalOptions="Fill" WatermarkColor="#0366D6"  DropDownHeaderViewHeight="30" ShowClearButton="False"
                                              MaximumDropDownHeight="400" IsEditableMode="false" x:Name="comboboxCiudad" >
                         <combobox:SfComboBox.ComboBoxSource>
                             <ListCollection:List x:TypeArguments="x:String">

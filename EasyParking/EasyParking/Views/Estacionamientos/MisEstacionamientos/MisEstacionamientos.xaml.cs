@@ -29,8 +29,18 @@ namespace EasyParking.Views.Estacionamientos.MisEstacionamientos
 
                 activityIndicator.IsVisible = true;
                 lwlisado.ItemsSource = null;
-                lwlisado.ItemsSource = await estacionamientoServiceWebApi.GetMisEstacionamientos();
+                var Lista = await estacionamientoServiceWebApi.GetMisEstacionamientos();
+                lwlisado.ItemsSource = Lista;
                 activityIndicator.IsVisible = false;
+
+                if (Lista.Count == 0)
+                {
+                    BoxNotSearchResult.IsVisible = true;
+                }
+                else
+                {
+                    BoxNotSearchResult.IsVisible = false;
+                }
             }
             catch (Exception ex)
             {
@@ -146,7 +156,8 @@ namespace EasyParking.Views.Estacionamientos.MisEstacionamientos
                 var detalle = btn?.BindingContext as Model.Estacionamiento;
 
                 await PopupNavigation.Instance.PushAsync(new PopCargando());
-                await Navigation.PushAsync(new EditarEstacionamiento(detalle.Id));
+                //await Navigation.PushAsync(new EditarEstacionamiento(detalle.Id));
+                await Navigation.PushAsync(new EditarEstacionamiento(detalle));
             }
             catch (Exception ex)
             {

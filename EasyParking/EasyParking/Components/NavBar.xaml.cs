@@ -23,6 +23,9 @@ namespace EasyParking.Components
         public delegate void SearchBar_FocusedDelegate();
         public event EventHandler SearchBar_Focused;
 
+        public delegate void SearchBar_ButtonPressedDelegate();
+        public event EventHandler SearchBar_ButtonPressed;
+
         public string Title
         {
             get { return TituloDePagina.Text; }
@@ -86,6 +89,11 @@ namespace EasyParking.Components
         private void btnCarrito_Clicked(object sender, EventArgs e)
         {
             OnClicked_Carrito?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void searchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            SearchBar_ButtonPressed?.Invoke(this, EventArgs.Empty);
         }
     }
 }

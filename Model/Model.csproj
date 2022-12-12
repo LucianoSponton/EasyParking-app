@@ -9,7 +9,7 @@
 		<PackageId>EasyParking.Model</PackageId>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/LucianoSponton/EasyParking-app</RepositoryUrl>
-		<PackageTags></PackageTags>
+		<PackageTags>1.0.0</PackageTags>
 	</PropertyGroup>
 
 </Project>

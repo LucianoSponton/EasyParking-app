@@ -12,16 +12,33 @@ namespace ServiceWebApi.DTO
             handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public bool _publicacionPausada { get; set; }
+        public double Distancia { get; set; }
 
-        public bool PublicacionPausada
+        private bool _favorito { get; set; }
+        public bool Favorito
         {
-            get { return _publicacionPausada; }
+            get { return _favorito; }
             set
             {
-                _publicacionPausada = value;
-                OnPropertyChanged();
+                if (_favorito != value)
+                {
+                    _favorito = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
+        private string _imagenFavorito { get; set; }
+        public string ImagenFavorito
+        {
+            get { return _imagenFavorito; }
+            set
+            {
+                if (_imagenFavorito != value)
+                {
+                    _imagenFavorito = value;
+                    OnPropertyChanged();
+                }
             }
         }
     }

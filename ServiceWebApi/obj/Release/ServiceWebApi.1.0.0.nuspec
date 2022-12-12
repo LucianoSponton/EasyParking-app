@@ -5,6 +5,7 @@
     <version>1.0.0</version>
     <authors>ServiceWebApi</authors>
     <description>Package Description</description>
+    <tags>1.0.0</tags>
     <dependencies>
       <group targetFramework=".NETStandard2.1">
         <dependency id="EasyParking.Model" version="1.0.0" exclude="Build,Analyzers" />

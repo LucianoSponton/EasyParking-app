@@ -20,7 +20,7 @@
             <custom:CustomLabel x:Name="TituloDePagina"  Grid.Column="0" Grid.Row="0" FontSize="22"  TextColor="Black" VerticalOptions="Center"/>
 
             <border:SfBorder x:Name="BoxSearchBar" BackgroundColor="White" Grid.Column="0" Grid.Row="0" BorderColor = "White" CornerRadius="80,80,80,80" BorderWidth="1.5" Margin="5" Padding="0" HorizontalOptions="Fill" VerticalOptions="Center">
-                <SearchBar Placeholder="Buscar" x:Name="searchBar"  HorizontalOptions="FillAndExpand" Focused="searchBar_Focused" HeightRequest="30"/>
+                <SearchBar Placeholder="Buscar" x:Name="searchBar"  HorizontalOptions="FillAndExpand" SearchButtonPressed="searchBar_SearchButtonPressed" Focused="searchBar_Focused" HeightRequest="30"/>
 
             </border:SfBorder>
 

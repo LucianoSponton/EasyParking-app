@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="EasyParking.Views.Generales.Mapa">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Geocoding Sample" HorizontalTextAlignment="Center" TextColor="White" FontSize="36" />
+        </Frame>
+        <Entry x:Name="entry" Margin="20" />
+        <Label x:Name="resultLocation" Margin="20" />
+        <Button Text="Geocode" Clicked="Button_Clicked" />
+        <Button Text="Reverse Geocode" Clicked="Button_Clicked_1" />
+    </StackLayout>
+
+</ContentPage>
