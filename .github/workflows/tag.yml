@@ -1,0 +1,23 @@
+on:  
+  push:
+   branches: 
+    - dev   
+       
+jobs:
+  build:  
+
+    env:
+      BUILD_CONFIG: 'Release' 
+      PROJECT: 'Model/Model.csproj' 
+      OWNER_REPOSITORY: LucianoSponton
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Auto increment tag
+        id: tag
+        uses: sophiware/actions-auto-increment-tag@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Container tag
+        run: echo "VERSION=${{ steps.tag.outputs.tag }}"  >> $GITHUB_ENV
