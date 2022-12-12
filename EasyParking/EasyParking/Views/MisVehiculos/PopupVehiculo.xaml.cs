@@ -64,7 +64,7 @@ namespace EasyParking.Views.MisVehiculos
                     }
                     else if (!string.IsNullOrEmpty(comboBoxTipoDeVehiculo.Text))
                     {
-                        await DisplayAlert("Aviso", "Debe seleccionar el tipo de vehículo", "Entendido");
+                        await DisplayAlert("Aviso", "Debe seleccionar el tipo de vehículo", "Entendido");//
                     }
 
                 }
